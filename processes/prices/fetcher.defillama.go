@@ -82,20 +82,21 @@ func fetchPricesFromLlama(chainID uint64, tokens []models.TERC20Token) map[commo
 		katanaToMainnetMapping := make(map[common.Address]common.Address) // maps mainnet address to katana address
 
 		for _, token := range tokensFromChunk {
+			lowerHex := strings.ToLower(token.Address.Hex())
 			// Handle Katana chain special token mapping
 			if chainID == 747474 {
 				if mainnetTokenName, exists := KATANA_TOKEN_NAMES_TO_MAINNET_NAMES[token.Name]; exists {
 					logs.Info("Katana token", token.Name, "mapped to mainnet token", mainnetTokenName)
 					if mainnetAddress, found := getMainnetAddressForTokenName(mainnetTokenName); found {
 						katanaToMainnetMapping[mainnetAddress] = token.Address
-						tokenString = append(tokenString, LLAMA_CHAIN_NAMES[1]+`:`+mainnetAddress.Hex())
+						tokenString = append(tokenString, LLAMA_CHAIN_NAMES[1]+`:`+strings.ToLower(mainnetAddress.Hex()))
 						continue // Skip the normal token addition for this token
 					}
 				}
 			}
 
 			// Normal token handling
-			tokenString = append(tokenString, LLAMA_CHAIN_NAMES[chainID]+`:`+token.Address.Hex())
+			tokenString = append(tokenString, LLAMA_CHAIN_NAMES[chainID]+`:`+lowerHex)
 
 			// Handle AJNA tokens
 			if addresses.Equals(token.Address, AJNA_TOKENS[10]) && chainID == 10 {
@@ -146,6 +147,7 @@ func fetchPricesFromLlama(chainID uint64, tokens []models.TERC20Token) map[commo
 
 		// Parse response
 		decimalsUSDC := bigNumber.NewFloat(math.Pow10(6))
+		zeroCount := 0
 		for _, tokenStr := range tokenString {
 			tokenAddressStr := strings.Split(tokenStr, ":")[1]
 			finalTokenAddress := tokenAddressStr
@@ -175,9 +177,18 @@ func fetchPricesFromLlama(chainID uint64, tokens []models.TERC20Token) map[commo
 				finalTokenAddress = AJNA_TOKENS[42161].Hex()
 			}
 
-			data, ok := priceData.Coins[tokenStr]
-			if ok { // Convert price into USDC decimals
+			key := strings.ToLower(tokenStr)
+			data, ok := priceData.Coins[key]
+			if ok {
 				price := bigNumber.NewFloat(data.Price)
+				if price.IsZero() {
+					if zeroCount < 5 {
+						logs.Warning("🦙 [LLAMA ZERO]", "chain", chainID, "token", finalTokenAddress, "symbol", data.Symbol)
+					}
+					zeroCount++
+					continue
+				}
+
 				humanizedPrice := price
 				priceMap[common.HexToAddress(finalTokenAddress)] = models.TPrices{
 					Address:        common.HexToAddress(finalTokenAddress),
@@ -187,12 +198,28 @@ func fetchPricesFromLlama(chainID uint64, tokens []models.TERC20Token) map[commo
 				}
 			}
 		}
+		if zeroCount > 5 {
+			logs.Warning("🦙 [LLAMA ZERO]", "chain", chainID, "extraZero", zeroCount-5)
+		}
 
 		took := time.Since(t0)
 		if took > 2*time.Second {
 			logs.Warning("🦙 [LLAMA CHUNK] slow", "chain", chainID, "took", took)
 		}
-		logs.Success("🦙 [LLAMA CHUNK] done", "chain", chainID, "took", took)
+		missingCount := 0
+		for _, token := range tokensFromChunk {
+			price, exists := priceMap[token.Address]
+			if !exists || price.Price == nil || price.Price.IsZero() {
+				if missingCount < 5 {
+					logs.Warning("🦙 [LLAMA MISS]", "chain", chainID, "token", token.Address.Hex(), "symbol", token.Symbol, "name", token.Name)
+				}
+				missingCount++
+			}
+		}
+		if missingCount > 5 {
+			logs.Warning("🦙 [LLAMA MISS]", "chain", chainID, "extraMissing", missingCount-5)
+		}
+		logs.Success("🦙 [LLAMA CHUNK] done", "chain", chainID, "took", took, "missing", missingCount)
 	}
 
 	return priceMap

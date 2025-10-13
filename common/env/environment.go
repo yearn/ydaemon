@@ -56,6 +56,13 @@ func SetEnv() {
 	if riskCDN, exists := os.LookupEnv("RISK_CDN_URL"); exists {
 		RISK_CDN_URL = riskCDN
 	}
+
+	/**********************************************************************************************
+	** Kong API URL configuration
+	**********************************************************************************************/
+	if kongURL, exists := os.LookupEnv("KONG_API_URL"); exists {
+		KONG_API_URL = kongURL
+	}
 }
 
 /**************************************************************************************************

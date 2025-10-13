@@ -586,7 +586,7 @@ func indexNewVaultsWrapper(
 **   - Listen to new vaults added to the registry (aka listening to the events)
 ** Only the first group is stored in the `sync.Map`.
 **************************************************************************************************/
-func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]models.TVaultsFromRegistry) {
+func IndexNewVaultsFromRegistries(chainID uint64) (vaultsFromRegistry map[common.Address]models.TVaultsFromRegistry) {
 	shouldSkipIndexing := false
 	wg := sync.WaitGroup{} // This WaitGroup will be done when all the historical vaults are indexed
 

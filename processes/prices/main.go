@@ -344,6 +344,7 @@ func RetrieveAllPrices(chainID uint64, tokenMap map[common.Address]models.TERC20
 		fetchPrices(chainID, &currentBlockNumber, tokenMap)
 	}
 	priceMap, _ := storage.ListPrices(chainID)
+	logZeroPrices(chainID, priceMap)
 	logs.Success("💰 [PRICES DONE]", "chain", chainID, "took", time.Since(start))
 	return priceMap
 }
@@ -355,6 +356,19 @@ func RetrieveAllPrices(chainID uint64, tokenMap map[common.Address]models.TERC20
 func UpdatePrices(chainID uint64) {
 	tokenMap, _ := storage.ListERC20(chainID)
 	fetchPrices(chainID, nil, tokenMap)
+}
+
+func logZeroPrices(chainID uint64, priceMap map[common.Address]models.TPrices) {
+	for _, price := range priceMap {
+		if price.Price == nil || price.Price.IsZero() {
+			logs.Warning(
+				"🪙 [PRICE ZERO]",
+				"chain", chainID,
+				"token", price.Address.Hex(),
+				"source", price.Source,
+			)
+		}
+	}
 }
 
 func markPriceErrorSent(chainID uint64, tokenMap map[common.Address]models.TERC20Token, newPriceMap map[common.Address]models.TPrices) {

@@ -1,12 +1,49 @@
 package prices
 
 import (
+	"bytes"
+	"io"
+	"os"
+	"strings"
 	"testing"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/internal/models"
 )
+
+func captureOutput(t *testing.T, fn func()) string {
+	t.Helper()
+	oldStdout := os.Stdout
+	oldStderr := os.Stderr
+
+	r, w, err := os.Pipe()
+	if err != nil {
+		t.Fatalf("failed to create pipe: %v", err)
+	}
+
+	os.Stdout = w
+	os.Stderr = w
+
+	fn()
+
+	if err := w.Close(); err != nil {
+		t.Fatalf("failed to close writer: %v", err)
+	}
+
+	os.Stdout = oldStdout
+	os.Stderr = oldStderr
+
+	var buf bytes.Buffer
+	if _, err := io.Copy(&buf, r); err != nil {
+		t.Fatalf("failed to read pipe: %v", err)
+	}
+	if err := r.Close(); err != nil {
+		t.Fatalf("failed to close reader: %v", err)
+	}
+
+	return buf.String()
+}
 
 func TestApplyCandidatePricesInsertsWhenMissing(t *testing.T) {
 	addr := common.HexToAddress("0x0000000000000000000000000000000000000011")
@@ -77,5 +114,51 @@ func TestApplyCandidatePricesReplacesZero(t *testing.T) {
 	}
 	if stored.Price.String() != candidate.Price.String() {
 		t.Fatalf("expected stored price %s, got %s", candidate.Price.String(), stored.Price.String())
+	}
+}
+
+func TestLogZeroPricesWarnsForNilOrZero(t *testing.T) {
+	zeroAddr := common.HexToAddress("0x00000000000000000000000000000000000000AA")
+	nilAddr := common.HexToAddress("0x00000000000000000000000000000000000000BB")
+
+	zeroPrice := models.TPrices{
+		Address: zeroAddr,
+		Price:   bigNumber.NewInt(0),
+		Source:  "test-zero",
+	}
+	nilPrice := models.TPrices{
+		Address: nilAddr,
+		Source:  "test-nil",
+	}
+
+	output := captureOutput(t, func() {
+		logZeroPrices(1, map[common.Address]models.TPrices{
+			zeroAddr: zeroPrice,
+			nilAddr:  nilPrice,
+		})
+	})
+
+	if count := strings.Count(output, "[PRICE ZERO]"); count != 2 {
+		t.Fatalf("expected 2 zero-price warnings, got %d output %q", count, output)
+	}
+	if !strings.Contains(output, zeroAddr.Hex()) || !strings.Contains(output, nilAddr.Hex()) {
+		t.Fatalf("expected output to include both token addresses, got %q", output)
+	}
+}
+
+func TestLogZeroPricesSkipsNonZero(t *testing.T) {
+	addr := common.HexToAddress("0x00000000000000000000000000000000000000CC")
+	positive := models.TPrices{
+		Address: addr,
+		Price:   bigNumber.NewInt(123),
+		Source:  "test-positive",
+	}
+
+	output := captureOutput(t, func() {
+		logZeroPrices(1, map[common.Address]models.TPrices{addr: positive})
+	})
+
+	if strings.Contains(output, "[PRICE ZERO]") {
+		t.Fatalf("expected no zero-price warnings, got %q", output)
 	}
 }

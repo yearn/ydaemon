@@ -2,84 +2,20 @@ package storage
 
 import (
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
 var _pricesSyncMap = make(map[uint64]*sync.Map)
-
-var (
-	zeroPriceLogMu    sync.Mutex
-	zeroPriceLogCache = make(map[uint64]map[common.Address]time.Time)
-)
-
-var zeroPriceLogTTL = 10 * time.Minute
 
 /**************************************************************************************************
 ** StorePrice will add a new price in the _pricesSyncMap
 **************************************************************************************************/
 func StorePrice(chainID uint64, price models.TPrices) {
 	safeSyncMap(_pricesSyncMap, chainID).Store(price.Address, price)
-}
-
-func shouldLogZeroPrice(chainID uint64, tokenAddress common.Address) bool {
-	zeroPriceLogMu.Lock()
-	defer zeroPriceLogMu.Unlock()
-
-	if _, ok := zeroPriceLogCache[chainID]; !ok {
-		zeroPriceLogCache[chainID] = make(map[common.Address]time.Time)
-	}
-
-	lastLogged, alreadyLogged := zeroPriceLogCache[chainID][tokenAddress]
-	if alreadyLogged && time.Since(lastLogged) < zeroPriceLogTTL {
-		return false
-	}
-
-	zeroPriceLogCache[chainID][tokenAddress] = time.Now()
-	return true
-}
-
-func maybeWarnZeroPrice(chainID uint64, price models.TPrices) {
-	reason := ""
-	switch {
-	case price.Price == nil:
-		reason = "nil price"
-	case price.Price.IsZero():
-		reason = "zero price"
-	default:
-		return
-	}
-
-	if !shouldLogZeroPrice(chainID, price.Address) {
-		return
-	}
-
-	tokenName := ""
-	tokenType := ""
-	if token, ok := GetERC20(chainID, price.Address); ok {
-		tokenName = token.Name
-		tokenType = string(token.Type)
-	}
-
-	source := price.Source
-	if source == "" {
-		source = "unknown"
-	}
-
-	logs.Warning(
-		"🪙 [PRICE ZERO]",
-		"chain", chainID,
-		"token", price.Address.Hex(),
-		"name", tokenName,
-		"type", tokenType,
-		"source", source,
-		"reason", reason,
-	)
 }
 
 /**************************************************************************************************
@@ -98,7 +34,6 @@ func ListPrices(chainID uint64) (
 	**********************************************************************************************/
 	safeSyncMap(_pricesSyncMap, chainID).Range(func(key, value interface{}) bool {
 		price := value.(models.TPrices)
-		maybeWarnZeroPrice(chainID, price)
 		asMap[price.Address] = price
 		asSlice = append(asSlice, price)
 		return true
@@ -114,7 +49,6 @@ func ListPrices(chainID uint64) (
 func GetPrice(chainID uint64, tokenAddress common.Address) (models.TPrices, bool) {
 	if priceFromSyncMap, ok := safeSyncMap(_pricesSyncMap, chainID).Load(tokenAddress); ok {
 		price := priceFromSyncMap.(models.TPrices)
-		maybeWarnZeroPrice(chainID, price)
 		return price, true
 	}
 	/******************************************************************************************
@@ -126,7 +60,6 @@ func GetPrice(chainID uint64, tokenAddress common.Address) (models.TPrices, bool
 	if addresses.Equals(tokenAddress, `0x67Ee2155601e168F7777F169Cd74f3E22BB5E0cE`) && chainID == 100 {
 		if mainnetPriceFromSyncMap, ok := safeSyncMap(_pricesSyncMap, env.ETHEREUM.ID).Load(tokenAddress); ok {
 			price := mainnetPriceFromSyncMap.(models.TPrices)
-			maybeWarnZeroPrice(chainID, price)
 			return price, true
 		}
 	}

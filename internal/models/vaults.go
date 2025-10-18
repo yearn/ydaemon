@@ -283,25 +283,25 @@ func (f *CoercibleUint64) UnmarshalJSON(data []byte) error {
 }
 
 type TKongDebt struct {
-	Strategy           string `json:"strategy"`
-	PerformanceFee     int    `json:"performanceFee"`
-	Activation         string `json:"activation"`
-	DebtRatio          string `json:"debtRatio"`
-	MinDebtPerHarvest  string `json:"minDebtPerHarvest"`
-	MaxDebtPerHarvest  string `json:"maxDebtPerHarvest"`
-	LastReport         string `json:"lastReport"`
-	TotalDebt          string `json:"totalDebt"`
-	TotalDebtUsd       string `json:"totalDebtUsd"`
-	TotalGain          string `json:"totalGain"`
-	TotalGainUsd       string `json:"totalGainUsd"`
-	TotalLoss          string `json:"totalLoss"`
-	TotalLossUsd       string `json:"totalLossUsd"`
-	CurrentDebt        string `json:"currentDebt"`
-	CurrentDebtUsd     string `json:"currentDebtUsd"`
-	MaxDebt            string `json:"maxDebt"`
-	MaxDebtUsd         string `json:"maxDebtUsd"`
-	TargetDebtRatio    string `json:"targetDebtRatio"`
-	MaxDebtRatio       string `json:"maxDebtRatio"`
+	Strategy           string   `json:"strategy"`
+	PerformanceFee     *string  `json:"performanceFee"`
+	Activation         *string  `json:"activation"`
+	DebtRatio          *string  `json:"debtRatio"`
+	MinDebtPerHarvest  *string  `json:"minDebtPerHarvest"`
+	MaxDebtPerHarvest  *string  `json:"maxDebtPerHarvest"`
+	LastReport         *string  `json:"lastReport"`
+	TotalDebt          *string  `json:"totalDebt"`
+	TotalDebtUsd       *float64 `json:"totalDebtUsd"`
+	TotalGain          *string  `json:"totalGain"`
+	TotalGainUsd       *float64 `json:"totalGainUsd"`
+	TotalLoss          *string  `json:"totalLoss"`
+	TotalLossUsd       *float64 `json:"totalLossUsd"`
+	CurrentDebt        *string  `json:"currentDebt"`
+	CurrentDebtUsd     *float64 `json:"currentDebtUsd"`
+	MaxDebt            *string  `json:"maxDebt"`
+	MaxDebtUsd         *float64 `json:"maxDebtUsd"`
+	TargetDebtRatio    *float64 `json:"targetDebtRatio"`
+	MaxDebtRatio       *float64 `json:"maxDebtRatio"`
 }
 
 type TKongVaultSchema struct {

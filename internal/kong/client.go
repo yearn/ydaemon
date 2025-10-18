@@ -40,29 +40,29 @@ type KongAsset struct {
 }
 
 type KongDebt struct {
-	Strategy           string `json:"strategy"`
-	PerformanceFee     int    `json:"performanceFee"`
-	Activation         string `json:"activation"`
-	DebtRatio          string `json:"debtRatio"`
-	MinDebtPerHarvest  string `json:"minDebtPerHarvest"`
-	MaxDebtPerHarvest  string `json:"maxDebtPerHarvest"`
-	LastReport         string `json:"lastReport"`
-	TotalDebt          string `json:"totalDebt"`
-	TotalDebtUsd       string `json:"totalDebtUsd"`
-	TotalGain          string `json:"totalGain"`
-	TotalGainUsd       string `json:"totalGainUsd"`
-	TotalLoss          string `json:"totalLoss"`
-	TotalLossUsd       string `json:"totalLossUsd"`
-	CurrentDebt        string `json:"currentDebt"`
-	CurrentDebtUsd     string `json:"currentDebtUsd"`
-	MaxDebt            string `json:"maxDebt"`
-	MaxDebtUsd         string `json:"maxDebtUsd"`
-	TargetDebtRatio    string `json:"targetDebtRatio"`
-	MaxDebtRatio       string `json:"maxDebtRatio"`
+	Strategy           string   `json:"strategy"`           // String
+	PerformanceFee     *string  `json:"performanceFee"`     // BigInt (string) or null
+	Activation         *string  `json:"activation"`         // BigInt (string) or null
+	DebtRatio          *string  `json:"debtRatio"`          // BigInt (string) or null
+	MinDebtPerHarvest  *string  `json:"minDebtPerHarvest"`  // BigInt (string) or null
+	MaxDebtPerHarvest  *string  `json:"maxDebtPerHarvest"`  // BigInt (string) or null
+	LastReport         *string  `json:"lastReport"`         // BigInt (string) or null
+	TotalDebt          *string  `json:"totalDebt"`          // BigInt (string) or null
+	TotalDebtUsd       *float64 `json:"totalDebtUsd"`       // Float or null
+	TotalGain          *string  `json:"totalGain"`          // BigInt (string) or null
+	TotalGainUsd       *float64 `json:"totalGainUsd"`       // Float or null
+	TotalLoss          *string  `json:"totalLoss"`          // BigInt (string) or null
+	TotalLossUsd       *float64 `json:"totalLossUsd"`       // Float or null
+	CurrentDebt        *string  `json:"currentDebt"`        // BigInt (string) or null
+	CurrentDebtUsd     *float64 `json:"currentDebtUsd"`     // Float or null
+	MaxDebt            *string  `json:"maxDebt"`            // BigInt (string) or null
+	MaxDebtUsd         *float64 `json:"maxDebtUsd"`         // Float or null
+	TargetDebtRatio    *float64 `json:"targetDebtRatio"`    // Float or null
+	MaxDebtRatio       *float64 `json:"maxDebtRatio"`       // Float or null
 }
 
 type KongTVL struct {
-	Close string `json:"close"`
+	Close float64 `json:"close"`
 }
 
 type KongVault struct {
@@ -354,14 +354,10 @@ type KongVaultData struct {
 }
 
 func (v *KongVault) GetTVL() float64 {
-	if v.TVL == nil || v.TVL.Close == "" {
+	if v.TVL == nil {
 		return 0
 	}
-	close, err := strconv.ParseFloat(v.TVL.Close, 64)
-	if err != nil {
-		return 0
-	}
-	return close
+	return v.TVL.Close
 }
 
 func (v *KongVault) GetDebts() []KongDebt {

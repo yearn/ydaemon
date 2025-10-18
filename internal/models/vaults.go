@@ -278,6 +278,15 @@ func (f *CoercibleUint64) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+type KongAPY struct {
+	PricePerShare        string   `json:"pricePerShare"`
+	WeeklyNet            *float64 `json:"weeklyNet"`
+	WeeklyPricePerShare  string   `json:"weeklyPricePerShare"`
+	MonthlyNet           *float64 `json:"monthlyNet"`
+	MonthlyPricePerShare string   `json:"monthlyPricePerShare"`
+	InceptionNet         *float64 `json:"inceptionNet"`
+}
+
 type TKongVaultSchema struct {
 	Hook struct {
 		Fees struct {
@@ -289,4 +298,5 @@ type TKongVaultSchema struct {
 		ManagementFee  CoercibleUint64 `json:"managementFee"`
 		PerformanceFee CoercibleUint64 `json:"performanceFee"`
 	} `json:"snapshot"`
+	APY KongAPY `json:"apy"`
 }

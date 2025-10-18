@@ -411,6 +411,34 @@ func StoreKongVaultData(chainID uint64, address common.Address, kongData models.
 }
 
 /**************************************************************************************************
+** GetKongDebts retrieves Kong debt data for a specific vault
+** Returns the debts array and a boolean indicating if data was found
+**************************************************************************************************/
+func GetKongDebts(chainID uint64, vaultAddress common.Address) ([]models.TKongDebt, bool) {
+	data, ok := GetKongVaultData(chainID, vaultAddress)
+	if !ok {
+		return nil, false
+	}
+	return data.Debts, true
+}
+
+/**************************************************************************************************
+** GetKongTVL retrieves Kong TVL value for a specific vault
+** Returns the TVL string and a boolean indicating if data was found
+**************************************************************************************************/
+func GetKongTVL(chainID uint64, vaultAddress common.Address) (float64, bool) {
+	data, ok := GetKongVaultData(chainID, vaultAddress)
+	if !ok {
+		return 0, false
+	}
+	close, err := strconv.ParseFloat(data.TVL, 64)
+	if err != nil {
+		return 0, false
+	}
+	return close, true
+}
+
+/**************************************************************************************************
 ** ListKongVaultData returns all kong vault data for a specific chain
 **************************************************************************************************/
 func ListKongVaultData(chainID uint64) map[common.Address]models.TKongVaultSchema {

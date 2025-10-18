@@ -155,7 +155,11 @@ type TVault struct {
 	// Mutable elements. They will often change
 	LastActiveStrategies []common.Address `json:"lastActiveStrategies"` // The list of "active" strategies via their withdrawal queue
 	LastPricePerShare    *bigNumber.Int   `json:"lastPricePerShare"`    // Price per share of the vault
-	LastTotalAssets      *bigNumber.Int   `json:"lastTotalAssets"`      // Total assets locked in the vault
+	LastTotalAssets      *bigNumber.Int   `json:"lastTotalAssets"`      // Total assets locked in the vault (from blockchain or Kong)
+
+	// Kong-sourced data (single source of truth for TVL and debts)
+	KongTVL   string `json:"kongTvl,omitempty"`   // TVL from Kong API (tvl.close field)
+	KongDebts string `json:"kongDebts,omitempty"` // JSON-encoded debts array from Kong API
 
 	// Manual elements. They are manually set by the team
 	Metadata TVaultMetadata `json:"metadata"` // The metadata of the vault
@@ -278,6 +282,28 @@ func (f *CoercibleUint64) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+type TKongDebt struct {
+	Strategy           string `json:"strategy"`
+	PerformanceFee     int    `json:"performanceFee"`
+	Activation         string `json:"activation"`
+	DebtRatio          string `json:"debtRatio"`
+	MinDebtPerHarvest  string `json:"minDebtPerHarvest"`
+	MaxDebtPerHarvest  string `json:"maxDebtPerHarvest"`
+	LastReport         string `json:"lastReport"`
+	TotalDebt          string `json:"totalDebt"`
+	TotalDebtUsd       string `json:"totalDebtUsd"`
+	TotalGain          string `json:"totalGain"`
+	TotalGainUsd       string `json:"totalGainUsd"`
+	TotalLoss          string `json:"totalLoss"`
+	TotalLossUsd       string `json:"totalLossUsd"`
+	CurrentDebt        string `json:"currentDebt"`
+	CurrentDebtUsd     string `json:"currentDebtUsd"`
+	MaxDebt            string `json:"maxDebt"`
+	MaxDebtUsd         string `json:"maxDebtUsd"`
+	TargetDebtRatio    string `json:"targetDebtRatio"`
+	MaxDebtRatio       string `json:"maxDebtRatio"`
+}
+
 type TKongVaultSchema struct {
 	Hook struct {
 		Fees struct {
@@ -289,4 +315,6 @@ type TKongVaultSchema struct {
 		ManagementFee  CoercibleUint64 `json:"managementFee"`
 		PerformanceFee CoercibleUint64 `json:"performanceFee"`
 	} `json:"snapshot"`
+	TVL   string       `json:"tvl"`   // TVL from Kong (tvl.close field)
+	Debts []TKongDebt  `json:"debts"` // Debts array from Kong
 }

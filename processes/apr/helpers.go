@@ -2,8 +2,10 @@ package apr
 
 import (
 	"math"
+	"strconv"
 
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/logs"
 )
 
 /**************************************************************************************************
@@ -40,4 +42,33 @@ func convertFloatAPRToAPY(apr float64, periodsPerYear float64) float64 {
 
 	// Convert back to percentage
 	return apy * 100
+}
+
+/**************************************************************************************************
+** parseKongFloatAPY safely parses Kong float APY values (weeklyNet, monthlyNet, inceptionNet)
+** to bigNumber.Float. Returns zero on nil or error.
+**************************************************************************************************/
+func parseKongFloatAPY(value *float64) *bigNumber.Float {
+	if value == nil {
+		return bigNumber.NewFloat(0)
+	}
+	return bigNumber.NewFloat(*value)
+}
+
+/**************************************************************************************************
+** parseKongStringPPS safely parses Kong string PPS values (pricePerShare, weeklyPricePerShare,
+** monthlyPricePerShare) to bigNumber.Float. Returns zero on empty string or error.
+**************************************************************************************************/
+func parseKongStringPPS(value string) *bigNumber.Float {
+	if value == "" {
+		return bigNumber.NewFloat(0)
+	}
+
+	floatVal, err := strconv.ParseFloat(value, 64)
+	if err != nil {
+		logs.Warning("Failed to parse Kong PPS value '%s': %v", value, err)
+		return bigNumber.NewFloat(0)
+	}
+
+	return bigNumber.NewFloat(floatVal)
 }

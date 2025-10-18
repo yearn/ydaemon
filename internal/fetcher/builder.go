@@ -4,7 +4,6 @@ import (
 	"strings"
 
 	"github.com/yearn/ydaemon/common/addresses"
-	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -165,26 +164,29 @@ func BuildVaultSymbol(t models.TVault, vaultSymbol string) (string, string, stri
 ** @return models.TTVL - A structure containing the TVL and related financial metrics
 **************************************************************************************************/
 func BuildVaultTVL(t models.TVault) models.TTVL {
-	vaultToken, ok := storage.GetERC20(t.ChainID, t.Address)
+	_, ok := storage.GetERC20(t.ChainID, t.Address)
 	if !ok {
 		return models.TTVL{}
 	}
-	humanizedPrice, fHumanizedPrice := getHumanizedTokenPrice(t.ChainID, t.AssetAddress)
+	_, fHumanizedPrice := getHumanizedTokenPrice(t.ChainID, t.AssetAddress)
 
 	/**********************************************************************************************
 	** Notice: The vault was implicated in a hack, so the price is now effectively 0 as the pool
 	** is frozen.
 	**********************************************************************************************/
 	if addresses.Equals(t.Address, `0x718AbE90777F5B778B52D553a5aBaa148DD0dc5D`) {
-		humanizedPrice = bigNumber.NewFloat(0)
 		fHumanizedPrice = 0.0
 	}
 
-	fHumanizedTVLPrice := getHumanizedValue(t.LastTotalAssets, int(vaultToken.Decimals), humanizedPrice)
+
+	kongTVL, ok := storage.GetKongTVL(t.ChainID, t.Address)
+	if !ok {
+		kongTVL = 0
+	}
 
 	tvl := models.TTVL{
 		TotalAssets: t.LastTotalAssets,
-		TVL:         fHumanizedTVLPrice,
+		TVL:		float64(kongTVL),
 		Price:       fHumanizedPrice,
 	}
 	return tvl

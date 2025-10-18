@@ -39,16 +39,44 @@ type KongAsset struct {
 	Symbol   string `json:"symbol"`
 }
 
+type KongDebt struct {
+	Strategy           string   `json:"strategy"`           // String
+	PerformanceFee     *string  `json:"performanceFee"`     // BigInt (string) or null
+	Activation         *string  `json:"activation"`         // BigInt (string) or null
+	DebtRatio          *string  `json:"debtRatio"`          // BigInt (string) or null
+	MinDebtPerHarvest  *string  `json:"minDebtPerHarvest"`  // BigInt (string) or null
+	MaxDebtPerHarvest  *string  `json:"maxDebtPerHarvest"`  // BigInt (string) or null
+	LastReport         *string  `json:"lastReport"`         // BigInt (string) or null
+	TotalDebt          *string  `json:"totalDebt"`          // BigInt (string) or null
+	TotalDebtUsd       *float64 `json:"totalDebtUsd"`       // Float or null
+	TotalGain          *string  `json:"totalGain"`          // BigInt (string) or null
+	TotalGainUsd       *float64 `json:"totalGainUsd"`       // Float or null
+	TotalLoss          *string  `json:"totalLoss"`          // BigInt (string) or null
+	TotalLossUsd       *float64 `json:"totalLossUsd"`       // Float or null
+	CurrentDebt        *string  `json:"currentDebt"`        // BigInt (string) or null
+	CurrentDebtUsd     *float64 `json:"currentDebtUsd"`     // Float or null
+	MaxDebt            *string  `json:"maxDebt"`            // BigInt (string) or null
+	MaxDebtUsd         *float64 `json:"maxDebtUsd"`         // Float or null
+	TargetDebtRatio    *float64 `json:"targetDebtRatio"`    // Float or null
+	MaxDebtRatio       *float64 `json:"maxDebtRatio"`       // Float or null
+}
+
+type KongTVL struct {
+	Close float64 `json:"close"`
+}
+
 type KongVault struct {
-	Address           string    `json:"address"`
-	ChainID           int       `json:"chainId"`
-	Asset             KongAsset `json:"asset"`
-	Registry          string    `json:"registry"`
-	InceptBlock       string    `json:"inceptBlock"`
-	APIVersion        string    `json:"apiVersion"`
-	WithdrawalQueue   []string  `json:"withdrawalQueue"`
-	GetDefaultQueue   []string  `json:"get_default_queue"`
-	Strategies        []string  `json:"strategies"`
+	Address           string     `json:"address"`
+	ChainID           int        `json:"chainId"`
+	Asset             KongAsset  `json:"asset"`
+	Registry          string     `json:"registry"`
+	InceptBlock       string     `json:"inceptBlock"`
+	APIVersion        string     `json:"apiVersion"`
+	WithdrawalQueue   []string   `json:"withdrawalQueue"`
+	GetDefaultQueue   []string   `json:"get_default_queue"`
+	Strategies        []string   `json:"strategies"`
+	Debts             []KongDebt `json:"debts"`
+	TVL               *KongTVL   `json:"tvl"`
 }
 
 type VaultsResponse struct {
@@ -129,6 +157,30 @@ func (c *Client) FetchVaultsForChain(ctx context.Context, chainID uint64) ([]Kon
 				withdrawalQueue
 				get_default_queue
 				strategies
+				debts {
+					strategy
+					performanceFee
+					activation
+					debtRatio
+					minDebtPerHarvest
+					maxDebtPerHarvest
+					lastReport
+					totalDebt
+					totalDebtUsd
+					totalGain
+					totalGainUsd
+					totalLoss
+					totalLossUsd
+					currentDebt
+					currentDebtUsd
+					maxDebt
+					maxDebtUsd
+					targetDebtRatio
+					maxDebtRatio
+				}
+				tvl {
+					close
+				}
 			}
 		}
 	`
@@ -169,6 +221,30 @@ func (c *Client) FetchAllVaults(ctx context.Context) (map[uint64][]KongVault, er
 				withdrawalQueue
 				get_default_queue
 				strategies
+				debts {
+					strategy
+					performanceFee
+					activation
+					debtRatio
+					minDebtPerHarvest
+					maxDebtPerHarvest
+					lastReport
+					totalDebt
+					totalDebtUsd
+					totalGain
+					totalGainUsd
+					totalLoss
+					totalLossUsd
+					currentDebt
+					currentDebtUsd
+					maxDebt
+					maxDebtUsd
+					targetDebtRatio
+					maxDebtRatio
+				}
+				tvl {
+					close
+				}
 			}
 		}
 	`
@@ -273,18 +349,34 @@ func (v *KongVault) GetStrategies() []common.Address {
 type KongVaultData struct {
 	Vault      KongVault
 	Strategies []common.Address
+	Debts      []KongDebt
+	TVL        float64
+}
+
+func (v *KongVault) GetTVL() float64 {
+	if v.TVL == nil {
+		return 0
+	}
+	return v.TVL.Close
+}
+
+func (v *KongVault) GetDebts() []KongDebt {
+	if v.Debts == nil {
+		return []KongDebt{}
+	}
+	return v.Debts
 }
 
 func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, error) {
 	ctx := context.Background()
 	client := NewClient()
-	
+
 	vaults, err := client.FetchVaultsForChain(ctx, chainID)
 	if err != nil {
 		logs.Error(chainID, `-`, `Failed to fetch vaults from Kong: %v`, err)
 		return nil, err
 	}
-	
+
 	vaultData := make(map[common.Address]KongVaultData)
 	for _, vault := range vaults {
 		vaultAddr := vault.GetAddress()
@@ -292,9 +384,11 @@ func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, erro
 		vaultData[vaultAddr] = KongVaultData{
 			Vault:      vault,
 			Strategies: strategies,
+			Debts:      vault.GetDebts(),
+			TVL:        vault.GetTVL(),
 		}
 	}
-	
+
 	logs.Success(chainID, `-`, `Fetched %d vaults from Kong`, len(vaults))
 	return vaultData, nil
 }

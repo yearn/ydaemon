@@ -518,3 +518,11 @@ func RefreshKongData(chainID uint64) {
 
 	logs.Success(fmt.Sprintf("🗄️ [KONG DONE] Refreshed %d Kong vault records for chain %d took=%s", len(kongVaults), chainID, time.Since(t0)))
 }
+
+func GetKongAPY(chainID uint64, vaultAddress common.Address) (models.KongAPY, bool) {
+    data, ok := GetKongVaultData(chainID, vaultAddress)
+    if !ok {
+        return models.KongAPY{}, false
+    }
+    return data.APY, true
+}

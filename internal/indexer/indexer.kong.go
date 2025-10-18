@@ -15,7 +15,6 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 	logs.Info(chainID, `-`, `Fetching all vaults from Kong GraphQL API (single source of truth)`)
 	
 	kongVaultData, err := kong.FetchVaultsFromKong(chainID)
-	
 	if err != nil {
 		logs.Error(chainID, `-`, `CRITICAL: Failed to fetch vaults from Kong: %v`, err)
 		logs.Error(chainID, `-`, `Cannot start yDaemon without Kong data - failing fast`)
@@ -25,8 +24,6 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 	vaultsFromKong := make(map[common.Address]models.TVaultsFromRegistry)
 	
 	for vaultAddr, data := range kongVaultData {
-		storage.StoreKongAPIVaultData(chainID, vaultAddr, data)
-
 		// Create vault entry with Kong metadata
 		// Type and Kind will be populated by CMS metadata refresh
 		vault := models.TVaultsFromRegistry{
@@ -40,7 +37,7 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 			BlockNumber:     data.Vault.GetBlockNumber(),
 			ExtraProperties: models.TExtraProperties{},
 		}
-
+		
 		vaultsFromKong[vaultAddr] = vault
 		storage.StoreNewVaultToRegistry(chainID, vault)
 	}
@@ -61,11 +58,8 @@ func IndexNewStrategies(chainID uint64, vaultMap map[common.Address]models.TVaul
 	
 	strategiesMap := make(map[string]models.TStrategy)
 	totalStrategies := 0
-
+	
 	for vaultAddr, data := range kongVaultData {
-		// Store Kong vault data (including APY) for later retrieval
-		storage.StoreKongAPIVaultData(chainID, vaultAddr, data)
-
 		vault, exists := vaultMap[vaultAddr]
 		if !exists {
 			// If vault doesn't exist in our map, skip its strategies

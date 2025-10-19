@@ -285,6 +285,8 @@ type KongAPY struct {
 	MonthlyNet           *float64 `json:"monthlyNet"`
 	MonthlyPricePerShare string   `json:"monthlyPricePerShare"`
 	InceptionNet         *float64 `json:"inceptionNet"`
+	BlockNumber          uint64   `json:"blockNumber"`
+	BlockTime            uint64   `json:"blockTime"`
 }
 
 type TKongVaultSchema struct {

@@ -82,25 +82,21 @@ func ComputeChainAPY(chainID uint64) {
 		if shouldSkip {
 			continue
 		}
-		vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
-		if !ok {
-			continue
-		}
-
+		
 		allStrategiesForVault, _ := storage.ListStrategiesForVault(chainID, vault.Address)
 		vaultAPY := TVaultAPY{}
 		if isV3Vault(vault) {
 			if vault.Metadata.ShouldUseV2APR {
-				vaultAPY = computeCurrentV2VaultAPY(vault, vaultToken)
+				vaultAPY = computeCurrentV2VaultAPY(vault)
 			} else {
-				vaultAPY = computeCurrentV3VaultAPY(vault, vaultToken)
+				vaultAPY = computeCurrentV3VaultAPY(vault)
 			}
 			vaultAPY.ForwardAPY = computeVaultV3ForwardAPY(
 				vault,
 				allStrategiesForVault,
 			)
 		} else {
-			vaultAPY = computeCurrentV2VaultAPY(vault, vaultToken)
+			vaultAPY = computeCurrentV2VaultAPY(vault)
 		}
 
 		/**********************************************************************************************

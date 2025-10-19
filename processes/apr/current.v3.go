@@ -2,7 +2,6 @@ package apr
 
 import (
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
@@ -11,7 +10,6 @@ import (
 
 func computeCurrentV3VaultAPY(
 	vault models.TVault,
-	vaultToken models.TERC20Token,
 ) TVaultAPY {
 	chainID := vault.ChainID
 
@@ -31,15 +29,8 @@ func computeCurrentV3VaultAPY(
 	if !ok {
 		logs.Error("CRITICAL: Kong APY missing for vault %s on chain %d - data not found. Check Kong data source.", vault.Address.Hex(), chainID)
 
-		// Return zero-valued structure with error type
-		estBlockLastWeek := ethereum.GetBlockNumberByPeriod(chainID, 7)
-		vaultAPRType := `v3:kong_missing`
-		if vault.Activation > estBlockLastWeek {
-			vaultAPRType = `v3:new_kong_missing`
-		}
-
 		return TVaultAPY{
-			Type:   vaultAPRType,
+			Type:   `v3:kong_missing`,
 			NetAPY: bigNumber.NewFloat(0),
 			Fees: TFees{
 				Performance: vaultPerformanceFee,
@@ -73,9 +64,8 @@ func computeCurrentV3VaultAPY(
 	** Determine APY type based on vault age
 	** v3:new_averaged for vaults less than a week old, v3:averaged for others
 	**********************************************************************************************/
-	estBlockLastWeek := ethereum.GetBlockNumberByPeriod(chainID, 7)
 	vaultAPRType := `v3:averaged`
-	if vault.Activation > estBlockLastWeek {
+	if vault.Activation > kongAPY.BlockNumber {
 		vaultAPRType = `v3:new_averaged`
 	}
 

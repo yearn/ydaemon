@@ -139,6 +139,8 @@ func (c *Client) FetchVaultsForChain(ctx context.Context, chainID uint64) ([]Kon
 					monthlyNet
 					monthlyPricePerShare
 					inceptionNet
+					blockNumber
+					blockTime
 				}
 			}
 		}

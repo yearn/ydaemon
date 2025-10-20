@@ -279,14 +279,14 @@ func (f *CoercibleUint64) UnmarshalJSON(data []byte) error {
 }
 
 type KongAPY struct {
-	PricePerShare        string   `json:"pricePerShare"`
-	WeeklyNet            *float64 `json:"weeklyNet"`
-	WeeklyPricePerShare  string   `json:"weeklyPricePerShare"`
-	MonthlyNet           *float64 `json:"monthlyNet"`
-	MonthlyPricePerShare string   `json:"monthlyPricePerShare"`
-	InceptionNet         *float64 `json:"inceptionNet"`
-	BlockNumber          uint64   `json:"blockNumber"`
-	BlockTime            uint64   `json:"blockTime"`
+	PricePerShare        string   `json:"pricePerShare"`        // BigInt as string
+	WeeklyNet            *float64 `json:"weeklyNet"`            // Float or null
+	WeeklyPricePerShare  string   `json:"weeklyPricePerShare"`  // BigInt as string
+	MonthlyNet           *float64 `json:"monthlyNet"`           // Float or null
+	MonthlyPricePerShare string   `json:"monthlyPricePerShare"` // BigInt as string
+	InceptionNet         *float64 `json:"inceptionNet"`         // Float or null
+	BlockNumber          string   `json:"blockNumber"`          // BigInt as string
+	BlockTime            string   `json:"blockTime"`            // BigInt as string
 }
 
 type TKongVaultSchema struct {

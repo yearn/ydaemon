@@ -1,6 +1,8 @@
 package apr
 
 import (
+	"strconv"
+
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
@@ -65,7 +67,8 @@ func computeCurrentV3VaultAPY(
 	** v3:new_averaged for vaults less than a week old, v3:averaged for others
 	**********************************************************************************************/
 	vaultAPRType := `v3:averaged`
-	if vault.Activation > kongAPY.BlockNumber {
+	kongBlockNumber, _ := strconv.ParseUint(kongAPY.BlockNumber, 10, 64)
+	if vault.Activation > kongBlockNumber {
 		vaultAPRType = `v3:new_averaged`
 	}
 

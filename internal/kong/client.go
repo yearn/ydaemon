@@ -377,6 +377,7 @@ type KongVaultData struct {
 	Strategies []common.Address
 	Debts      []KongDebt
 	TVL        float64
+	APY        models.KongAPY
 }
 
 func (v *KongVault) GetTVL() float64 {
@@ -391,7 +392,9 @@ func (v *KongVault) GetDebts() []KongDebt {
 		return []KongDebt{}
 	}
 	return v.Debts
+	
 }
+
 
 func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, error) {
 	ctx := context.Background()
@@ -410,6 +413,7 @@ func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, erro
 		vaultData[vaultAddr] = KongVaultData{
 			Vault:      vault,
 			Strategies: strategies,
+			APY:        vault.GetAPY(),
 		}
 	}
 

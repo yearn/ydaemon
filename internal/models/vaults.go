@@ -304,6 +304,17 @@ type TKongDebt struct {
 	MaxDebtRatio       *float64 `json:"maxDebtRatio"`
 }
 
+type KongAPY struct {
+	PricePerShare        string   `json:"pricePerShare"`
+	WeeklyNet            *float64 `json:"weeklyNet"`
+	WeeklyPricePerShare  string   `json:"weeklyPricePerShare"`
+	MonthlyNet           *float64 `json:"monthlyNet"`
+	MonthlyPricePerShare string   `json:"monthlyPricePerShare"`
+	InceptionNet         *float64 `json:"inceptionNet"`
+	BlockNumber          uint64   `json:"blockNumber"`
+	BlockTime            uint64   `json:"blockTime"`
+}
+
 type TKongVaultSchema struct {
 	Hook struct {
 		Fees struct {
@@ -317,4 +328,5 @@ type TKongVaultSchema struct {
 	} `json:"snapshot"`
 	TVL   string       `json:"tvl"`   // TVL from Kong (tvl.close field)
 	Debts []TKongDebt  `json:"debts"` // Debts array from Kong
+	APY   KongAPY      `json:"apy"`   // APY from Kong
 }

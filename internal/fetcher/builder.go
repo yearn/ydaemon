@@ -186,7 +186,7 @@ func BuildVaultTVL(t models.TVault) models.TTVL {
 
 	tvl := models.TTVL{
 		TotalAssets: t.LastTotalAssets,
-		TVL:		float64(kongTVL),
+		TVL:         kongTVL,
 		Price:       fHumanizedPrice,
 	}
 	return tvl

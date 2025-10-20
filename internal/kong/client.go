@@ -13,6 +13,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 const (
@@ -66,17 +67,18 @@ type KongTVL struct {
 }
 
 type KongVault struct {
-	Address           string     `json:"address"`
-	ChainID           int        `json:"chainId"`
-	Asset             KongAsset  `json:"asset"`
-	Registry          string     `json:"registry"`
-	InceptBlock       string     `json:"inceptBlock"`
-	APIVersion        string     `json:"apiVersion"`
-	WithdrawalQueue   []string   `json:"withdrawalQueue"`
-	GetDefaultQueue   []string   `json:"get_default_queue"`
-	Strategies        []string   `json:"strategies"`
-	Debts             []KongDebt `json:"debts"`
-	TVL               *KongTVL   `json:"tvl"`
+	Address           string           `json:"address"`
+	ChainID           int              `json:"chainId"`
+	Asset             KongAsset        `json:"asset"`
+	Registry          string           `json:"registry"`
+	InceptBlock       string           `json:"inceptBlock"`
+	APIVersion        string           `json:"apiVersion"`
+	WithdrawalQueue   []string         `json:"withdrawalQueue"`
+	GetDefaultQueue   []string         `json:"get_default_queue"`
+	Strategies        []string         `json:"strategies"`
+	Debts             []KongDebt       `json:"debts"`
+	TVL               *KongTVL         `json:"tvl"`
+	APY               models.KongAPY   `json:"apy"`
 }
 
 type VaultsResponse struct {
@@ -181,6 +183,16 @@ func (c *Client) FetchVaultsForChain(ctx context.Context, chainID uint64) ([]Kon
 				tvl {
 					close
 				}
+				apy {
+					pricePerShare
+					weeklyNet
+					weeklyPricePerShare
+					monthlyNet
+					monthlyPricePerShare
+					inceptionNet
+					blockNumber
+					blockTime
+				}
 			}
 		}
 	`
@@ -245,6 +257,16 @@ func (c *Client) FetchAllVaults(ctx context.Context) (map[uint64][]KongVault, er
 				tvl {
 					close
 				}
+				apy {
+					pricePerShare
+					weeklyNet
+					weeklyPricePerShare
+					monthlyNet
+					monthlyPricePerShare
+					inceptionNet
+					blockNumber
+					blockTime
+				}
 			}
 		}
 	`
@@ -270,6 +292,10 @@ func (c *Client) FetchAllVaults(ctx context.Context) (map[uint64][]KongVault, er
 
 func (v *KongVault) GetAddress() common.Address {
 	return common.HexToAddress(v.Address)
+}
+
+func (v *KongVault) GetAPY() models.KongAPY {
+	return v.APY
 }
 
 func (v *KongVault) GetRegistry() common.Address {
@@ -300,10 +326,10 @@ func (v *KongVault) GetAssetAddress() common.Address {
 func (v *KongVault) GetStrategies() []common.Address {
 	strategySet := make(map[common.Address]bool)
 	var strategies []common.Address
-	
+
 	// Combine strategies from all available sources (not prioritized fallback)
 	// This matches the original yDaemon approach of getting all strategies
-	
+
 	// Add from WithdrawalQueue
 	if v.WithdrawalQueue != nil && len(v.WithdrawalQueue) > 0 {
 		for _, s := range v.WithdrawalQueue {
@@ -316,7 +342,7 @@ func (v *KongVault) GetStrategies() []common.Address {
 			}
 		}
 	}
-	
+
 	// Add from GetDefaultQueue
 	if v.GetDefaultQueue != nil && len(v.GetDefaultQueue) > 0 {
 		for _, s := range v.GetDefaultQueue {
@@ -329,7 +355,7 @@ func (v *KongVault) GetStrategies() []common.Address {
 			}
 		}
 	}
-	
+
 	// Add from Strategies
 	if v.Strategies != nil && len(v.Strategies) > 0 {
 		for _, s := range v.Strategies {
@@ -342,7 +368,7 @@ func (v *KongVault) GetStrategies() []common.Address {
 			}
 		}
 	}
-	
+
 	return strategies
 }
 
@@ -384,8 +410,6 @@ func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, erro
 		vaultData[vaultAddr] = KongVaultData{
 			Vault:      vault,
 			Strategies: strategies,
-			Debts:      vault.GetDebts(),
-			TVL:        vault.GetTVL(),
 		}
 	}
 

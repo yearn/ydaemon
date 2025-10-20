@@ -22,9 +22,8 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 	}
 	
 	vaultsFromKong := make(map[common.Address]models.TVaultsFromRegistry)
-	
+
 	for vaultAddr, data := range kongVaultData {
-		// Create vault entry with Kong metadata
 		// Type and Kind will be populated by CMS metadata refresh
 		vault := models.TVaultsFromRegistry{
 			Address:         vaultAddr,
@@ -37,7 +36,7 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 			BlockNumber:     data.Vault.GetBlockNumber(),
 			ExtraProperties: models.TExtraProperties{},
 		}
-		
+
 		vaultsFromKong[vaultAddr] = vault
 		storage.StoreNewVaultToRegistry(chainID, vault)
 	}

@@ -189,6 +189,8 @@ func (c *Client) FetchAllVaults(ctx context.Context) (map[uint64][]KongVault, er
 					monthlyNet
 					monthlyPricePerShare
 					inceptionNet
+					blockNumber
+					blockTime
 				}
 			}
 		}

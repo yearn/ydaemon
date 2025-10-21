@@ -218,7 +218,10 @@ func (v *KongVault) GetAddress() common.Address {
 }
 
 func (v *KongVault) GetAPY() models.KongAPY {
-	return v.APY
+	apy := v.APY
+	// Include token decimals from asset for PPS normalization
+	apy.Decimals = uint64(v.Asset.Decimals)
+	return apy
 }
 
 func (v *KongVault) GetRegistry() common.Address {

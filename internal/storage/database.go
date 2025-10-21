@@ -27,7 +27,6 @@ func GetDB() *gorm.DB {
 
 		// If DSN is empty, database features are disabled
 		if dsn == "" {
-			fmt.Println("KONG_POSTGRES_DSN not set - database features disabled")
 			return nil
 		}
 

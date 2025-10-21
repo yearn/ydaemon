@@ -24,7 +24,7 @@ func computeCurrentV2VaultAPY(
 
 	/**********************************************************************************************
 	** Fetch Kong APY data (single source of truth)
-	** Kong provides pre-calculated historical APY values - no need for PPS fetching
+	** Kong provides pre-calculated historical APY values and asset decimals
 	**********************************************************************************************/
 	kongAPY, ok := storage.GetKongAPY(chainID, vault.Address)
 	if !ok {
@@ -53,13 +53,14 @@ func computeCurrentV2VaultAPY(
 	/**********************************************************************************************
 	** Parse Kong APY values (floats for APY, strings for PPS)
 	** Kong returns null for vaults without sufficient history
+	** PPS values are BigInts that need normalization by token decimals
 	**********************************************************************************************/
 	monthlyAPY := parseKongFloatAPY(kongAPY.MonthlyNet)
 	weeklyAPY := parseKongFloatAPY(kongAPY.WeeklyNet)
 	inceptionAPY := parseKongFloatAPY(kongAPY.InceptionNet)
-	ppsToday := parseKongStringPPS(kongAPY.PricePerShare)
-	ppsWeekAgo := parseKongStringPPS(kongAPY.WeeklyPricePerShare)
-	ppsMonthAgo := parseKongStringPPS(kongAPY.MonthlyPricePerShare)
+	ppsToday := parseKongStringPPS(kongAPY.PricePerShare, kongAPY.Decimals)
+	ppsWeekAgo := parseKongStringPPS(kongAPY.WeeklyPricePerShare, kongAPY.Decimals)
+	ppsMonthAgo := parseKongStringPPS(kongAPY.MonthlyPricePerShare, kongAPY.Decimals)
 
 	/**********************************************************************************************
 	** Determine APY type based on vault age

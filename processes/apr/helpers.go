@@ -57,17 +57,29 @@ func parseKongFloatAPY(value *float64) *bigNumber.Float {
 
 /**************************************************************************************************
 ** parseKongStringPPS safely parses Kong string PPS values (pricePerShare, weeklyPricePerShare,
-** monthlyPricePerShare) to bigNumber.Float. Returns zero on empty string or error.
+** monthlyPricePerShare) to bigNumber.Float, normalizing by decimals. Returns zero on empty string or error.
 **************************************************************************************************/
-func parseKongStringPPS(value string) *bigNumber.Float {
+func parseKongStringPPS(value string, decimals uint64) *bigNumber.Float {
 	if value == "" {
 		return bigNumber.NewFloat(0)
 	}
 
-	floatVal, err := strconv.ParseFloat(value, 64)
+	// Parse as integer first (Kong returns BigInt as string)
+	intVal, err := strconv.ParseUint(value, 10, 64)
 	if err != nil {
 		logs.Warning("Failed to parse Kong PPS value '%s': %v", value, err)
 		return bigNumber.NewFloat(0)
+	}
+
+	// Normalize by decimals: divide by 10^decimals
+	floatVal := float64(intVal) / float64(uint64(1)<<decimals)
+	if decimals < 64 {
+		// More accurate calculation for reasonable decimal values
+		divisor := 1.0
+		for i := uint64(0); i < decimals; i++ {
+			divisor *= 10.0
+		}
+		floatVal = float64(intVal) / divisor
 	}
 
 	return bigNumber.NewFloat(floatVal)

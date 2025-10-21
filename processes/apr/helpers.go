@@ -72,15 +72,11 @@ func parseKongStringPPS(value string, decimals uint64) *bigNumber.Float {
 	}
 
 	// Normalize by decimals: divide by 10^decimals
-	floatVal := float64(intVal) / float64(uint64(1)<<decimals)
-	if decimals < 64 {
-		// More accurate calculation for reasonable decimal values
-		divisor := 1.0
-		for i := uint64(0); i < decimals; i++ {
-			divisor *= 10.0
-		}
-		floatVal = float64(intVal) / divisor
+	divisor := 1.0
+	for i := uint64(0); i < decimals; i++ {
+		divisor *= 10.0
 	}
+	floatVal := float64(intVal) / divisor
 
 	return bigNumber.NewFloat(floatVal)
 }

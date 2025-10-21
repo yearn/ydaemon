@@ -394,8 +394,6 @@ func GetKongVaultData(chainID uint64, address common.Address) (models.TKongVault
 	// Normalize address to ensure consistent lookup (case-insensitive)
 	normalizedAddress := common.HexToAddress(address.Hex())
 	kongDataFromSyncMap, ok := safeKongSyncMap(_kongVaultDataSyncMap, chainID).Load(normalizedAddress)
-	fmt.Println("kongDataFromSyncMap", kongDataFromSyncMap)
-	fmt.Println("ok", ok)
 	if !ok {
 		return models.TKongVaultSchema{}, false
 	}

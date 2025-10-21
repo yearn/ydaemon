@@ -326,7 +326,7 @@ type TKongVaultSchema struct {
 		ManagementFee  CoercibleUint64 `json:"managementFee"`
 		PerformanceFee CoercibleUint64 `json:"performanceFee"`
 	} `json:"snapshot"`
-	TVL   string       `json:"tvl"`   // TVL from Kong (tvl.close field)
+	TVL          float64      `json:"tvl"`   // TVL from Kong (tvl.close field)
 	Debts []TKongDebt  `json:"debts"` // Debts array from Kong
 	APY   KongAPY      `json:"apy"`   // APY from Kong
 }

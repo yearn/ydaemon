@@ -414,6 +414,8 @@ func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, erro
 			Vault:      vault,
 			Strategies: strategies,
 			APY:        vault.GetAPY(),
+			TVL:        vault.GetTVL(),
+			Debts:      vault.GetDebts(),
 		}
 	}
 

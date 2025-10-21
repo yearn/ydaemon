@@ -424,18 +424,14 @@ func GetKongDebts(chainID uint64, vaultAddress common.Address) ([]models.TKongDe
 
 /**************************************************************************************************
 ** GetKongTVL retrieves Kong TVL value for a specific vault
-** Returns the TVL string and a boolean indicating if data was found
+** Returns the TVL float64 and a boolean indicating if data was found
 **************************************************************************************************/
 func GetKongTVL(chainID uint64, vaultAddress common.Address) (float64, bool) {
 	data, ok := GetKongVaultData(chainID, vaultAddress)
 	if !ok {
 		return 0, false
 	}
-	close, err := strconv.ParseFloat(data.TVL, 64)
-	if err != nil {
-		return 0, false
-	}
-	return close, true
+	return data.TVL, true
 }
 
 /**************************************************************************************************

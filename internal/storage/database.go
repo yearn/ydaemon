@@ -25,6 +25,12 @@ func GetDB() *gorm.DB {
 	if db == nil {
 		dsn := os.Getenv("KONG_POSTGRES_DSN")
 
+		// If DSN is empty, database features are disabled
+		if dsn == "" {
+			fmt.Println("KONG_POSTGRES_DSN not set - database features disabled")
+			return nil
+		}
+
 		// Configure GORM logger
 		newLogger := logger.New(
 			&gormLogger{}, // Custom logger implementation

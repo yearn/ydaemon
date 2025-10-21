@@ -130,9 +130,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 				t2 := time.Now()
 				storage.RefreshTokenMetadata(chainID)
 				logs.Info(fmt.Sprintf("🧱 [META] tokens done chain=%d took=%s", chainID, time.Since(t2)))
-				t3 := time.Now()
-				storage.RefreshKongData(chainID)
-				logs.Info(fmt.Sprintf("🧱 [META] kong done chain=%d took=%s", chainID, time.Since(t3)))
 				logs.Success(fmt.Sprintf("🧱 [META] Refresh done chain=%d", chainID))
 			},
 		),

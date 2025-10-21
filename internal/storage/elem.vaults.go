@@ -394,6 +394,8 @@ func GetKongVaultData(chainID uint64, address common.Address) (models.TKongVault
 	// Normalize address to ensure consistent lookup (case-insensitive)
 	normalizedAddress := common.HexToAddress(address.Hex())
 	kongDataFromSyncMap, ok := safeKongSyncMap(_kongVaultDataSyncMap, chainID).Load(normalizedAddress)
+	fmt.Println("kongDataFromSyncMap", kongDataFromSyncMap)
+	fmt.Println("ok", ok)
 	if !ok {
 		return models.TKongVaultSchema{}, false
 	}
@@ -442,8 +444,8 @@ func fetchKongVaultDataFromDB(chainID uint64) map[common.Address]models.TKongVau
 		return make(map[common.Address]models.TKongVaultSchema)
 	}
 
-	query := `SELECT snapshot.address, snapshot.snapshot, snapshot.hook 
-FROM snapshot 
+	query := `SELECT snapshot.address, snapshot.snapshot, snapshot.hook
+FROM snapshot
 JOIN thing on snapshot.chain_id = thing.chain_id and snapshot.address = thing.address
 WHERE snapshot.chain_id = $1 AND thing.label = 'vault'`
 	rows, err := sqlDB.Query(query, chainID)

@@ -758,6 +758,83 @@ func GetTimeBlock(chainID uint64, timestamp uint64) (uint64, bool) {
 }
 
 /**************************************************************************************************
+** getNearestTimeBlock attempts to find the closest stored timestamp->block mapping for a chain.
+** Preference is given to timestamps at or before the target to avoid using future blocks.
+**
+** @param chainID The chain ID to search within
+** @param targetTimestamp The desired Unix timestamp
+** @param maxDays The maximum number of days to look around the target (0 = unlimited)
+** @return uint64 The block number
+** @return uint64 The timestamp the block number is associated with
+** @return bool True if a suitable block was found
+**************************************************************************************************/
+func getNearestTimeBlock(chainID uint64, targetTimestamp uint64, maxDays uint64) (uint64, uint64, bool) {
+	blockTimeMutex.RLock()
+	defer blockTimeMutex.RUnlock()
+
+	if blockTimeData == nil {
+		return 0, 0, false
+	}
+
+	chainData, exists := blockTimeData.Chains[chainID]
+	if !exists || len(chainData.TimeBlocks) == 0 {
+		return 0, 0, false
+	}
+
+	maxDiff := uint64(0)
+	if maxDays > 0 {
+		maxDiff = maxDays * 86400
+	}
+
+	bestDiff := ^uint64(0)
+	bestTimestamp := uint64(0)
+	bestBlock := uint64(0)
+	found := false
+	foundPast := false
+
+	for ts, block := range chainData.TimeBlocks {
+		var diff uint64
+		if ts > targetTimestamp {
+			diff = ts - targetTimestamp
+		} else {
+			diff = targetTimestamp - ts
+		}
+
+		if maxDiff > 0 && diff > maxDiff {
+			continue
+		}
+
+		if ts <= targetTimestamp {
+			if !foundPast || diff < bestDiff || (diff == bestDiff && ts > bestTimestamp) {
+				bestDiff = diff
+				bestTimestamp = ts
+				bestBlock = block
+				found = true
+				foundPast = true
+			}
+			continue
+		}
+
+		if foundPast {
+			continue
+		}
+
+		if !found || diff < bestDiff || (diff == bestDiff && (bestTimestamp == 0 || ts < bestTimestamp)) {
+			bestDiff = diff
+			bestTimestamp = ts
+			bestBlock = block
+			found = true
+		}
+	}
+
+	if !found {
+		return 0, 0, false
+	}
+
+	return bestBlock, bestTimestamp, true
+}
+
+/**************************************************************************************************
 ** StoreTimeBlock saves a mapping from timestamp to block number for a specific chain in the
 ** internal storage system and persists it to the CSV file.
 **
@@ -871,18 +948,25 @@ func chainIDToName(chainID uint64) string {
 		return "arbitrum"
 	case 43114:
 		return "avalanche"
+	case 747474:
+		return "katana"
 	default:
 		return "Unknown"
 	}
+}
+
+type historicalBlockCacheEntry struct {
+	date   int64
+	blocks map[string]uint64
 }
 
 var (
 	/**************************************************************************************************
 	** Map to store historical block numbers by chainID and time period.
 	** This cache prevents redundant API calls by storing previously fetched historical blocks.
-	** The structure is: map[chainID]map[periodString]blockNumber where periodString is "24h", "7d", etc.
+	** Each cache entry tracks the noon timestamp it represents to avoid serving stale data.
 	**************************************************************************************************/
-	historicalBlockMap   = make(map[uint64]map[string]uint64)
+	historicalBlockCache = make(map[uint64]historicalBlockCacheEntry)
 	historicalBlockMutex sync.RWMutex
 )
 
@@ -899,18 +983,6 @@ var (
 func GetHistoricalBlockNumbers(chainID uint64) map[string]uint64 {
 	blocktimeLog(fmt.Sprintf("Chain %d - Retrieving historical block numbers for time periods", chainID))
 
-	// Check if we already have the data for this chain
-	historicalBlockMutex.RLock()
-	if blockData, exists := historicalBlockMap[chainID]; exists && len(blockData) == 4 {
-		blocktimeLog(fmt.Sprintf("Chain %d - Using cached historical block data", chainID))
-		for period, block := range blockData {
-			blocktimeLog(fmt.Sprintf("Chain %d - Period %s: block %d", chainID, period, block))
-		}
-		historicalBlockMutex.RUnlock()
-		return blockData
-	}
-	historicalBlockMutex.RUnlock()
-
 	// Calculate timestamps for each period
 	now := time.Now()
 	noonUTC := time.Date(now.Year(), now.Month(), now.Day(), 12, 0, 0, 0, time.UTC)
@@ -923,6 +995,40 @@ func GetHistoricalBlockNumbers(chainID uint64) map[string]uint64 {
 		"365d": noonUTC.AddDate(-1, 0, 0).Unix(),
 	}
 
+	expectedPeriods := len(timestamps)
+	cacheDate := timestamps["now"]
+
+	// Check if we already have the data for this chain and the current day
+	historicalBlockMutex.RLock()
+	if cacheEntry, exists := historicalBlockCache[chainID]; exists && cacheEntry.date == cacheDate {
+		valid := len(cacheEntry.blocks) == expectedPeriods
+		if valid {
+			for period := range timestamps {
+				if block, found := cacheEntry.blocks[period]; !found || block == 0 {
+					valid = false
+					break
+				}
+			}
+		}
+		if valid {
+			for period, block := range cacheEntry.blocks {
+				blocktimeLog(fmt.Sprintf("Chain %d - Cached period %s: block %d", chainID, period, block))
+			}
+			historicalBlockMutex.RUnlock()
+			return cacheEntry.blocks
+		}
+	}
+	historicalBlockMutex.RUnlock()
+
+	// Fallback window per period (in days)
+	fallbackWindow := map[string]uint64{
+		"now":  1,
+		"24h":  2,
+		"7d":   7,
+		"30d":  14,
+		"365d": 30,
+	}
+
 	blocktimeLog(fmt.Sprintf("Chain %d - Fetching blocks for time periods: %+v", chainID, timestamps))
 
 	// Lock for writing
@@ -930,21 +1036,35 @@ func GetHistoricalBlockNumbers(chainID uint64) map[string]uint64 {
 	defer historicalBlockMutex.Unlock()
 
 	// Initialize the map for this chain if it doesn't exist
-	if historicalBlockMap[chainID] == nil {
-		historicalBlockMap[chainID] = make(map[string]uint64)
-	}
+	newBlocks := make(map[string]uint64, expectedPeriods)
+	missingPeriods := make([]string, 0)
 
 	// For each period, try to get the block number
 	for period, timestamp := range timestamps {
 		blocktimeLog(fmt.Sprintf("Chain %d - Looking up block for period %s (timestamp %d, %s)",
 			chainID, period, timestamp, time.Unix(timestamp, 0).UTC().Format("2006-01-02 15:04:05")))
 
+		targetTimestamp := uint64(timestamp)
+
 		// Check if we already have the data in the internal storage (CSV)
-		blockNumber, ok := GetTimeBlock(chainID, uint64(timestamp))
+		blockNumber, ok := GetTimeBlock(chainID, targetTimestamp)
 		if ok {
 			blocktimeSuccess(fmt.Sprintf("Chain %d - Found block %d for period %s in CSV data",
 				chainID, blockNumber, period))
-			historicalBlockMap[chainID][period] = blockNumber
+			newBlocks[period] = blockNumber
+			continue
+		}
+
+		// Attempt to reuse the nearest stored timestamp as a fallback before hitting external APIs
+		if blockNumber, matchedTimestamp, ok := getNearestTimeBlock(chainID, targetTimestamp, fallbackWindow[period]); ok {
+			if matchedTimestamp != targetTimestamp {
+				blocktimeWarning(fmt.Sprintf("Chain %d - Using nearest timestamp %d for period %s (target %d)",
+					chainID, matchedTimestamp, period, targetTimestamp))
+			} else {
+				blocktimeSuccess(fmt.Sprintf("Chain %d - Found block %d for period %s via fallback lookup",
+					chainID, blockNumber, period))
+			}
+			newBlocks[period] = blockNumber
 			continue
 		}
 
@@ -969,13 +1089,33 @@ func GetHistoricalBlockNumbers(chainID uint64) map[string]uint64 {
 			chainID, blockNumber, period))
 
 		// Store in internal storage and in memory
-		_ = StoreTimeBlock(chainID, uint64(timestamp), blockNumber)
-		historicalBlockMap[chainID][period] = blockNumber
+		if err := StoreTimeBlock(chainID, targetTimestamp, blockNumber); err != nil {
+			blocktimeWarning(fmt.Sprintf("Chain %d - Failed to store block %d for timestamp %d: %v",
+				chainID, blockNumber, targetTimestamp, err))
+		}
+		newBlocks[period] = blockNumber
 	}
 
-	blocktimeSuccess(fmt.Sprintf("Chain %d - Historical block numbers fetched: %+v",
-		chainID, historicalBlockMap[chainID]))
-	return historicalBlockMap[chainID]
+	// Track missing periods for observability
+	for period := range timestamps {
+		if newBlocks[period] == 0 {
+			missingPeriods = append(missingPeriods, period)
+		}
+	}
+
+	if len(missingPeriods) > 0 {
+		blocktimeWarning(fmt.Sprintf("Chain %d - Missing block data for periods: %v", chainID, missingPeriods))
+	}
+
+	blocktimeSuccess(fmt.Sprintf("Chain %d - Historical block numbers fetched: %+v", chainID, newBlocks))
+
+	// Update cache with fresh data for this chain/day
+	historicalBlockCache[chainID] = historicalBlockCacheEntry{
+		date:   cacheDate,
+		blocks: newBlocks,
+	}
+
+	return newBlocks
 }
 
 /**************************************************************************************************
@@ -1025,19 +1165,12 @@ func GetBlockNumberByPeriod(chainID uint64, periodOrDays interface{}) uint64 {
 		return 0
 	}
 
-	// Check if we have data and fetch if needed
-	historicalBlockMutex.RLock()
-	blockData, exists := historicalBlockMap[chainID]
-	historicalBlockMutex.RUnlock()
-
-	if !exists || blockData[period] == 0 {
-		blocktimeLog(fmt.Sprintf("Chain %d - No cached data found for period '%s', fetching historical blocks", chainID, period))
-		blockData = GetHistoricalBlockNumbers(chainID)
-	} else {
-		blocktimeLog(fmt.Sprintf("Chain %d - Using cached block number %d for period '%s'", chainID, blockData[period], period))
-	}
+	blockData := GetHistoricalBlockNumbers(chainID)
 
 	if blockNumber, ok := blockData[period]; ok {
+		if blockNumber == 0 {
+			blocktimeWarning(fmt.Sprintf("Chain %d - Block number for period '%s' is zero after refresh", chainID, period))
+		}
 		return blockNumber
 	}
 

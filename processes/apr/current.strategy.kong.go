@@ -97,6 +97,11 @@ func GetCurrentStrategyAPRFromKong(chainID uint64, strategyAddress string) (*big
 func getStrategyReportFromDB(strategyAddress string, chainID uint64) (models.TStrategyReportDB, error) {
 	var report models.TStrategyReportDB
 
+	db := storage.GetDB()
+	if db == nil {
+		return models.TStrategyReportDB{}, errors.New("database connection not available")
+	}
+
 	query := `
 		SELECT
 			chain_id AS "chainId",
@@ -111,7 +116,7 @@ func getStrategyReportFromDB(strategyAddress string, chainID uint64) (models.TSt
 			block_time DESC, log_index DESC
 		LIMIT 1`
 
-	err := storage.GetDB().Raw(query, chainID, strategyAddress).Scan(&report).Error
+	err := db.Raw(query, chainID, strategyAddress).Scan(&report).Error
 	if err != nil {
 		return models.TStrategyReportDB{}, err
 	}

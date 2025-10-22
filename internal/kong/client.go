@@ -13,6 +13,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 const (
@@ -39,6 +40,7 @@ type KongAsset struct {
 	Symbol   string `json:"symbol"`
 }
 
+
 type KongVault struct {
 	Address           string    `json:"address"`
 	ChainID           int       `json:"chainId"`
@@ -49,6 +51,7 @@ type KongVault struct {
 	WithdrawalQueue   []string  `json:"withdrawalQueue"`
 	GetDefaultQueue   []string  `json:"get_default_queue"`
 	Strategies        []string  `json:"strategies"`
+	APY               models.KongAPY   `json:"apy"`
 }
 
 type VaultsResponse struct {
@@ -129,6 +132,16 @@ func (c *Client) FetchVaultsForChain(ctx context.Context, chainID uint64) ([]Kon
 				withdrawalQueue
 				get_default_queue
 				strategies
+				apy {
+					pricePerShare
+					weeklyNet
+					weeklyPricePerShare
+					monthlyNet
+					monthlyPricePerShare
+					inceptionNet
+					blockNumber
+					blockTime
+				}
 			}
 		}
 	`
@@ -169,6 +182,16 @@ func (c *Client) FetchAllVaults(ctx context.Context) (map[uint64][]KongVault, er
 				withdrawalQueue
 				get_default_queue
 				strategies
+				apy {
+					pricePerShare
+					weeklyNet
+					weeklyPricePerShare
+					monthlyNet
+					monthlyPricePerShare
+					inceptionNet
+					blockNumber
+					blockTime
+				}
 			}
 		}
 	`
@@ -194,6 +217,13 @@ func (c *Client) FetchAllVaults(ctx context.Context) (map[uint64][]KongVault, er
 
 func (v *KongVault) GetAddress() common.Address {
 	return common.HexToAddress(v.Address)
+}
+
+func (v *KongVault) GetAPY() models.KongAPY {
+	apy := v.APY
+	// Include token decimals from asset for PPS normalization
+	apy.Decimals = uint64(v.Asset.Decimals)
+	return apy
 }
 
 func (v *KongVault) GetRegistry() common.Address {
@@ -273,7 +303,9 @@ func (v *KongVault) GetStrategies() []common.Address {
 type KongVaultData struct {
 	Vault      KongVault
 	Strategies []common.Address
+	APY        models.KongAPY
 }
+
 
 func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, error) {
 	ctx := context.Background()
@@ -292,6 +324,7 @@ func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, erro
 		vaultData[vaultAddr] = KongVaultData{
 			Vault:      vault,
 			Strategies: strategies,
+			APY:        vault.GetAPY(),
 		}
 	}
 	

@@ -313,6 +313,7 @@ type KongAPY struct {
 	InceptionNet         *float64 `json:"inceptionNet"`         // Float or null
 	BlockNumber          string   `json:"blockNumber"`          // BigInt as string
 	BlockTime            string   `json:"blockTime"`            // BigInt as string
+	Decimals             uint64   `json:"decimals"`             // Token decimals for PPS normalization
 }
 
 type TKongVaultSchema struct {

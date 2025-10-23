@@ -24,7 +24,7 @@ func computeCurrentV3VaultAPY(
 
 	/**********************************************************************************************
 	** Fetch Kong APY data (single source of truth)
-	** Kong provides pre-calculated historical APY values - no need for PPS fetching
+	** Kong provides pre-calculated historical APY values and asset decimals
 	**********************************************************************************************/
 	kongAPY, ok := storage.GetKongAPY(chainID, vault.Address)
 
@@ -58,9 +58,9 @@ func computeCurrentV3VaultAPY(
 	monthlyAPY := parseKongFloatAPY(kongAPY.MonthlyNet)
 	weeklyAPY := parseKongFloatAPY(kongAPY.WeeklyNet)
 	inceptionAPY := parseKongFloatAPY(kongAPY.InceptionNet)
-	ppsToday := parseKongStringPPS(kongAPY.PricePerShare)
-	ppsWeekAgo := parseKongStringPPS(kongAPY.WeeklyPricePerShare)
-	ppsMonthAgo := parseKongStringPPS(kongAPY.MonthlyPricePerShare)
+	ppsToday := parseKongStringPPS(kongAPY.PricePerShare, kongAPY.Decimals)
+	ppsWeekAgo := parseKongStringPPS(kongAPY.WeeklyPricePerShare, kongAPY.Decimals)
+	ppsMonthAgo := parseKongStringPPS(kongAPY.MonthlyPricePerShare, kongAPY.Decimals)
 
 	/**********************************************************************************************
 	** Determine APY type based on vault age
@@ -72,6 +72,10 @@ func computeCurrentV3VaultAPY(
 		vaultAPRType = `v3:new_averaged`
 	}
 
+	/**********************************************************************************************
+	** Return the APY structure with Kong data
+	** No PPS fetching, no block number calculations - Kong handles all historical data
+	**********************************************************************************************/
 	return TVaultAPY{
 		Type:   vaultAPRType,
 		NetAPY: monthlyAPY,

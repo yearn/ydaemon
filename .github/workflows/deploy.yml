@@ -66,7 +66,7 @@ jobs:
         run: |
           ./yDaemon | tee out.log &
           pid=$!
-          timeout=600
+          timeout=780
           while ! grep -q "\[ OK \] \[1 - ComputeChainAPY ✅\]" <(tail -n 100 out.log); do
             sleep 5
             timeout=$((timeout - 5))

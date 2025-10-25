@@ -152,8 +152,8 @@ type KongStrategy struct {
 	Want                  *string               `json:"want"`
 	DOMAIN_SEPARATOR      *string               `json:"DOMAIN_SEPARATOR"`
 	FACTORY               *string               `json:"FACTORY"`
-	MAX_FEE               *string               `json:"MAX_FEE"`
-	MIN_FEE               *string               `json:"MIN_FEE"`
+	MAX_FEE               *int                  `json:"MAX_FEE"`
+	MIN_FEE               *int                  `json:"MIN_FEE"`
 	Decimals              *int                  `json:"decimals"`
 	FullProfitUnlockDate  *string               `json:"fullProfitUnlockDate"`
 	IsShutdown            *bool                 `json:"isShutdown"`

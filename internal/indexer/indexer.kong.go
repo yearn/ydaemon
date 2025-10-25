@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/kong"
 	"github.com/yearn/ydaemon/internal/models"
@@ -12,9 +11,17 @@ import (
 )
 
 func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistry {
-	logs.Info(chainID, `-`, `Fetching all vaults from Kong GraphQL API (single source of truth)`)
-	
-	kongVaultData, err := kong.FetchVaultsFromKong(chainID)
+	logs.Info(chainID, `-`, `Fetching all vaults and strategies from Kong GraphQL API (single source of truth)`)
+
+	// Fetch strategies first so we can pass them to FetchVaultsFromKong
+	strategiesByVault, err := kong.FetchStrategiesFromKong(chainID)
+	if err != nil {
+		logs.Error(chainID, `-`, `CRITICAL: Failed to fetch strategies from Kong: %v`, err)
+		logs.Error(chainID, `-`, `Cannot start yDaemon without Kong data - failing fast`)
+		panic(fmt.Sprintf("Kong GraphQL API unavailable for chain %d: %v", chainID, err))
+	}
+
+	kongVaultData, err := kong.FetchVaultsFromKong(chainID, strategiesByVault)
 	if err != nil {
 		logs.Error(chainID, `-`, `CRITICAL: Failed to fetch vaults from Kong: %v`, err)
 		logs.Error(chainID, `-`, `Cannot start yDaemon without Kong data - failing fast`)
@@ -71,6 +78,7 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 			APY: data.APY,
 			Debts: debts,
 			TVL: data.TVL,
+			Strategies: data.Strategies,
 		}
 		storage.StoreKongVaultData(chainID, vaultAddr, kongSchema)
 	}
@@ -94,38 +102,16 @@ func IndexNewStrategies(chainID uint64, vaultMap map[common.Address]models.TVaul
 
 	// Iterate through strategies mapped by vault
 	for vaultAddr, kongStrategies := range strategiesByVault {
-		vault, exists := vaultMap[vaultAddr]
-		if !exists {
-			// If vault doesn't exist in our map, skip its strategies
-			logs.Warning(chainID, vaultAddr, `Vault not found for strategies, skipping %d strategies`, len(kongStrategies))
-			continue
-		}
-
 		for _, kongStrategy := range kongStrategies {
 			strategyAddr := kongStrategy.GetAddress()
-			if addresses.Equals(strategyAddr, common.Address{}) {
-				continue
-			}
 
-			// Create TStrategy from Kong data
-			strategy := models.TStrategy{
-				Address:      strategyAddr,
-				ChainID:      chainID,
-				VaultVersion: vault.Version,
-				VaultAddress: vaultAddr,
-				Activation:   vault.Activation,
-				Name:         kongStrategy.GetName(),
-				DoHealthCheck: kongStrategy.GetDoHealthCheck(),
-				IsActive:     kongStrategy.GetIsActive(),
-			}
-
-				// Store Kong strategy data directly (single source of truth)
+			// Store Kong strategy data directly (single source of truth)
 			storage.StoreKongStrategyData(chainID, strategyAddr, vaultAddr, kongStrategy)
 
 			// Use combination of strategy and vault address as key to handle
 			// strategies that may be used by multiple vaults
 			key := strategyAddr.Hex() + "_" + vaultAddr.Hex()
-			strategiesMap[key] = strategy
+			strategiesMap[key] = kongStrategy.ToTStrategy()
 			totalStrategies++
 		}
 	}

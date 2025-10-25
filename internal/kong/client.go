@@ -66,120 +66,6 @@ type KongTVL struct {
 	Close float64 `json:"close"`
 }
 
-type KongLastReportDetail struct {
-	ChainID         int     `json:"chainId"`
-	Address         string  `json:"address"`
-	BlockNumber     string  `json:"blockNumber"`
-	BlockTime       string  `json:"blockTime"`
-	TransactionHash string  `json:"transactionHash"`
-	Profit          *string `json:"profit"`
-	ProfitUsd       *float64 `json:"profitUsd"`
-	Loss            *string `json:"loss"`
-	LossUsd         *float64 `json:"lossUsd"`
-	APR             *struct {
-		Gross *float64 `json:"gross"`
-		Net   *float64 `json:"net"`
-	} `json:"apr"`
-}
-
-type KongLenderStatus struct {
-	Name    string   `json:"name"`
-	Assets  *string  `json:"assets"`
-	Rate    *float64 `json:"rate"`
-	Address string   `json:"address"`
-}
-
-type KongClaim struct {
-	ChainID    int      `json:"chainId"`
-	Address    string   `json:"address"`
-	Name       string   `json:"name"`
-	Symbol     string   `json:"symbol"`
-	Decimals   int      `json:"decimals"`
-	Balance    *string  `json:"balance"`
-	BalanceUsd *float64 `json:"balanceUsd"`
-}
-
-type KongRisk struct {
-	Label               string   `json:"label"`
-	AuditScore          *float64 `json:"auditScore"`
-	CodeReviewScore     *float64 `json:"codeReviewScore"`
-	ComplexityScore     *float64 `json:"complexityScore"`
-	ProtocolSafetyScore *float64 `json:"protocolSafetyScore"`
-	TeamKnowledgeScore  *float64 `json:"teamKnowledgeScore"`
-	TestingScore        *float64 `json:"testingScore"`
-}
-
-type KongMeta struct {
-	DisplayName *string  `json:"displayName"`
-	Description *string  `json:"description"`
-	Protocols   []string `json:"protocols"`
-}
-
-type KongStrategy struct {
-	ChainID               int                   `json:"chainId"`
-	Address               string                `json:"address"`
-	APIVersion            *string               `json:"apiVersion"`
-	BalanceOfWant         *string               `json:"balanceOfWant"`
-	BaseFeeOracle         *string               `json:"baseFeeOracle"`
-	CreditThreshold       *string               `json:"creditThreshold"`
-	Crv                   *string               `json:"crv"`
-	CurveVoter            *string               `json:"curveVoter"`
-	DelegatedAssets       *string               `json:"delegatedAssets"`
-	DoHealthCheck         *bool                 `json:"doHealthCheck"`
-	EmergencyExit         *bool                 `json:"emergencyExit"`
-	Erc4626               *bool                 `json:"erc4626"`
-	EstimatedTotalAssets  *string               `json:"estimatedTotalAssets"`
-	ForceHarvestTriggerOnce *bool               `json:"forceHarvestTriggerOnce"`
-	Gauge                 *string               `json:"gauge"`
-	HealthCheck           *string               `json:"healthCheck"`
-	InceptTime            *int64                `json:"inceptTime"`
-	InceptBlock           *int64                `json:"inceptBlock"`
-	IsActive              *bool                 `json:"isActive"`
-	IsBaseFeeAcceptable   *bool                 `json:"isBaseFeeAcceptable"`
-	IsOriginal            *bool                 `json:"isOriginal"`
-	Keeper                *string               `json:"keeper"`
-	LocalKeepCRV          *string               `json:"localKeepCRV"`
-	MaxReportDelay        *int64                `json:"maxReportDelay"`
-	MetadataURI           *string               `json:"metadataURI"`
-	MinReportDelay        *int64                `json:"minReportDelay"`
-	Name                  *string               `json:"name"`
-	Proxy                 *string               `json:"proxy"`
-	Rewards               *string               `json:"rewards"`
-	StakedBalance         *string               `json:"stakedBalance"`
-	Strategist            *string               `json:"strategist"`
-	TradeFactory          *string               `json:"tradeFactory"`
-	Vault                 string                `json:"vault"`
-	Want                  *string               `json:"want"`
-	DOMAIN_SEPARATOR      *string               `json:"DOMAIN_SEPARATOR"`
-	FACTORY               *string               `json:"FACTORY"`
-	MAX_FEE               *int                  `json:"MAX_FEE"`
-	MIN_FEE               *int                  `json:"MIN_FEE"`
-	Decimals              *int                  `json:"decimals"`
-	FullProfitUnlockDate  *int64                `json:"fullProfitUnlockDate"`
-	IsShutdown            *bool                 `json:"isShutdown"`
-	LastReport            *int64                `json:"lastReport"`
-	LastReportDetail      *KongLastReportDetail `json:"lastReportDetail"`
-	Management            *string               `json:"management"`
-	PendingManagement     *string               `json:"pendingManagement"`
-	PerformanceFee        *int                  `json:"performanceFee"`
-	PerformanceFeeRecipient *string             `json:"performanceFeeRecipient"`
-	PricePerShare         *string               `json:"pricePerShare"`
-	ProfitMaxUnlockTime   *int64                `json:"profitMaxUnlockTime"`
-	ProfitUnlockingRate   *string               `json:"profitUnlockingRate"`
-	Symbol                *string               `json:"symbol"`
-	TotalAssets           *string               `json:"totalAssets"`
-	TotalDebt             *string               `json:"totalDebt"`
-	TotalIdle             *string               `json:"totalIdle"`
-	TotalSupply           *string               `json:"totalSupply"`
-	TotalDebtUsd          *float64              `json:"totalDebtUsd"`
-	LenderStatuses        []KongLenderStatus    `json:"lenderStatuses"`
-	Claims                []KongClaim           `json:"claims"`
-	Risk                  *KongRisk             `json:"risk"`
-	Meta                  *KongMeta             `json:"meta"`
-	V3                    bool                  `json:"v3"`
-	Yearn                 bool                  `json:"yearn"`
-}
-
 type KongVault struct {
 	Address           string           `json:"address"`
 	ChainID           int              `json:"chainId"`
@@ -200,7 +86,7 @@ type VaultsResponse struct {
 }
 
 type StrategiesResponse struct {
-	Strategies []KongStrategy `json:"strategies"`
+	Strategies []models.KongStrategy `json:"strategies"`
 }
 
 type Client struct {
@@ -444,58 +330,9 @@ func (v *KongVault) GetAssetAddress() common.Address {
 	return common.HexToAddress(v.Asset.Address)
 }
 
-func (v *KongVault) GetStrategies() []common.Address {
-	strategySet := make(map[common.Address]bool)
-	var strategies []common.Address
-
-	// Combine strategies from all available sources (not prioritized fallback)
-	// This matches the original yDaemon approach of getting all strategies
-
-	// Add from WithdrawalQueue
-	if v.WithdrawalQueue != nil && len(v.WithdrawalQueue) > 0 {
-		for _, s := range v.WithdrawalQueue {
-			if s != "" && s != "0x0000000000000000000000000000000000000000" {
-				addr := common.HexToAddress(s)
-				if !strategySet[addr] {
-					strategySet[addr] = true
-					strategies = append(strategies, addr)
-				}
-			}
-		}
-	}
-
-	// Add from GetDefaultQueue
-	if v.GetDefaultQueue != nil && len(v.GetDefaultQueue) > 0 {
-		for _, s := range v.GetDefaultQueue {
-			if s != "" && s != "0x0000000000000000000000000000000000000000" {
-				addr := common.HexToAddress(s)
-				if !strategySet[addr] {
-					strategySet[addr] = true
-					strategies = append(strategies, addr)
-				}
-			}
-		}
-	}
-
-	// Add from Strategies
-	if v.Strategies != nil && len(v.Strategies) > 0 {
-		for _, s := range v.Strategies {
-			if s != "" && s != "0x0000000000000000000000000000000000000000" {
-				addr := common.HexToAddress(s)
-				if !strategySet[addr] {
-					strategySet[addr] = true
-					strategies = append(strategies, addr)
-				}
-			}
-		}
-	}
-
-	return strategies
-}
-
 type KongVaultData struct {
 	Vault      KongVault
-	Strategies []common.Address
+	Strategies []models.KongStrategy
 	Debts      []KongDebt
 	TVL        float64
 	APY        models.KongAPY
@@ -517,7 +354,7 @@ func (v *KongVault) GetDebts() []KongDebt {
 }
 
 
-func (c *Client) FetchStrategiesForChain(ctx context.Context, chainID uint64) ([]KongStrategy, error) {
+func (c *Client) FetchStrategiesForChain(ctx context.Context, chainID uint64) ([]models.KongStrategy, error) {
 	query := `
 		query Strategies($chainId: Int!) {
 			strategies(chainId: $chainId) {
@@ -643,43 +480,7 @@ func (c *Client) FetchStrategiesForChain(ctx context.Context, chainID uint64) ([
 	return strategiesResp.Strategies, nil
 }
 
-func (s *KongStrategy) GetAddress() common.Address {
-	return common.HexToAddress(s.Address)
-}
-
-func (s *KongStrategy) GetVaultAddress() common.Address {
-	return common.HexToAddress(s.Vault)
-}
-
-func (s *KongStrategy) GetAPIVersion() string {
-	if s.APIVersion == nil {
-		return ""
-	}
-	return *s.APIVersion
-}
-
-func (s *KongStrategy) GetName() string {
-	if s.Name == nil {
-		return ""
-	}
-	return *s.Name
-}
-
-func (s *KongStrategy) GetIsActive() bool {
-	if s.IsActive == nil {
-		return false
-	}
-	return *s.IsActive
-}
-
-func (s *KongStrategy) GetDoHealthCheck() bool {
-	if s.DoHealthCheck == nil {
-		return false
-	}
-	return *s.DoHealthCheck
-}
-
-func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, error) {
+func FetchVaultsFromKong(chainID uint64, strategiesByVault map[common.Address][]models.KongStrategy) (map[common.Address]KongVaultData, error) {
 	ctx := context.Background()
 	client := NewClient()
 
@@ -692,10 +493,16 @@ func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, erro
 	vaultData := make(map[common.Address]KongVaultData)
 	for _, vault := range vaults {
 		vaultAddr := vault.GetAddress()
-		strategies := vault.GetStrategies()
+
+		// Use strategies from the provided map (already fetched)
+		var vaultStrategies []models.KongStrategy
+		if strategies, ok := strategiesByVault[vaultAddr]; ok {
+			vaultStrategies = strategies
+		}
+
 		vaultData[vaultAddr] = KongVaultData{
 			Vault:      vault,
-			Strategies: strategies,
+			Strategies: vaultStrategies,
 			APY:        vault.GetAPY(),
 			Debts:      vault.GetDebts(),
 			TVL:        vault.GetTVL(),
@@ -708,7 +515,7 @@ func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, erro
 
 // FetchStrategiesFromKong fetches all strategies for a given chain from Kong GraphQL API
 // and returns them mapped by vault address
-func FetchStrategiesFromKong(chainID uint64) (map[common.Address][]KongStrategy, error) {
+func FetchStrategiesFromKong(chainID uint64) (map[common.Address][]models.KongStrategy, error) {
 	ctx := context.Background()
 	client := NewClient()
 
@@ -719,7 +526,7 @@ func FetchStrategiesFromKong(chainID uint64) (map[common.Address][]KongStrategy,
 	}
 
 	// Map strategies by vault address as requested
-	strategiesByVault := make(map[common.Address][]KongStrategy)
+	strategiesByVault := make(map[common.Address][]models.KongStrategy)
 	for _, strategy := range strategies {
 		vaultAddr := strategy.GetVaultAddress()
 		strategiesByVault[vaultAddr] = append(strategiesByVault[vaultAddr], strategy)

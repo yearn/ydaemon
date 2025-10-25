@@ -24,7 +24,7 @@ func computeCurrentV2VaultAPY(
 
 	/**********************************************************************************************
 	** Fetch Kong APY data (single source of truth)
-	** Kong provides pre-calculated historical APY values and asset decimals
+	** Kong provides pre-calculated historical APY values - no need for PPS fetching
 	**********************************************************************************************/
 	kongAPY, ok := storage.GetKongAPY(chainID, vault.Address)
 	if !ok {

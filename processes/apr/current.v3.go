@@ -54,7 +54,6 @@ func computeCurrentV3VaultAPY(
 	/**********************************************************************************************
 	** Parse Kong APY values (floats for APY, strings for PPS)
 	** Kong returns null for vaults without sufficient history
-	** PPS values are BigInts that need normalization by token decimals
 	**********************************************************************************************/
 	monthlyAPY := parseKongFloatAPY(kongAPY.MonthlyNet)
 	weeklyAPY := parseKongFloatAPY(kongAPY.WeeklyNet)

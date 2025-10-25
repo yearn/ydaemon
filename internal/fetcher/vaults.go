@@ -1,6 +1,7 @@
 package fetcher
 
 import (
+	"encoding/json"
 	"strconv"
 	"strings"
 
@@ -165,6 +166,13 @@ func RetrieveAllVaults(
 				Kind:         kind,
 				Activation:   currentVault.BlockNumber,
 			}
+			
+			// Assign Kong debts to vault
+			if kongDebts, ok := storage.GetKongDebts(chainID, currentVault.Address); ok {
+				if kongDebtsJSON, err := json.Marshal(kongDebts); err == nil {
+					newVault.KongDebts = string(kongDebtsJSON)
+				}
+			}
 			updatedVaultMap[currentVault.Address] = newVault
 		}
 	}
@@ -188,6 +196,13 @@ func RetrieveAllVaults(
 					Activation:   currentVault.BlockNumber,
 					Type:         currentVault.Type,
 					Kind:         kind,
+				}
+				
+				// Assign Kong debts to vault
+				if kongDebts, ok := storage.GetKongDebts(chainID, currentVault.Address); ok {
+					if kongDebtsJSON, err := json.Marshal(kongDebts); err == nil {
+						newVault.KongDebts = string(kongDebtsJSON)
+					}
 				}
 				updatedVaultMap[currentVault.Address] = newVault
 			}

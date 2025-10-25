@@ -22,9 +22,8 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 	}
 	
 	vaultsFromKong := make(map[common.Address]models.TVaultsFromRegistry)
-	
+
 	for vaultAddr, data := range kongVaultData {
-		// Create vault entry with Kong metadata
 		// Type and Kind will be populated by CMS metadata refresh
 		vault := models.TVaultsFromRegistry{
 			Address:         vaultAddr,
@@ -37,13 +36,41 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 			BlockNumber:     data.Vault.GetBlockNumber(),
 			ExtraProperties: models.TExtraProperties{},
 		}
-		
+
 		vaultsFromKong[vaultAddr] = vault
 		storage.StoreNewVaultToRegistry(chainID, vault)
 
 		// Store Kong APY data from GraphQL API (single source of truth for APY calculations)
+		// Convert KongDebt to TKongDebt
+		var debts []models.TKongDebt
+		for _, debt := range data.Debts {
+			debts = append(debts, models.TKongDebt{
+				Strategy:           debt.Strategy,
+				PerformanceFee:     debt.PerformanceFee,
+				Activation:         debt.Activation,
+				DebtRatio:          debt.DebtRatio,
+				MinDebtPerHarvest:  debt.MinDebtPerHarvest,
+				MaxDebtPerHarvest:  debt.MaxDebtPerHarvest,
+				LastReport:         debt.LastReport,
+				TotalDebt:          debt.TotalDebt,
+				TotalDebtUsd:       debt.TotalDebtUsd,
+				TotalGain:          debt.TotalGain,
+				TotalGainUsd:        debt.TotalGainUsd,
+				TotalLoss:          debt.TotalLoss,
+				TotalLossUsd:       debt.TotalLossUsd,
+				CurrentDebt:        debt.CurrentDebt,
+				CurrentDebtUsd:     debt.CurrentDebtUsd,
+				MaxDebt:            debt.MaxDebt,
+				MaxDebtUsd:         debt.MaxDebtUsd,
+				TargetDebtRatio:    debt.TargetDebtRatio,
+				MaxDebtRatio:       debt.MaxDebtRatio,
+			})
+		}
+		
 		kongSchema := models.TKongVaultSchema{
 			APY: data.APY,
+			Debts: debts,
+			TVL: data.TVL,
 		}
 		storage.StoreKongVaultData(chainID, vaultAddr, kongSchema)
 	}

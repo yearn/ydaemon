@@ -12,6 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/kong"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -21,6 +22,7 @@ var _strategiesMigratedSyncMap = make(map[uint64]*sync.Map)
 var _strategiesJSONMetadataSyncMap = sync.Map{}
 var _strategyJSONMutexes = make(map[uint64]*sync.RWMutex)
 var _strategyJSONMutexesLock sync.Mutex // Protects access to _strategyJSONMutexes map
+var _kongStrategyDataSyncMap = make(map[uint64]*sync.Map)
 
 /** 🔵 - Yearn *************************************************************************************
 ** getStrategyMutex safely gets or creates a mutex for a specific chainID
@@ -473,4 +475,77 @@ func RefreshStrategyMetadata(chainID uint64) {
 		ApplyCmsStrategyMeta(strategyMeta, &strategy)
 		StoreStrategy(chainID, strategy)
 	}
+}
+
+/*****************************************************************************
+** Kong Strategy Data Storage and Caching
+*****************************************************************************/
+
+/**************************************************************************************************
+** safeKongStrategySyncMap ensures thread-safe access to the kong strategy sync map for a given chain ID
+**************************************************************************************************/
+func safeKongStrategySyncMap(syncMap map[uint64]*sync.Map, chainID uint64) *sync.Map {
+	if syncMap[chainID] == nil {
+		syncMap[chainID] = &sync.Map{}
+	}
+	return syncMap[chainID]
+}
+
+/**************************************************************************************************
+** GetKongStrategyData retrieves kong data for a specific strategy from the cache
+** Uses checksummed address for case-insensitive lookup
+** Returns data using strategy address + vault address as composite key
+**************************************************************************************************/
+func GetKongStrategyData(chainID uint64, strategyAddress common.Address, vaultAddress common.Address) (kong.KongStrategy, bool) {
+	// Use composite key: strategy_vault
+	key := strategyAddress.Hex() + "_" + vaultAddress.Hex()
+	kongDataFromSyncMap, ok := safeKongStrategySyncMap(_kongStrategyDataSyncMap, chainID).Load(key)
+	if !ok {
+		return kong.KongStrategy{}, false
+	}
+	return kongDataFromSyncMap.(kong.KongStrategy), true
+}
+
+/**************************************************************************************************
+** StoreKongStrategyData stores kong data for a specific strategy in the cache
+** Uses checksummed address for case-insensitive storage
+** Stores data using strategy address + vault address as composite key
+**************************************************************************************************/
+func StoreKongStrategyData(chainID uint64, strategyAddress common.Address, vaultAddress common.Address, kongData kong.KongStrategy) {
+	// Use composite key: strategy_vault
+	key := strategyAddress.Hex() + "_" + vaultAddress.Hex()
+	safeKongStrategySyncMap(_kongStrategyDataSyncMap, chainID).Store(key, kongData)
+}
+
+/**************************************************************************************************
+** ListKongStrategyData returns all kong strategy data for a specific chain
+**************************************************************************************************/
+func ListKongStrategyData(chainID uint64) map[string]kong.KongStrategy {
+	kongDataMap := make(map[string]kong.KongStrategy)
+
+	safeKongStrategySyncMap(_kongStrategyDataSyncMap, chainID).Range(func(key, value interface{}) bool {
+		keyStr := key.(string)
+		kongData := value.(kong.KongStrategy)
+		kongDataMap[keyStr] = kongData
+		return true
+	})
+
+	return kongDataMap
+}
+
+/**************************************************************************************************
+** ListKongStrategyDataForVault returns all kong strategy data for a specific vault
+**************************************************************************************************/
+func ListKongStrategyDataForVault(chainID uint64, vaultAddress common.Address) []kong.KongStrategy {
+	var strategies []kong.KongStrategy
+
+	safeKongStrategySyncMap(_kongStrategyDataSyncMap, chainID).Range(func(key, value interface{}) bool {
+		kongData := value.(kong.KongStrategy)
+		if kongData.Vault == vaultAddress.Hex() {
+			strategies = append(strategies, kongData)
+		}
+		return true
+	})
+
+	return strategies
 }

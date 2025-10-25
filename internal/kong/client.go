@@ -66,6 +66,120 @@ type KongTVL struct {
 	Close float64 `json:"close"`
 }
 
+type KongLastReportDetail struct {
+	ChainID         int     `json:"chainId"`
+	Address         string  `json:"address"`
+	BlockNumber     string  `json:"blockNumber"`
+	BlockTime       string  `json:"blockTime"`
+	TransactionHash string  `json:"transactionHash"`
+	Profit          *string `json:"profit"`
+	ProfitUsd       *float64 `json:"profitUsd"`
+	Loss            *string `json:"loss"`
+	LossUsd         *float64 `json:"lossUsd"`
+	APR             *struct {
+		Gross *float64 `json:"gross"`
+		Net   *float64 `json:"net"`
+	} `json:"apr"`
+}
+
+type KongLenderStatus struct {
+	Name    string   `json:"name"`
+	Assets  *string  `json:"assets"`
+	Rate    *float64 `json:"rate"`
+	Address string   `json:"address"`
+}
+
+type KongClaim struct {
+	ChainID    int      `json:"chainId"`
+	Address    string   `json:"address"`
+	Name       string   `json:"name"`
+	Symbol     string   `json:"symbol"`
+	Decimals   int      `json:"decimals"`
+	Balance    *string  `json:"balance"`
+	BalanceUsd *float64 `json:"balanceUsd"`
+}
+
+type KongRisk struct {
+	Label               string   `json:"label"`
+	AuditScore          *float64 `json:"auditScore"`
+	CodeReviewScore     *float64 `json:"codeReviewScore"`
+	ComplexityScore     *float64 `json:"complexityScore"`
+	ProtocolSafetyScore *float64 `json:"protocolSafetyScore"`
+	TeamKnowledgeScore  *float64 `json:"teamKnowledgeScore"`
+	TestingScore        *float64 `json:"testingScore"`
+}
+
+type KongMeta struct {
+	DisplayName *string  `json:"displayName"`
+	Description *string  `json:"description"`
+	Protocols   []string `json:"protocols"`
+}
+
+type KongStrategy struct {
+	ChainID               int                   `json:"chainId"`
+	Address               string                `json:"address"`
+	APIVersion            *string               `json:"apiVersion"`
+	BalanceOfWant         *string               `json:"balanceOfWant"`
+	BaseFeeOracle         *string               `json:"baseFeeOracle"`
+	CreditThreshold       *string               `json:"creditThreshold"`
+	Crv                   *string               `json:"crv"`
+	CurveVoter            *string               `json:"curveVoter"`
+	DelegatedAssets       *string               `json:"delegatedAssets"`
+	DoHealthCheck         *bool                 `json:"doHealthCheck"`
+	EmergencyExit         *bool                 `json:"emergencyExit"`
+	Erc4626               *bool                 `json:"erc4626"`
+	EstimatedTotalAssets  *string               `json:"estimatedTotalAssets"`
+	ForceHarvestTriggerOnce *bool               `json:"forceHarvestTriggerOnce"`
+	Gauge                 *string               `json:"gauge"`
+	HealthCheck           *string               `json:"healthCheck"`
+	InceptTime            *string               `json:"inceptTime"`
+	InceptBlock           *string               `json:"inceptBlock"`
+	IsActive              *bool                 `json:"isActive"`
+	IsBaseFeeAcceptable   *bool                 `json:"isBaseFeeAcceptable"`
+	IsOriginal            *bool                 `json:"isOriginal"`
+	Keeper                *string               `json:"keeper"`
+	LocalKeepCRV          *string               `json:"localKeepCRV"`
+	MaxReportDelay        *string               `json:"maxReportDelay"`
+	MetadataURI           *string               `json:"metadataURI"`
+	MinReportDelay        *string               `json:"minReportDelay"`
+	Name                  *string               `json:"name"`
+	Proxy                 *string               `json:"proxy"`
+	Rewards               *string               `json:"rewards"`
+	StakedBalance         *string               `json:"stakedBalance"`
+	Strategist            *string               `json:"strategist"`
+	TradeFactory          *string               `json:"tradeFactory"`
+	Vault                 string                `json:"vault"`
+	Want                  *string               `json:"want"`
+	DOMAIN_SEPARATOR      *string               `json:"DOMAIN_SEPARATOR"`
+	FACTORY               *string               `json:"FACTORY"`
+	MAX_FEE               *string               `json:"MAX_FEE"`
+	MIN_FEE               *string               `json:"MIN_FEE"`
+	Decimals              *int                  `json:"decimals"`
+	FullProfitUnlockDate  *string               `json:"fullProfitUnlockDate"`
+	IsShutdown            *bool                 `json:"isShutdown"`
+	LastReport            *string               `json:"lastReport"`
+	LastReportDetail      *KongLastReportDetail `json:"lastReportDetail"`
+	Management            *string               `json:"management"`
+	PendingManagement     *string               `json:"pendingManagement"`
+	PerformanceFee        *string               `json:"performanceFee"`
+	PerformanceFeeRecipient *string             `json:"performanceFeeRecipient"`
+	PricePerShare         *string               `json:"pricePerShare"`
+	ProfitMaxUnlockTime   *string               `json:"profitMaxUnlockTime"`
+	ProfitUnlockingRate   *string               `json:"profitUnlockingRate"`
+	Symbol                *string               `json:"symbol"`
+	TotalAssets           *string               `json:"totalAssets"`
+	TotalDebt             *string               `json:"totalDebt"`
+	TotalIdle             *string               `json:"totalIdle"`
+	TotalSupply           *string               `json:"totalSupply"`
+	TotalDebtUsd          *float64              `json:"totalDebtUsd"`
+	LenderStatuses        []KongLenderStatus    `json:"lenderStatuses"`
+	Claims                []KongClaim           `json:"claims"`
+	Risk                  *KongRisk             `json:"risk"`
+	Meta                  *KongMeta             `json:"meta"`
+	V3                    bool                  `json:"v3"`
+	Yearn                 bool                  `json:"yearn"`
+}
+
 type KongVault struct {
 	Address           string           `json:"address"`
 	ChainID           int              `json:"chainId"`
@@ -83,6 +197,10 @@ type KongVault struct {
 
 type VaultsResponse struct {
 	Vaults []KongVault `json:"vaults"`
+}
+
+type StrategiesResponse struct {
+	Strategies []KongStrategy `json:"strategies"`
 }
 
 type Client struct {
@@ -399,6 +517,168 @@ func (v *KongVault) GetDebts() []KongDebt {
 }
 
 
+func (c *Client) FetchStrategiesForChain(ctx context.Context, chainID uint64) ([]KongStrategy, error) {
+	query := `
+		query Strategies($chainId: Int!) {
+			strategies(chainId: $chainId) {
+				chainId
+				address
+				apiVersion
+				balanceOfWant
+				baseFeeOracle
+				creditThreshold
+				crv
+				curveVoter
+				delegatedAssets
+				doHealthCheck
+				emergencyExit
+				erc4626
+				estimatedTotalAssets
+				forceHarvestTriggerOnce
+				gauge
+				healthCheck
+				inceptTime
+				inceptBlock
+				isActive
+				isBaseFeeAcceptable
+				isOriginal
+				keeper
+				localKeepCRV
+				maxReportDelay
+				metadataURI
+				minReportDelay
+				name
+				proxy
+				rewards
+				stakedBalance
+				strategist
+				tradeFactory
+				vault
+				want
+				DOMAIN_SEPARATOR
+				FACTORY
+				MAX_FEE
+				MIN_FEE
+				decimals
+				fullProfitUnlockDate
+				isShutdown
+				lastReport
+				lastReportDetail {
+					chainId
+					address
+					blockNumber
+					blockTime
+					transactionHash
+					profit
+					profitUsd
+					loss
+					lossUsd
+					apr {
+						gross
+						net
+					}
+				}
+				management
+				pendingManagement
+				performanceFee
+				performanceFeeRecipient
+				pricePerShare
+				profitMaxUnlockTime
+				profitUnlockingRate
+				symbol
+				totalAssets
+				totalDebt
+				totalIdle
+				totalSupply
+				totalDebtUsd
+				lenderStatuses {
+					name
+					assets
+					rate
+					address
+				}
+				claims {
+					chainId
+					address
+					name
+					symbol
+					decimals
+					balance
+					balanceUsd
+				}
+				risk {
+					label
+					auditScore
+					codeReviewScore
+					complexityScore
+					protocolSafetyScore
+					teamKnowledgeScore
+					testingScore
+				}
+				meta {
+					displayName
+					description
+					protocols
+				}
+				v3
+				yearn
+			}
+		}
+	`
+
+	variables := map[string]interface{}{
+		"chainId": int(chainID),
+	}
+
+	resp, err := c.executeQuery(ctx, query, variables)
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch strategies for chain %d: %w", chainID, err)
+	}
+
+	var strategiesResp StrategiesResponse
+	if err := json.Unmarshal(resp.Data, &strategiesResp); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal strategies response: %w", err)
+	}
+
+	return strategiesResp.Strategies, nil
+}
+
+func (s *KongStrategy) GetAddress() common.Address {
+	return common.HexToAddress(s.Address)
+}
+
+func (s *KongStrategy) GetVaultAddress() common.Address {
+	return common.HexToAddress(s.Vault)
+}
+
+func (s *KongStrategy) GetAPIVersion() string {
+	if s.APIVersion == nil {
+		return ""
+	}
+	return *s.APIVersion
+}
+
+func (s *KongStrategy) GetName() string {
+	if s.Name == nil {
+		return ""
+	}
+	return *s.Name
+}
+
+func (s *KongStrategy) GetIsActive() bool {
+	if s.IsActive == nil {
+		return false
+	}
+	return *s.IsActive
+}
+
+func (s *KongStrategy) GetDoHealthCheck() bool {
+	if s.DoHealthCheck == nil {
+		return false
+	}
+	return *s.DoHealthCheck
+}
+
 func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, error) {
 	ctx := context.Background()
 	client := NewClient()
@@ -424,4 +704,27 @@ func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, erro
 
 	logs.Success(chainID, `-`, `Fetched %d vaults from Kong`, len(vaults))
 	return vaultData, nil
+}
+
+// FetchStrategiesFromKong fetches all strategies for a given chain from Kong GraphQL API
+// and returns them mapped by vault address
+func FetchStrategiesFromKong(chainID uint64) (map[common.Address][]KongStrategy, error) {
+	ctx := context.Background()
+	client := NewClient()
+
+	strategies, err := client.FetchStrategiesForChain(ctx, chainID)
+	if err != nil {
+		logs.Error(chainID, `-`, `Failed to fetch strategies from Kong: %v`, err)
+		return nil, err
+	}
+
+	// Map strategies by vault address as requested
+	strategiesByVault := make(map[common.Address][]KongStrategy)
+	for _, strategy := range strategies {
+		vaultAddr := strategy.GetVaultAddress()
+		strategiesByVault[vaultAddr] = append(strategiesByVault[vaultAddr], strategy)
+	}
+
+	logs.Success(chainID, `-`, `Fetched %d strategies from Kong, mapped to %d vaults`, len(strategies), len(strategiesByVault))
+	return strategiesByVault, nil
 }

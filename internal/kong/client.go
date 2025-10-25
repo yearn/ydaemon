@@ -132,16 +132,16 @@ type KongStrategy struct {
 	ForceHarvestTriggerOnce *bool               `json:"forceHarvestTriggerOnce"`
 	Gauge                 *string               `json:"gauge"`
 	HealthCheck           *string               `json:"healthCheck"`
-	InceptTime            *string               `json:"inceptTime"`
-	InceptBlock           *string               `json:"inceptBlock"`
+	InceptTime            *int64                `json:"inceptTime"`
+	InceptBlock           *int64                `json:"inceptBlock"`
 	IsActive              *bool                 `json:"isActive"`
 	IsBaseFeeAcceptable   *bool                 `json:"isBaseFeeAcceptable"`
 	IsOriginal            *bool                 `json:"isOriginal"`
 	Keeper                *string               `json:"keeper"`
 	LocalKeepCRV          *string               `json:"localKeepCRV"`
-	MaxReportDelay        *string               `json:"maxReportDelay"`
+	MaxReportDelay        *int64                `json:"maxReportDelay"`
 	MetadataURI           *string               `json:"metadataURI"`
-	MinReportDelay        *string               `json:"minReportDelay"`
+	MinReportDelay        *int64                `json:"minReportDelay"`
 	Name                  *string               `json:"name"`
 	Proxy                 *string               `json:"proxy"`
 	Rewards               *string               `json:"rewards"`
@@ -155,16 +155,16 @@ type KongStrategy struct {
 	MAX_FEE               *int                  `json:"MAX_FEE"`
 	MIN_FEE               *int                  `json:"MIN_FEE"`
 	Decimals              *int                  `json:"decimals"`
-	FullProfitUnlockDate  *string               `json:"fullProfitUnlockDate"`
+	FullProfitUnlockDate  *int64                `json:"fullProfitUnlockDate"`
 	IsShutdown            *bool                 `json:"isShutdown"`
-	LastReport            *string               `json:"lastReport"`
+	LastReport            *int64                `json:"lastReport"`
 	LastReportDetail      *KongLastReportDetail `json:"lastReportDetail"`
 	Management            *string               `json:"management"`
 	PendingManagement     *string               `json:"pendingManagement"`
-	PerformanceFee        *string               `json:"performanceFee"`
+	PerformanceFee        *int                  `json:"performanceFee"`
 	PerformanceFeeRecipient *string             `json:"performanceFeeRecipient"`
 	PricePerShare         *string               `json:"pricePerShare"`
-	ProfitMaxUnlockTime   *string               `json:"profitMaxUnlockTime"`
+	ProfitMaxUnlockTime   *int64                `json:"profitMaxUnlockTime"`
 	ProfitUnlockingRate   *string               `json:"profitUnlockingRate"`
 	Symbol                *string               `json:"symbol"`
 	TotalAssets           *string               `json:"totalAssets"`

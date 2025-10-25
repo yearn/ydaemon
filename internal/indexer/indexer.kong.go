@@ -71,6 +71,7 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 			APY: data.APY,
 			Debts: debts,
 			TVL: data.TVL,
+			TotalAssets: data.TotalAssets,
 		}
 		storage.StoreKongVaultData(chainID, vaultAddr, kongSchema)
 	}

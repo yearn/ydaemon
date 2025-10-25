@@ -330,4 +330,5 @@ type TKongVaultSchema struct {
 	TVL          float64      `json:"tvl"`   // TVL from Kong (tvl.close field)
 	Debts []TKongDebt  `json:"debts"` // Debts array from Kong
 	APY   KongAPY      `json:"apy"`   // APY from Kong
+	TotalAssets *bigNumber.Int `json:"totalAssets"` // Total assets from Kong
 }

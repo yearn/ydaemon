@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
@@ -79,6 +80,7 @@ type KongVault struct {
 	Debts             []KongDebt       `json:"debts"`
 	TVL               *KongTVL         `json:"tvl"`
 	APY               models.KongAPY   `json:"apy"`
+	TotalAssets       *bigNumber.Int   `json:"totalAssets"`
 }
 
 type VaultsResponse struct {
@@ -159,6 +161,7 @@ func (c *Client) FetchVaultsForChain(ctx context.Context, chainID uint64) ([]Kon
 				withdrawalQueue
 				get_default_queue
 				strategies
+				totalAssets
 				debts {
 					strategy
 					performanceFee
@@ -227,6 +230,7 @@ func (c *Client) FetchAllVaults(ctx context.Context) (map[uint64][]KongVault, er
 					name
 					symbol
 				}
+				totalAssets
 				registry
 				inceptBlock
 				apiVersion
@@ -381,6 +385,7 @@ type KongVaultData struct {
 	Debts      []KongDebt
 	TVL        float64
 	APY        models.KongAPY
+	TotalAssets *bigNumber.Int
 }
 
 func (v *KongVault) GetTVL() float64 {
@@ -414,11 +419,12 @@ func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, erro
 		vaultAddr := vault.GetAddress()
 		strategies := vault.GetStrategies()
 		vaultData[vaultAddr] = KongVaultData{
-			Vault:      vault,
-			Strategies: strategies,
-			APY:        vault.GetAPY(),
-			Debts:      vault.GetDebts(),
-			TVL:        vault.GetTVL(),
+			Vault:       vault,
+			Strategies:  strategies,
+			APY:         vault.GetAPY(),
+			Debts:       vault.GetDebts(),
+			TVL:         vault.GetTVL(),
+			TotalAssets: vault.TotalAssets,
 		}
 	}
 

@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/yearn/ydaemon/common/addresses"
+	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -184,9 +185,14 @@ func BuildVaultTVL(t models.TVault) models.TTVL {
 		kongTVL = 0
 	}
 
+	kongTotalAssets, ok := storage.GetKongTotalAssets(t.ChainID, t.Address)
+	if !ok {
+		kongTotalAssets = bigNumber.NewInt(0)
+	}
+
 	tvl := models.TTVL{
-		TotalAssets: t.LastTotalAssets,
-		TVL:         kongTVL,
+		TotalAssets: kongTotalAssets,
+		TVL:         float64(kongTVL),
 		Price:       fHumanizedPrice,
 	}
 	return tvl

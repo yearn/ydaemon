@@ -9,6 +9,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
+	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
@@ -270,6 +271,16 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 			ApplyCmsVaultMeta(vaultMeta, &vault)
 			// logs.Info("Apply cms vault metadata", chainID, vault.Address)
 		}
+		
+		// Refresh Kong debts and TVL data if available
+		if kongDebts, ok := GetKongDebts(chainID, vault.Address); ok {
+			if kongDebtsJSON, err := json.Marshal(kongDebts); err == nil {
+				vault.KongDebts = string(kongDebtsJSON)
+			}
+		}
+		if kongTVL, ok := GetKongTVL(chainID, vault.Address); ok {
+			vault.LastTotalAssets = bigNumber.NewFloat(kongTVL).Int()
+		}
 	}
 
 	for _, vault := range file.Vaults {
@@ -348,8 +359,19 @@ func RefreshVaultMetadata(chainID uint64) {
 		vaultMeta, ok := meta[normalizedAddress]
 		if ok {
 			ApplyCmsVaultMeta(vaultMeta, &vault)
-			StoreVault(chainID, vault)
 		}
+		
+		// Refresh Kong debts and TVL data
+		if kongDebts, ok := GetKongDebts(chainID, address); ok {
+			if kongDebtsJSON, err := json.Marshal(kongDebts); err == nil {
+				vault.KongDebts = string(kongDebtsJSON)
+			}
+		}
+		if kongTVL, ok := GetKongTVL(chainID, address); ok {
+			vault.LastTotalAssets = bigNumber.NewInt(int64(kongTVL))
+		}
+		
+		StoreVault(chainID, vault)
 	}
 }
 

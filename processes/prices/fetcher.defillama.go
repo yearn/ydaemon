@@ -61,7 +61,7 @@ func getMainnetAddressForTokenName(tokenName string) (common.Address, bool) {
 }
 
 /**************************************************************************************************
-** fetchPriceFromLlama tries to fetch the price for a given token from
+** fetchPricesFromLlama tries to fetch the price for a given token from
 ** the DeFiLlama pricing API, returns nil if there is no data returned
 **************************************************************************************************/
 func fetchPricesFromLlama(chainID uint64, tokens []models.TERC20Token) map[common.Address]models.TPrices {

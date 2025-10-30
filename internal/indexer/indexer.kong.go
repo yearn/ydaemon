@@ -41,9 +41,11 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 		vaultsFromKong[vaultAddr] = vault
 		storage.StoreNewVaultToRegistry(chainID, vault)
 
-		// Store Kong APY data from GraphQL API (single source of truth for APY calculations)
+		// Store Kong APY and fee data from GraphQL API (single source of truth)
 		kongSchema := models.TKongVaultSchema{
-			APY: data.APY,
+			APY:            data.APY,
+			ManagementFee:  data.Vault.GetManagementFee(),
+			PerformanceFee: data.Vault.GetPerformanceFee(),
 		}
 		storage.StoreKongVaultData(chainID, vaultAddr, kongSchema)
 	}

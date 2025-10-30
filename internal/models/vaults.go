@@ -291,15 +291,7 @@ type KongAPY struct {
 }
 
 type TKongVaultSchema struct {
-	Hook struct {
-		Fees struct {
-			ManagementFee  uint64 `json:"managementFee"`
-			PerformanceFee uint64 `json:"performanceFee"`
-		} `json:"fees"`
-	} `json:"hook"`
-	Snapshot struct {
-		ManagementFee  CoercibleUint64 `json:"managementFee"`
-		PerformanceFee CoercibleUint64 `json:"performanceFee"`
-	} `json:"snapshot"`
-	APY KongAPY `json:"apy"`
+	APY            KongAPY `json:"apy"`
+	ManagementFee  uint64  `json:"managementFee"`  // Basis points from Kong (direct field takes priority)
+	PerformanceFee uint64  `json:"performanceFee"` // Basis points from Kong (direct field takes priority)
 }

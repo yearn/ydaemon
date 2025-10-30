@@ -67,6 +67,11 @@ type KongTVL struct {
 	Close float64 `json:"close"`
 }
 
+type KongFees struct {
+	ManagementFee  float64 `json:"managementFee"`
+	PerformanceFee float64 `json:"performanceFee"`
+}
+
 type KongVault struct {
 	Address           string           `json:"address"`
 	ChainID           int              `json:"chainId"`
@@ -81,6 +86,9 @@ type KongVault struct {
 	TVL               *KongTVL         `json:"tvl"`
 	APY               models.KongAPY   `json:"apy"`
 	TotalAssets       *bigNumber.Int   `json:"totalAssets"`
+	ManagementFee     *string    `json:"managementFee"`  // BigInt as string (basis points)
+	PerformanceFee    *string    `json:"performanceFee"` // BigInt as string (basis points)
+	Fees              *KongFees  `json:"fees"`           // Fallback fees object
 }
 
 type VaultsResponse struct {
@@ -186,6 +194,12 @@ func (c *Client) FetchVaultsForChain(ctx context.Context, chainID uint64) ([]Kon
 				tvl {
 					close
 				}
+				managementFee
+				performanceFee
+				fees {
+					managementFee
+					performanceFee
+				}
 				apy {
 					pricePerShare
 					weeklyNet
@@ -261,6 +275,12 @@ func (c *Client) FetchAllVaults(ctx context.Context) (map[uint64][]KongVault, er
 				tvl {
 					close
 				}
+				managementFee
+				performanceFee
+				fees {
+					managementFee
+					performanceFee
+				}
 				apy {
 					pricePerShare
 					weeklyNet
@@ -303,6 +323,38 @@ func (v *KongVault) GetAPY() models.KongAPY {
 	// Include token decimals from asset for PPS normalization
 	apy.Decimals = uint64(v.Asset.Decimals)
 	return apy
+}
+
+// GetManagementFee returns management fee in basis points
+// Priority: direct managementFee field, then fees.managementFee, then 0
+func (v *KongVault) GetManagementFee() uint64 {
+	if v.ManagementFee != nil {
+		// Parse string to uint64 (Kong returns BigInt as string)
+		if val, err := strconv.ParseUint(*v.ManagementFee, 10, 64); err == nil {
+			return val
+		}
+	}
+	if v.Fees != nil {
+		// Convert float to basis points (fees object returns float, already in basis points)
+		return uint64(v.Fees.ManagementFee)
+	}
+	return 0
+}
+
+// GetPerformanceFee returns performance fee in basis points
+// Priority: direct performanceFee field, then fees.performanceFee, then 0
+func (v *KongVault) GetPerformanceFee() uint64 {
+	if v.PerformanceFee != nil {
+		// Parse string to uint64 (Kong returns BigInt as string)
+		if val, err := strconv.ParseUint(*v.PerformanceFee, 10, 64); err == nil {
+			return val
+		}
+	}
+	if v.Fees != nil {
+		// Convert float to basis points (fees object returns float, already in basis points)
+		return uint64(v.Fees.PerformanceFee)
+	}
+	return 0
 }
 
 func (v *KongVault) GetRegistry() common.Address {
@@ -386,6 +438,10 @@ type KongVaultData struct {
 	TVL        float64
 	APY        models.KongAPY
 	TotalAssets *bigNumber.Int
+}
+
+func (v *KongVault) GetAPIVersion() string {
+	return v.APIVersion
 }
 
 func (v *KongVault) GetTVL() float64 {

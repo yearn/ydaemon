@@ -359,17 +359,9 @@ func ApplyKongData(externalVault *TExternalVault, vault models.TVault) {
 		return
 	}
 
-	// Apply kong fees with priority: hook > snapshot > vault model
-	managementFee := kongData.Snapshot.ManagementFee.Value
-	performanceFee := kongData.Snapshot.PerformanceFee.Value
-
-	// Override with hook fees if they exist (hook takes precedence)
-	if kongData.Hook.Fees.ManagementFee != 0 {
-		managementFee = kongData.Hook.Fees.ManagementFee
-	}
-	if kongData.Hook.Fees.PerformanceFee != 0 {
-		performanceFee = kongData.Hook.Fees.PerformanceFee
-	}
+	// Apply Kong fees (already in basis points from Kong API)
+	managementFee := kongData.ManagementFee
+	performanceFee := kongData.PerformanceFee
 
 	// Convert from basis points to percentage and apply to APR fees
 	externalVault.APR.Fees.Management = bigNumber.NewFloat(float64(managementFee) / 10000.0)

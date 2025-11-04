@@ -185,6 +185,7 @@ func toSimplifiedVersion(
 	// Create a copy of the info struct to avoid mutating the original
 	info := vault.Info
 	info.IsRetired = vault.Details.IsRetired
+	info.IsHidden = vault.Details.IsHidden
 	info.IsBoosted = vault.Details.IsBoosted
 	info.IsHighlighted = vault.Details.IsHighlighted
 

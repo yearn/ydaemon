@@ -57,7 +57,7 @@ func LoadTokensFromJson(chainID uint64) TJsonERC20Storage {
 		return TJsonERC20Storage{}
 	}
 
-	if len(tokens.Tokens) > 0 && tokens.ShouldRefresh == false && shouldRefreshTokenIcons(tokens.Tokens) {
+	if len(tokens.Tokens) > 0 && !tokens.ShouldRefresh && shouldRefreshTokenIcons(tokens.Tokens) {
 		tokens.ShouldRefresh = true
 	}
 

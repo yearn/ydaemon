@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"os"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
 
@@ -56,7 +57,22 @@ func LoadTokensFromJson(chainID uint64) TJsonERC20Storage {
 		return TJsonERC20Storage{}
 	}
 
+	if len(tokens.Tokens) > 0 && tokens.ShouldRefresh == false && shouldRefreshTokenIcons(tokens.Tokens) {
+		tokens.ShouldRefresh = true
+	}
+
 	return tokens
+}
+
+func shouldRefreshTokenIcons(tokens map[common.Address]models.TERC20Token) bool {
+	const legacyPrefix = "https://assets.smold.app/api/token"
+	for _, token := range tokens {
+		icon := strings.ToLower(token.Icon)
+		if strings.HasPrefix(icon, legacyPrefix) {
+			return true
+		}
+	}
+	return false
 }
 
 /** 🔵 - Yearn *************************************************************************************

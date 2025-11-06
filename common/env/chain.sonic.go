@@ -3,6 +3,7 @@ package env
 import (
 	"math"
 	"strconv"
+	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/models"
@@ -32,7 +33,7 @@ var SONIC = TChain{
 		DisplayName:               `Sonic`,
 		DisplaySymbol:             `S`,
 		Description:               `Sonic is a fast Layer 1.`,
-		Icon:                      BASE_ASSET_URL + strconv.FormatUint(250, 10) + `/` + DEFAULT_COIN_ADDRESS.Hex() + `/logo-128.png`,
+		Icon:                      BASE_ASSET_URL + strconv.FormatUint(250, 10) + `/` + strings.ToLower(DEFAULT_COIN_ADDRESS.Hex()) + `/logo-128.png`,
 		Decimals:                  18,
 		ChainID:                   146,
 	},

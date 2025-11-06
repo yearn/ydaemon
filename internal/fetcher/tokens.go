@@ -127,7 +127,7 @@ func fetchTokensBasicInformations(
 				DisplaySymbol:             helpers.DecodeString(rawSymbol),
 				Decimals:                  helpers.DecodeUint64(rawDecimals),
 				UnderlyingTokensAddresses: []common.Address{},
-				Icon:                      env.BASE_ASSET_URL + strconv.FormatUint(chainID, 10) + `/` + tokenAddress.Hex() + `/logo-128.png`,
+				Icon:                      env.BASE_ASSET_URL + strconv.FormatUint(chainID, 10) + `/` + strings.ToLower(tokenAddress.Hex()) + `/logo-128.png`,
 				ChainID:                   chainID,
 			}
 
@@ -608,7 +608,7 @@ func RetrieveAllTokens(
 	if !ok {
 		return map[common.Address]models.TERC20Token{}
 	}
-	
+
 	vaultCount := len(vaults)
 	logs.Info(`Fetching token information for vaults (` + strconv.Itoa(vaultCount) + ` vaults) on chain ` + strconv.FormatUint(chainID, 10))
 

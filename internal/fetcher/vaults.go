@@ -1,11 +1,13 @@
 package fetcher
 
 import (
+	"encoding/json"
 	"strconv"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
+	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
@@ -165,6 +167,17 @@ func RetrieveAllVaults(
 				Kind:         kind,
 				Activation:   currentVault.BlockNumber,
 			}
+			
+			// Assign Kong debts to vault
+			if kongDebts, ok := storage.GetKongDebts(chainID, currentVault.Address); ok {
+				if kongDebtsJSON, err := json.Marshal(kongDebts); err == nil {
+					newVault.KongDebts = string(kongDebtsJSON)
+				}
+			}
+			// Assign Kong TVL to vault
+			if kongTVL, ok := storage.GetKongTVL(chainID, currentVault.Address); ok {
+				newVault.LastTotalAssets = bigNumber.NewFloat(kongTVL).Int()
+			}
 			updatedVaultMap[currentVault.Address] = newVault
 		}
 	}
@@ -188,6 +201,17 @@ func RetrieveAllVaults(
 					Activation:   currentVault.BlockNumber,
 					Type:         currentVault.Type,
 					Kind:         kind,
+				}
+
+				// Assign Kong debts to vault
+				if kongDebts, ok := storage.GetKongDebts(chainID, currentVault.Address); ok {
+					if kongDebtsJSON, err := json.Marshal(kongDebts); err == nil {
+						newVault.KongDebts = string(kongDebtsJSON)
+					}
+				}
+				// Assign Kong TVL to vault
+				if kongTVL, ok := storage.GetKongTVL(chainID, currentVault.Address); ok {
+					newVault.LastTotalAssets = bigNumber.NewFloat(kongTVL).Int()
 				}
 				updatedVaultMap[currentVault.Address] = newVault
 			}

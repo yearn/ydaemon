@@ -38,7 +38,7 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 			TokenAddress:    data.Vault.GetAssetAddress(), // From Kong asset field
 			Type:            models.TokenTypeStandardVault, // Default, overridden by CMS
 			Kind:            models.VaultKindMultiple,      // Default, overridden by CMS
-			APIVersion:      data.Vault.APIVersion,         // From Kong apiVersion field
+			APIVersion:      data.Vault.GetAPIVersion(),         // From Kong apiVersion field
 			ChainID:         chainID,
 			BlockNumber:     data.Vault.GetBlockNumber(),
 			ExtraProperties: models.TExtraProperties{},
@@ -75,10 +75,13 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 		}
 		
 		kongSchema := models.TKongVaultSchema{
+			ManagementFee:  data.Vault.GetManagementFee(),
+			PerformanceFee: data.Vault.GetPerformanceFee(),
 			APY: data.APY,
 			Debts: debts,
 			TVL: data.TVL,
 			Strategies: data.Strategies,
+			TotalAssets: data.TotalAssets,
 		}
 		storage.StoreKongVaultData(chainID, vaultAddr, kongSchema)
 	}

@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
@@ -66,6 +67,11 @@ type KongTVL struct {
 	Close float64 `json:"close"`
 }
 
+type KongFees struct {
+	ManagementFee  float64 `json:"managementFee"`
+	PerformanceFee float64 `json:"performanceFee"`
+}
+
 type KongVault struct {
 	Address           string           `json:"address"`
 	ChainID           int              `json:"chainId"`
@@ -79,6 +85,10 @@ type KongVault struct {
 	Debts             []KongDebt       `json:"debts"`
 	TVL               *KongTVL         `json:"tvl"`
 	APY               models.KongAPY   `json:"apy"`
+	TotalAssets       *bigNumber.Int   `json:"totalAssets"`
+	ManagementFee     *string    `json:"managementFee"`  // BigInt as string (basis points)
+	PerformanceFee    *string    `json:"performanceFee"` // BigInt as string (basis points)
+	Fees              *KongFees  `json:"fees"`           // Fallback fees object
 }
 
 type VaultsResponse struct {
@@ -163,6 +173,7 @@ func (c *Client) FetchVaultsForChain(ctx context.Context, chainID uint64) ([]Kon
 				withdrawalQueue
 				get_default_queue
 				strategies
+				totalAssets
 				debts {
 					strategy
 					performanceFee
@@ -186,6 +197,12 @@ func (c *Client) FetchVaultsForChain(ctx context.Context, chainID uint64) ([]Kon
 				}
 				tvl {
 					close
+				}
+				managementFee
+				performanceFee
+				fees {
+					managementFee
+					performanceFee
 				}
 				apy {
 					pricePerShare
@@ -231,6 +248,7 @@ func (c *Client) FetchAllVaults(ctx context.Context) (map[uint64][]KongVault, er
 					name
 					symbol
 				}
+				totalAssets
 				registry
 				inceptBlock
 				apiVersion
@@ -260,6 +278,12 @@ func (c *Client) FetchAllVaults(ctx context.Context) (map[uint64][]KongVault, er
 				}
 				tvl {
 					close
+				}
+				managementFee
+				performanceFee
+				fees {
+					managementFee
+					performanceFee
 				}
 				apy {
 					pricePerShare
@@ -305,6 +329,38 @@ func (v *KongVault) GetAPY() models.KongAPY {
 	return apy
 }
 
+// GetManagementFee returns management fee in basis points
+// Priority: direct managementFee field, then fees.managementFee, then 0
+func (v *KongVault) GetManagementFee() uint64 {
+	if v.ManagementFee != nil {
+		// Parse string to uint64 (Kong returns BigInt as string)
+		if val, err := strconv.ParseUint(*v.ManagementFee, 10, 64); err == nil {
+			return val
+		}
+	}
+	if v.Fees != nil {
+		// Convert float to basis points (fees object returns float, already in basis points)
+		return uint64(v.Fees.ManagementFee)
+	}
+	return 0
+}
+
+// GetPerformanceFee returns performance fee in basis points
+// Priority: direct performanceFee field, then fees.performanceFee, then 0
+func (v *KongVault) GetPerformanceFee() uint64 {
+	if v.PerformanceFee != nil {
+		// Parse string to uint64 (Kong returns BigInt as string)
+		if val, err := strconv.ParseUint(*v.PerformanceFee, 10, 64); err == nil {
+			return val
+		}
+	}
+	if v.Fees != nil {
+		// Convert float to basis points (fees object returns float, already in basis points)
+		return uint64(v.Fees.PerformanceFee)
+	}
+	return 0
+}
+
 func (v *KongVault) GetRegistry() common.Address {
 	if v.Registry == "" {
 		return common.Address{}
@@ -330,12 +386,81 @@ func (v *KongVault) GetAssetAddress() common.Address {
 	return common.HexToAddress(v.Asset.Address)
 }
 
+func (v *KongVault) GetStrategies() []common.Address {
+	strategySet := make(map[common.Address]bool)
+	var strategies []common.Address
+
+	// Combine strategies from all available sources (not prioritized fallback)
+	// This matches the original yDaemon approach of getting all strategies
+
+	// Add from WithdrawalQueue
+	if v.WithdrawalQueue != nil && len(v.WithdrawalQueue) > 0 {
+		for _, s := range v.WithdrawalQueue {
+			if s != "" && s != "0x0000000000000000000000000000000000000000" {
+				addr := common.HexToAddress(s)
+				if !strategySet[addr] {
+					strategySet[addr] = true
+					strategies = append(strategies, addr)
+				}
+			}
+		}
+	}
+
+	// Add from GetDefaultQueue
+	if v.GetDefaultQueue != nil && len(v.GetDefaultQueue) > 0 {
+		for _, s := range v.GetDefaultQueue {
+			if s != "" && s != "0x0000000000000000000000000000000000000000" {
+				addr := common.HexToAddress(s)
+				if !strategySet[addr] {
+					strategySet[addr] = true
+					strategies = append(strategies, addr)
+				}
+			}
+		}
+	}
+
+	// Add from Strategies
+	if v.Strategies != nil && len(v.Strategies) > 0 {
+		for _, s := range v.Strategies {
+			if s != "" && s != "0x0000000000000000000000000000000000000000" {
+				addr := common.HexToAddress(s)
+				if !strategySet[addr] {
+					strategySet[addr] = true
+					strategies = append(strategies, addr)
+				}
+			}
+		}
+	}
+
+	return strategies
+}
+
 type KongVaultData struct {
 	Vault      KongVault
-	Strategies []models.KongStrategy
+	Strategies []common.Address
 	Debts      []KongDebt
 	TVL        float64
 	APY        models.KongAPY
+	TotalAssets *bigNumber.Int
+}
+
+func (v *KongVault) GetAPIVersion() string {
+	return v.APIVersion
+}
+
+func (v *KongVault) GetTVL() float64 {
+	if v.TVL == nil {
+		return 0
+	}
+	return v.TVL.Close
+}
+
+func (v *KongVault) GetDebts() []KongDebt {
+	if v.Debts == nil {
+		return []KongDebt{}
+	}
+	return v.Debts
+	
 }
 
 func (v *KongVault) GetTVL() float64 {
@@ -501,11 +626,12 @@ func FetchVaultsFromKong(chainID uint64, strategiesByVault map[common.Address][]
 		}
 
 		vaultData[vaultAddr] = KongVaultData{
-			Vault:      vault,
-			Strategies: vaultStrategies,
-			APY:        vault.GetAPY(),
-			Debts:      vault.GetDebts(),
-			TVL:        vault.GetTVL(),
+			Vault:       vault,
+			Strategies:  vaultStrategies,
+			APY:         vault.GetAPY(),
+			Debts:       vault.GetDebts(),
+			TVL:         vault.GetTVL(),
+			TotalAssets: vault.TotalAssets,
 		}
 	}
 

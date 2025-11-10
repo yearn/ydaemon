@@ -462,3 +462,11 @@ func GetKongAPY(chainID uint64, vaultAddress common.Address) (models.KongAPY, bo
     }
     return data.APY, true
 }
+
+func GetKongTotalAssets(chainID uint64, vaultAddress common.Address) (*bigNumber.Int, bool) {
+	data, ok := GetKongVaultData(chainID, vaultAddress)
+	if !ok {
+		return nil, false
+	}
+	return data.TotalAssets, true
+}

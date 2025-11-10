@@ -133,6 +133,7 @@ type TExternalVaultInfo struct {
 	RiskLevel        int8     `json:"riskLevel"`           // The risk level of the vault. The value is a calculated from the sum of all risk score from the object for Single Strategy Vaults. Multi-Strategy Vault, highest `riskLevel` of all strategies is set. 1 is the most secure and 5 is the least secure.
 	UINotice         string   `json:"uiNotice,omitempty"`  // The notice to display in the UI
 	IsRetired        bool     `json:"isRetired"`
+	IsHidden         bool     `json:"isHidden"`
 	IsBoosted        bool     `json:"isBoosted"`
 	IsHighlighted    bool     `json:"isHighlighted"`
 	RiskScore        [11]int8 `json:"riskScore"`                  // All risk scores of the Single Strategy Vault. Multi-Strategy Vault won't have this object because its risk score is combination of multiple vaults. For risk value use `riskLevel`. (empty for Multi-Strategy Vault). Array of 11 integers: [review, testing, complexity, riskExposure, protocolIntegration, centralizationRisk, externalProtocolAudit, externalProtocolCentralisation, externalProtocolTvl, externalProtocolLongevity, externalProtocolType]
@@ -359,17 +360,9 @@ func ApplyKongData(externalVault *TExternalVault, vault models.TVault) {
 		return
 	}
 
-	// Apply kong fees with priority: hook > snapshot > vault model
-	managementFee := kongData.Snapshot.ManagementFee.Value
-	performanceFee := kongData.Snapshot.PerformanceFee.Value
-
-	// Override with hook fees if they exist (hook takes precedence)
-	if kongData.Hook.Fees.ManagementFee != 0 {
-		managementFee = kongData.Hook.Fees.ManagementFee
-	}
-	if kongData.Hook.Fees.PerformanceFee != 0 {
-		performanceFee = kongData.Hook.Fees.PerformanceFee
-	}
+	// Apply Kong fees (already in basis points from Kong API)
+	managementFee := kongData.ManagementFee
+	performanceFee := kongData.PerformanceFee
 
 	// Convert from basis points to percentage and apply to APR fees
 	externalVault.APR.Fees.Management = bigNumber.NewFloat(float64(managementFee) / 10000.0)
@@ -507,6 +500,7 @@ func CreateExternalVault(vault models.TVault) (TExternalVault, error) {
 		Info: TExternalVaultInfo{
 			SourceURL: vault.Metadata.SourceURI,
 			RiskLevel: vault.Metadata.RiskLevel,
+			IsHidden:  vault.Metadata.IsHidden,
 			RiskScore: [11]int8{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 		},
 	}

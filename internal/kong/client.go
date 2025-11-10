@@ -437,7 +437,7 @@ func (v *KongVault) GetStrategies() []common.Address {
 
 type KongVaultData struct {
 	Vault      KongVault
-	Strategies []models.KongStrategy
+	Strategies []common.Address
 	Debts      []KongDebt
 	TVL        float64
 	APY        models.KongAPY
@@ -446,6 +446,21 @@ type KongVaultData struct {
 
 func (v *KongVault) GetAPIVersion() string {
 	return v.APIVersion
+}
+
+func (v *KongVault) GetTVL() float64 {
+	if v.TVL == nil {
+		return 0
+	}
+	return v.TVL.Close
+}
+
+func (v *KongVault) GetDebts() []KongDebt {
+	if v.Debts == nil {
+		return []KongDebt{}
+	}
+	return v.Debts
+	
 }
 
 func (v *KongVault) GetTVL() float64 {

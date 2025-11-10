@@ -11,5 +11,7 @@ import (
 // Method is either append or replace. Append will only look for the strats for the provided vaultsList. Replace will look for all the strats for the provided chainID.
 func ProcessNewVault(chainID uint64, vaultsList map[common.Address]models.TVaultsFromRegistry, method fetcher.TProcessNewVaultMethod) (map[common.Address]models.TVault, map[string]models.TStrategy) {
 	vaultMap := fetcher.RetrieveAllVaults(chainID, vaultsList, method)
-	return vaultMap, map[string]models.TStrategy{}
+	strategiesMap := IndexNewStrategies(chainID, vaultMap)
+	fetcher.RetrieveAllStrategies(chainID, strategiesMap)
+	return vaultMap, strategiesMap
 }

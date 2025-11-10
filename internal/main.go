@@ -86,6 +86,16 @@ func initVaults(chainID uint64) (
 	return registries, strategiesMap, vaultMap, tokenMap
 }
 
+func initStrategies(chainID uint64, vaultMap map[common.Address]models.TVault) {
+	/** 🔵 - Yearn *************************************************************************************
+	** initStrategies is only called on initialization. It's first job is to retrieve the strategies
+	** from Kong (complete replacement for contract querying), then to schedule retrieval
+	**************************************************************************************************/
+	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
+	fetcher.RetrieveAllStrategies(chainID, strategiesMap)
+	logs.Success(chainID, `-`, `InitStrategies (Kong) ✅`, len(strategiesMap))
+}
+
 func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
@@ -150,6 +160,9 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 				tStake := time.Now()
 				initStakingPools(chainID)
 				logs.Info(fmt.Sprintf("🧩 [SNAPSHOT] staking init chain=%d took=%s", chainID, time.Since(tStake)))
+				tStrats := time.Now()
+				initStrategies(chainID, vaultMap)
+				logs.Info(fmt.Sprintf("🧩 [SNAPSHOT] strategies init chain=%d took=%s", chainID, time.Since(tStrats)))
 				/**********************************************************************************************
 				** Retrieving prices and strategies for all the given token and strategies on that chain.
 				** This is done in parallel to speed up the process and reduce the time it takes to complete.

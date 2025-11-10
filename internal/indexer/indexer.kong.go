@@ -89,3 +89,37 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 	logs.Success(chainID, `-`, `Indexed %d vaults from Kong (complete replacement)`, len(vaultsFromKong))
 	return vaultsFromKong
 }
+
+func IndexNewStrategies(chainID uint64, vaultMap map[common.Address]models.TVault) map[string]models.TStrategy {
+	logs.Info(chainID, `-`, `Fetching all strategies from Kong GraphQL API (single source of truth)`)
+
+	strategiesByVault, err := kong.FetchStrategiesFromKong(chainID)
+	if err != nil {
+		logs.Error(chainID, `-`, `CRITICAL: Failed to fetch strategies from Kong: %v`, err)
+		logs.Error(chainID, `-`, `Cannot start yDaemon without Kong data - failing fast`)
+		panic(fmt.Sprintf("Kong GraphQL API unavailable for chain %d: %v", chainID, err))
+	}
+
+	strategiesMap := make(map[string]models.TStrategy)
+	totalStrategies := 0
+
+	// Iterate through strategies mapped by vault
+	for vaultAddr, kongStrategies := range strategiesByVault {
+		for _, kongStrategy := range kongStrategies {
+			strategyAddr := kongStrategy.GetAddress()
+
+			// Store Kong strategy data directly (single source of truth)
+			storage.StoreKongStrategyData(chainID, strategyAddr, vaultAddr, kongStrategy)
+
+			// Use combination of strategy and vault address as key to handle
+			// strategies that may be used by multiple vaults
+			key := strategyAddr.Hex() + "_" + vaultAddr.Hex()
+			strategiesMap[key] = kongStrategy.ToTStrategy()
+			totalStrategies++
+		}
+	}
+
+	logs.Success(chainID, `-`, `Indexed %d strategies from Kong (complete replacement)`, totalStrategies)
+	return strategiesMap
+}
+

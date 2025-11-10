@@ -463,21 +463,6 @@ func (v *KongVault) GetDebts() []KongDebt {
 	
 }
 
-func (v *KongVault) GetTVL() float64 {
-	if v.TVL == nil {
-		return 0
-	}
-	return v.TVL.Close
-}
-
-func (v *KongVault) GetDebts() []KongDebt {
-	if v.Debts == nil {
-		return []KongDebt{}
-	}
-	return v.Debts
-	
-}
-
 
 func (c *Client) FetchStrategiesForChain(ctx context.Context, chainID uint64) ([]models.KongStrategy, error) {
 	query := `
@@ -605,7 +590,7 @@ func (c *Client) FetchStrategiesForChain(ctx context.Context, chainID uint64) ([
 	return strategiesResp.Strategies, nil
 }
 
-func FetchVaultsFromKong(chainID uint64, strategiesByVault map[common.Address][]models.KongStrategy) (map[common.Address]KongVaultData, error) {
+func FetchVaultsFromKong(chainID uint64) (map[common.Address]KongVaultData, error) {
 	ctx := context.Background()
 	client := NewClient()
 
@@ -619,15 +604,8 @@ func FetchVaultsFromKong(chainID uint64, strategiesByVault map[common.Address][]
 	for _, vault := range vaults {
 		vaultAddr := vault.GetAddress()
 
-		// Use strategies from the provided map (already fetched)
-		var vaultStrategies []models.KongStrategy
-		if strategies, ok := strategiesByVault[vaultAddr]; ok {
-			vaultStrategies = strategies
-		}
-
 		vaultData[vaultAddr] = KongVaultData{
 			Vault:       vault,
-			Strategies:  vaultStrategies,
 			APY:         vault.GetAPY(),
 			Debts:       vault.GetDebts(),
 			TVL:         vault.GetTVL(),

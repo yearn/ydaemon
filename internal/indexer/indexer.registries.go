@@ -79,6 +79,7 @@ func filterNewVault(
 					ProcessNewVault(
 						chainID,
 						map[common.Address]models.TVaultsFromRegistry{historicalVault.Address: historicalVault},
+						nil, // Legacy registry flow - strategies will be fetched
 						fetcher.ProcessNewVaultMethodAppend,
 					)
 				}
@@ -98,6 +99,7 @@ func filterNewVault(
 					ProcessNewVault(
 						chainID,
 						map[common.Address]models.TVaultsFromRegistry{historicalVault.Address: historicalVault},
+						nil, // Legacy registry flow - strategies will be fetched
 						fetcher.ProcessNewVaultMethodAppend,
 					)
 				}
@@ -116,6 +118,7 @@ func filterNewVault(
 					ProcessNewVault(
 						chainID,
 						map[common.Address]models.TVaultsFromRegistry{historicalVault.Address: historicalVault},
+						nil, // Legacy registry flow - strategies will be fetched
 						fetcher.ProcessNewVaultMethodAppend,
 					)
 				}
@@ -134,6 +137,7 @@ func filterNewVault(
 					ProcessNewVault(
 						chainID,
 						map[common.Address]models.TVaultsFromRegistry{historicalVault.Address: historicalVault},
+						nil, // Legacy registry flow - strategies will be fetched
 						fetcher.ProcessNewVaultMethodAppend,
 					)
 				}
@@ -152,6 +156,7 @@ func filterNewVault(
 					ProcessNewVault(
 						chainID,
 						map[common.Address]models.TVaultsFromRegistry{historicalVault.Address: historicalVault},
+						nil, // Legacy registry flow - strategies will be fetched
 						fetcher.ProcessNewVaultMethodAppend,
 					)
 				}
@@ -244,6 +249,7 @@ func watchNewVaults(
 					ProcessNewVault(
 						chainID,
 						map[common.Address]models.TVaultsFromRegistry{newVault.Address: newVault},
+						nil, // Legacy registry flow - strategies will be fetched
 						fetcher.ProcessNewVaultMethodAppend,
 					)
 					continue
@@ -255,6 +261,7 @@ func watchNewVaults(
 					ProcessNewVault(
 						chainID,
 						map[common.Address]models.TVaultsFromRegistry{newVault.Address: newVault},
+						nil, // Legacy registry flow - strategies will be fetched
 						fetcher.ProcessNewVaultMethodAppend,
 					)
 				}
@@ -312,6 +319,7 @@ func watchNewVaults(
 				ProcessNewVault(
 					chainID,
 					map[common.Address]models.TVaultsFromRegistry{newVault.Address: newVault},
+					nil, // Legacy registry flow - strategies will be fetched
 					fetcher.ProcessNewVaultMethodAppend,
 				)
 			case err := <-sub.Err():
@@ -368,6 +376,7 @@ func watchNewVaults(
 				ProcessNewVault(
 					chainID,
 					map[common.Address]models.TVaultsFromRegistry{newVault.Address: newVault},
+					nil, // Legacy registry flow - strategies will be fetched
 					fetcher.ProcessNewVaultMethodAppend,
 				)
 			case err := <-sub.Err():
@@ -425,6 +434,7 @@ func watchNewVaults(
 				ProcessNewVault(
 					chainID,
 					map[common.Address]models.TVaultsFromRegistry{newVault.Address: newVault},
+					nil, // Legacy registry flow - strategies will be fetched
 					fetcher.ProcessNewVaultMethodAppend,
 				)
 			case err := <-sub.Err():
@@ -481,6 +491,7 @@ func watchNewVaults(
 				ProcessNewVault(
 					chainID,
 					map[common.Address]models.TVaultsFromRegistry{newVault.Address: newVault},
+					nil, // Legacy registry flow - strategies will be fetched
 					fetcher.ProcessNewVaultMethodAppend,
 				)
 			case err := <-sub.Err():

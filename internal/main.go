@@ -11,6 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/indexer"
+	"github.com/yearn/ydaemon/internal/kong"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/processes/apr"
@@ -76,22 +77,45 @@ func initVaults(chainID uint64) (
 	**************************************************************************************************/
 	indexer.IndexYearnXPoolTogetherVaults(chainID)
 	indexer.IndexYearnXCoveVaults(chainID)
-	// Use Kong as complete replacement for registry discovery
-	registries := indexer.IndexNewVaults(chainID)
+
+	// First, fetch strategies from Kong (single fetch, used by both vaults and strategies initialization)
+	logs.Info(chainID, `-`, `Fetching strategies from Kong GraphQL API (single source of truth)`)
+	strategiesByVault, err := kong.FetchStrategiesFromKong(chainID)
+	if err != nil {
+		logs.Error(chainID, `-`, `CRITICAL: Failed to fetch strategies from Kong: %v`, err)
+		panic(fmt.Sprintf("Kong GraphQL API unavailable for strategies on chain %d: %v", chainID, err))
+	}
+
+	// Store all strategies in storage and build strategiesMap
+	strategiesMap := make(map[string]models.TStrategy)
+	for vaultAddr, kongStrategies := range strategiesByVault {
+		for _, kongStrategy := range kongStrategies {
+			strategyAddr := kongStrategy.GetAddress()
+			// Store Kong strategy data directly (single source of truth)
+			storage.StoreKongStrategyData(chainID, strategyAddr, vaultAddr, kongStrategy)
+
+			// Build strategiesMap with strategy_vault key format
+			key := strategyAddr.Hex() + "_" + vaultAddr.Hex()
+			strategiesMap[key] = kongStrategy.ToTStrategy()
+		}
+	}
+	logs.Success(chainID, `-`, `Fetched and stored %d strategies from Kong`, len(strategiesMap))
+
+	// Use Kong as complete replacement for registry discovery, passing pre-fetched strategies
+	registries := indexer.IndexNewVaults(chainID, strategiesByVault)
 	logs.Success(chainID, `-`, `InitVaults (Kong) ✅`, len(registries))
-	vaultMap, strategiesMap := indexer.ProcessNewVault(chainID, registries, fetcher.ProcessNewVaultMethodReplace)
+	vaultMap, _ := indexer.ProcessNewVault(chainID, registries, strategiesMap, fetcher.ProcessNewVaultMethodReplace)
 	logs.Success(chainID, `-`, `InitVaults ✅`, len(vaultMap))
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
 	logs.Success(chainID, `-`, `InitTokens ✅`, len(tokenMap))
 	return registries, strategiesMap, vaultMap, tokenMap
 }
 
-func initStrategies(chainID uint64, vaultMap map[common.Address]models.TVault) {
+func initStrategies(chainID uint64, strategiesMap map[string]models.TStrategy) {
 	/** 🔵 - Yearn *************************************************************************************
-	** initStrategies is only called on initialization. It's first job is to retrieve the strategies
-	** from Kong (complete replacement for contract querying), then to schedule retrieval
+	** initStrategies is only called on initialization. It receives pre-fetched strategies from
+	** initVaults to avoid duplicate Kong API calls, then schedules retrieval of strategy details.
 	**************************************************************************************************/
-	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
 	fetcher.RetrieveAllStrategies(chainID, strategiesMap)
 	logs.Success(chainID, `-`, `InitStrategies (Kong) ✅`, len(strategiesMap))
 }
@@ -103,6 +127,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 
 	var vaultMap map[common.Address]models.TVault
 	var tokenMap map[common.Address]models.TERC20Token
+	var strategiesMap map[string]models.TStrategy
 
 	scheduler, err := gocron.NewScheduler()
 	if err != nil {
@@ -147,7 +172,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 				defer endJob(chainID, "SNAPSHOT30M", id, started)
 
 				logs.Warning(fmt.Sprintf("🧩 [SNAPSHOT] initVaults start chain=%d", chainID))
-				_, _, vaultMap, tokenMap = initVaults(chainID)
+				_, strategiesMap, vaultMap, tokenMap = initVaults(chainID)
 				logs.Success(fmt.Sprintf("🧩 [SNAPSHOT] initVaults done chain=%d vaults=%d tokens=%d", chainID, len(vaultMap), len(tokenMap)))
 
 				tRiskAvail := time.Now()
@@ -161,7 +186,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 				initStakingPools(chainID)
 				logs.Info(fmt.Sprintf("🧩 [SNAPSHOT] staking init chain=%d took=%s", chainID, time.Since(tStake)))
 				tStrats := time.Now()
-				initStrategies(chainID, vaultMap)
+				initStrategies(chainID, strategiesMap)
 				logs.Info(fmt.Sprintf("🧩 [SNAPSHOT] strategies init chain=%d took=%s", chainID, time.Since(tStrats)))
 				/**********************************************************************************************
 				** Retrieving prices and strategies for all the given token and strategies on that chain.

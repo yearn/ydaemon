@@ -10,25 +10,18 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistry {
-	logs.Info(chainID, `-`, `Fetching all vaults and strategies from Kong GraphQL API (single source of truth)`)
+func IndexNewVaults(chainID uint64, strategiesByVault map[common.Address][]models.KongStrategy) map[common.Address]models.TVaultsFromRegistry {
+	logs.Info(chainID, `-`, `Fetching all vaults from Kong GraphQL API (single source of truth)`)
 
-	// Fetch strategies first so we can pass them to FetchVaultsFromKong
-	strategiesByVault, err := kong.FetchStrategiesFromKong(chainID)
-	if err != nil {
-		logs.Error(chainID, `-`, `CRITICAL: Failed to fetch strategies from Kong: %v`, err)
-		logs.Error(chainID, `-`, `Cannot start yDaemon without Kong data - failing fast`)
-		panic(fmt.Sprintf("Kong GraphQL API unavailable for chain %d: %v", chainID, err))
-	}
-
-	kongVaultData, err := kong.FetchVaultsFromKong(chainID, strategiesByVault)
+	kongVaultData, err := kong.FetchVaultsFromKong(chainID)
 	if err != nil {
 		logs.Error(chainID, `-`, `CRITICAL: Failed to fetch vaults from Kong: %v`, err)
 		logs.Error(chainID, `-`, `Cannot start yDaemon without Kong data - failing fast`)
 		panic(fmt.Sprintf("Kong GraphQL API unavailable for chain %d: %v", chainID, err))
 	}
-	
+
 	vaultsFromKong := make(map[common.Address]models.TVaultsFromRegistry)
+	
 
 	for vaultAddr, data := range kongVaultData {
 		// Type and Kind will be populated by CMS metadata refresh
@@ -73,14 +66,20 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 				MaxDebtRatio:       debt.MaxDebtRatio,
 			})
 		}
-		
+
+		// Get strategies for this vault from the pre-fetched map
+		vaultStrategies := strategiesByVault[vaultAddr]
+		if vaultStrategies == nil {
+			vaultStrategies = []models.KongStrategy{}
+		}
+
 		kongSchema := models.TKongVaultSchema{
 			ManagementFee:  data.Vault.GetManagementFee(),
 			PerformanceFee: data.Vault.GetPerformanceFee(),
 			APY: data.APY,
 			Debts: debts,
 			TVL: data.TVL,
-			Strategies: data.Strategies,
+			Strategies: vaultStrategies,
 			TotalAssets: data.TotalAssets,
 		}
 		storage.StoreKongVaultData(chainID, vaultAddr, kongSchema)

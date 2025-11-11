@@ -62,6 +62,10 @@ var KATANA = TChain{
 			Label:   `PUBLIC_ERC4626`,
 		},
 	},
+	APROracleContract: TContractData{
+		Address: common.HexToAddress(`0x1981AD9F44F2EA9aDd2dC4AD7D075c102C70aF92`),
+		Block:   2237016,
+	},
 	ExtraVaults:       []models.TVaultsFromRegistry{},
 	BlacklistedVaults: []common.Address{},
 	ExtraTokens:       []common.Address{},

@@ -181,15 +181,18 @@ func ApplyCmsStrategyMeta(strategyMeta models.TStrategyCmsMetadataSchema, strate
 	// Apply boolean fields
 	strategy.IsRetired = strategyMeta.IsRetired
 
-	// Apply string fields (handle nil pointers)
 	if strategyMeta.DisplayName != nil {
-		strategy.DisplayName = *strategyMeta.DisplayName
+		if strategy.DisplayName == "" {
+			strategy.DisplayName = *strategyMeta.DisplayName
+		}
 	}
 	if strategyMeta.Description != nil {
-		strategy.Description = *strategyMeta.Description
+		if *strategyMeta.Description != "" || strategy.Description == "" {
+			strategy.Description = *strategyMeta.Description
+		}
 	}
 
-	// Apply protocols array
+	// Apply protocols array (always apply, even if empty, to ensure consistency)
 	strategy.Protocols = strategyMeta.Protocols
 }
 

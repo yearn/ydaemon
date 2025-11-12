@@ -15,11 +15,8 @@ func ProcessNewVault(chainID uint64, vaultsList map[common.Address]models.TVault
 
 	// If strategiesMap was provided (Kong-based flow), use it; otherwise fetch from Kong
 	var strategiesMap map[string]models.TStrategy
-	if strategiesMapOrNil != nil && len(strategiesMapOrNil) > 0 {
+	if len(strategiesMapOrNil) > 0 {
 		strategiesMap = strategiesMapOrNil
-	} else {
-		// Legacy flow or empty strategies: fetch from Kong
-		strategiesMap = IndexNewStrategies(chainID, vaultMap)
 	}
 
 	fetcher.RetrieveAllStrategies(chainID, strategiesMap)

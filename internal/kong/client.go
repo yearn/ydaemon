@@ -460,9 +460,7 @@ func (v *KongVault) GetDebts() []KongDebt {
 		return []KongDebt{}
 	}
 	return v.Debts
-	
 }
-
 
 func (c *Client) FetchStrategiesForChain(ctx context.Context, chainID uint64) ([]models.KongStrategy, error) {
 	query := `

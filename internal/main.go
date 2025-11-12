@@ -86,6 +86,9 @@ func initVaults(chainID uint64) (
 		panic(fmt.Sprintf("Kong GraphQL API unavailable for strategies on chain %d: %v", chainID, err))
 	}
 
+	// Fetch CMS metadata to apply to strategies
+	cmsMeta := storage.FetchCmsStrategiesMeta(chainID)
+
 	// Store all strategies in storage and build strategiesMap
 	strategiesMap := make(map[string]models.TStrategy)
 	for vaultAddr, kongStrategies := range strategiesByVault {
@@ -94,9 +97,18 @@ func initVaults(chainID uint64) (
 			// Store Kong strategy data directly (single source of truth)
 			storage.StoreKongStrategyData(chainID, strategyAddr, vaultAddr, kongStrategy)
 
+			// Convert KongStrategy to TStrategy
+			strategy := kongStrategy.ToTStrategy()
+
+			// Apply CMS metadata if available
+			normalizedAddress := common.HexToAddress(strategyAddr.Hex())
+			if strategyMeta, ok := cmsMeta[normalizedAddress]; ok {
+				storage.ApplyCmsStrategyMeta(strategyMeta, &strategy)
+			}
+
 			// Build strategiesMap with strategy_vault key format
 			key := strategyAddr.Hex() + "_" + vaultAddr.Hex()
-			strategiesMap[key] = kongStrategy.ToTStrategy()
+			strategiesMap[key] = strategy
 		}
 	}
 	logs.Success(chainID, `-`, `Fetched and stored %d strategies from Kong`, len(strategiesMap))

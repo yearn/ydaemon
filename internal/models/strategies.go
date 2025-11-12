@@ -296,7 +296,7 @@ func (s KongStrategy) ToTStrategy() TStrategy {
 	strategy := TStrategy{
 		Address:       s.GetAddress(),
 		VaultAddress:  s.GetVaultAddress(),
-		Name:          s.GetDisplayName(),
+		Name:          s.GetName(),
 		DisplayName:   s.GetDisplayName(),
 		VaultVersion:  s.GetAPIVersion(),
 		ChainID:       uint64(s.ChainID),
@@ -305,17 +305,21 @@ func (s KongStrategy) ToTStrategy() TStrategy {
 		Activation:    uint64(s.GetInceptBlock()),
 	}
 
-	// DisplayName and Description from Meta
+	// DisplayName and Description from Meta (only if not nil, otherwise leave empty for CMS to fill)
 	if s.Meta != nil {
-		if s.Meta.DisplayName != nil {
+		if s.Meta.DisplayName != nil && *s.Meta.DisplayName != "" {
 			strategy.DisplayName = *s.Meta.DisplayName
 		}
-		if s.Meta.Description != nil {
+		if s.Meta.Description != nil && *s.Meta.Description != "" {
 			strategy.Description = *s.Meta.Description
 		}
 		if s.Meta.Protocols != nil {
 			strategy.Protocols = s.Meta.Protocols
+		} else {
+			strategy.Protocols = []string{}
 		}
+	} else {
+		strategy.Protocols = []string{}
 	}
 
 	// LastReport
@@ -338,6 +342,8 @@ func (s KongStrategy) ToTStrategy() TStrategy {
 		}
 		if s.LastReportDetail.APR != nil && s.LastReportDetail.APR.Net != nil {
 			strategy.NetAPR = *s.LastReportDetail.APR.Net
+			// APR from LastReportDetail is historical/current data, not forward-looking
+			strategy.APRType = APRTypeCurrent
 		}
 	}
 

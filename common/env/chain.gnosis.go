@@ -3,6 +3,7 @@ package env
 import (
 	"math"
 	"strconv"
+	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/models"
@@ -33,7 +34,7 @@ var GNOSIS = TChain{
 		DisplayName:               `DAI`,
 		DisplaySymbol:             `DAI`,
 		Description:               `DAI`,
-		Icon:                      BASE_ASSET_URL + strconv.FormatUint(10, 10) + `/` + DEFAULT_COIN_ADDRESS.Hex() + `/logo-128.png`,
+		Icon:                      BASE_ASSET_URL + strconv.FormatUint(10, 10) + `/` + strings.ToLower(DEFAULT_COIN_ADDRESS.Hex()) + `/logo-128.png`,
 		Decimals:                  18,
 		ChainID:                   10,
 	},

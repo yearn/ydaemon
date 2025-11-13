@@ -3,6 +3,7 @@ package env
 import (
 	"math"
 	"strconv"
+	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/models"
@@ -49,7 +50,7 @@ var ARBITRUM = TChain{
 		DisplayName:               `Arbitrum`,
 		DisplaySymbol:             `ARB`,
 		Description:               `Arbitrum is a Layer 2 scaling solution for Ethereum.`,
-		Icon:                      BASE_ASSET_URL + strconv.FormatUint(42161, 10) + `/` + DEFAULT_COIN_ADDRESS.Hex() + `/logo-128.png`,
+		Icon:                      BASE_ASSET_URL + strconv.FormatUint(42161, 10) + `/` + strings.ToLower(DEFAULT_COIN_ADDRESS.Hex()) + `/logo-128.png`,
 		Decimals:                  18,
 		ChainID:                   42161,
 	},

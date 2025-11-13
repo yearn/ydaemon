@@ -3,6 +3,7 @@ package env
 import (
 	"math"
 	"strconv"
+	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/models"
@@ -43,7 +44,7 @@ var KATANA = TChain{
 		DisplayName:               `Ether`, // unclear if this should be KAT or ETH (which is the gas token)
 		DisplaySymbol:             `ETH`,   // unclear if this should be KAT or ETH (which is the gas token)
 		Description:               `Katana is a DeFi chain for deep liquidity and high yield.`,
-		Icon:                      BASE_ASSET_URL + strconv.FormatUint(747474, 10) + `/` + DEFAULT_COIN_ADDRESS.Hex() + `/logo-128.png`,
+		Icon:                      BASE_ASSET_URL + strconv.FormatUint(747474, 10) + `/` + strings.ToLower(DEFAULT_COIN_ADDRESS.Hex()) + `/logo-128.png`,
 		Decimals:                  18,
 		ChainID:                   747474,
 	},

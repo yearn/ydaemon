@@ -51,7 +51,7 @@ var BASE_DATA_PATH, _ = filepath.Abs(getCurrentPath() + `../../../data/`)
 ** This endpoint provides access to token logo images and other visual resources
 ** used to enhance the UI experience for applications using yDaemon.
 **************************************************************************************************/
-var BASE_ASSET_URL = `https://assets.smold.app/api/token/`
+var BASE_ASSET_URL = `https://cdn.jsdelivr.net/gh/yearn/tokenassets@main/tokens/`
 
 /**************************************************************************************************
 ** GECKO_PRICE_URL contains the base URL for the CoinGecko token pricing API.

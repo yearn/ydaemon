@@ -3,6 +3,7 @@ package env
 import (
 	"math"
 	"strconv"
+	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/models"
@@ -35,7 +36,7 @@ var POLYGON = TChain{
 		DisplayName:               `Matic`,
 		DisplaySymbol:             `Matic`,
 		Description:               `Matic is the Value Layer of the Internet`,
-		Icon:                      BASE_ASSET_URL + strconv.FormatUint(137, 10) + `/` + DEFAULT_COIN_ADDRESS.Hex() + `/logo-128.png`,
+		Icon:                      BASE_ASSET_URL + strconv.FormatUint(137, 10) + `/` + strings.ToLower(DEFAULT_COIN_ADDRESS.Hex()) + `/logo-128.png`,
 		Decimals:                  18,
 		ChainID:                   137,
 	},

@@ -19,6 +19,8 @@ type TRiskScoreYsec struct {
 	RiskScore models.TRiskScore `json:"riskScore"` // The risk score of the vault
 }
 
+type TRiskManifest map[string]TRiskScoreYsec
+
 var (
 	allRisksScores         = make(map[uint64]map[common.Address]TRiskScoreYsec)
 	availableRiskScores    = make(map[uint64]map[common.Address]bool)
@@ -99,6 +101,13 @@ func RetrieveAllRiskScores(chainID uint64, vaults map[common.Address]models.TVau
 	availableRiskScoresMtx.RUnlock()
 
 	for _, vault := range vaults {
+		riskScoresMtx.RLock()
+		if cached, ok := allRisksScores[chainID][vault.Address]; ok {
+			riskScores[vault.Address] = cached
+			riskScoresMtx.RUnlock()
+			continue
+		}
+		riskScoresMtx.RUnlock()
 		if !isAvailable[vault.Address] {
 			continue
 		}
@@ -117,11 +126,33 @@ func RetrieveAllRiskScores(chainID uint64, vaults map[common.Address]models.TVau
 }
 
 func RetrieveAvailableRiskScores(chainID uint64) map[common.Address]bool {
-	availableRiskScoresMtx.Lock()
-	defer availableRiskScoresMtx.Unlock()
+	manifestEntries, err := fetchChainRiskManifest(chainID)
+	if err != nil {
+		logs.Warning(fmt.Sprintf("failed to fetch risk manifest for chain %d: %v", chainID, err))
+	}
 
+	availableRiskScoresMtx.Lock()
 	if availableRiskScores[chainID] == nil {
 		availableRiskScores[chainID] = make(map[common.Address]bool)
+	}
+
+	if len(manifestEntries) > 0 {
+		riskScoresMtx.Lock()
+		if _, ok := allRisksScores[chainID]; !ok {
+			allRisksScores[chainID] = make(map[common.Address]TRiskScoreYsec)
+		}
+		for address, score := range manifestEntries {
+			availableRiskScores[chainID][address] = true
+			allRisksScores[chainID][address] = score
+		}
+		riskScoresMtx.Unlock()
+
+		result := make(map[common.Address]bool, len(availableRiskScores[chainID]))
+		for address := range availableRiskScores[chainID] {
+			result[address] = true
+		}
+		availableRiskScoresMtx.Unlock()
+		return result
 	}
 
 	// Fetch the GitHub tree
@@ -154,7 +185,23 @@ func RetrieveAvailableRiskScores(chainID uint64) map[common.Address]bool {
 	for address := range availableRiskScores[chainID] {
 		result[address] = true
 	}
+	availableRiskScoresMtx.Unlock()
 	return result
+}
+
+func fetchChainRiskManifest(chainID uint64) (map[common.Address]TRiskScoreYsec, error) {
+	manifestURL := fmt.Sprintf("%svaults/%d.json", env.RISK_CDN_URL, chainID)
+	rawManifest, err := helpers.FetchJSONWithReject[TRiskManifest](manifestURL)
+	if err != nil {
+		return nil, err
+	}
+
+	manifest := make(map[common.Address]TRiskScoreYsec, len(rawManifest))
+	for addrStr, score := range rawManifest {
+		address := common.HexToAddress(addrStr)
+		manifest[address] = score
+	}
+	return manifest, nil
 }
 
 /**************************************************************************************************

@@ -127,25 +127,38 @@ func RetrieveAvailableRiskScores(chainID uint64) map[common.Address]bool {
 	// Fetch the GitHub tree
 	treeResponse := helpers.FetchJSON[TGithubTreeResponse]("https://api.github.com/repos/yearn/risk-score/git/trees/master?recursive=1")
 
-	// Parse the tree to find risk scores for this chain in both directories
-	strategyPrefix := fmt.Sprintf("strategy/%d/", chainID)
-	vaultsPrefix := fmt.Sprintf("vaults/%d/", chainID)
+	// Check if a manifest file exists for this chain
+	manifestPath := fmt.Sprintf("vaults/%d.json", chainID)
+	manifestExists := false
 
 	for _, item := range treeResponse.Tree {
-		var addressStr string
-
-		// Check strategy directory (legacy location)
-		if strings.HasPrefix(item.Path, strategyPrefix) && strings.HasSuffix(item.Path, ".json") {
-			addressStr = strings.TrimSuffix(strings.TrimPrefix(item.Path, strategyPrefix), ".json")
+		if item.Path == manifestPath {
+			manifestExists = true
+			break
 		}
-		// Check vaults directory (new location)
-		if strings.HasPrefix(item.Path, vaultsPrefix) && strings.HasSuffix(item.Path, ".json") {
-			addressStr = strings.TrimSuffix(strings.TrimPrefix(item.Path, vaultsPrefix), ".json")
-		}
+	}
 
-		if addressStr != "" {
-			address := common.HexToAddress(addressStr)
-			availableRiskScores[chainID][address] = true
+	// If manifest exists, fetch it and extract all vault addresses
+	if manifestExists {
+		manifestURL := env.RISK_CDN_URL + manifestPath
+		manifest, err := helpers.FetchJSONWithReject[map[string]TRiskScoreYsec](manifestURL)
+		if err == nil {
+			// Initialize the allRisksScores map for this chain if needed
+			riskScoresMtx.Lock()
+			if allRisksScores[chainID] == nil {
+				allRisksScores[chainID] = make(map[common.Address]TRiskScoreYsec)
+			}
+			riskScoresMtx.Unlock()
+
+			for addressStr, riskScore := range manifest {
+				address := common.HexToAddress(addressStr)
+				availableRiskScores[chainID][address] = true
+
+				// Also populate the cache while we're at it
+				riskScoresMtx.Lock()
+				allRisksScores[chainID][address] = riskScore
+				riskScoresMtx.Unlock()
+			}
 		}
 	}
 

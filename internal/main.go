@@ -150,12 +150,9 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 				_, _, vaultMap, tokenMap = initVaults(chainID)
 				logs.Success(fmt.Sprintf("🧩 [SNAPSHOT] initVaults done chain=%d vaults=%d tokens=%d", chainID, len(vaultMap), len(tokenMap)))
 
-				tRiskAvail := time.Now()
+				tRisk := time.Now()
 				risks.RetrieveAvailableRiskScores(chainID)
-				logs.Info(fmt.Sprintf("🧩 [SNAPSHOT] risks availability chain=%d took=%s", chainID, time.Since(tRiskAvail)))
-				tRiskAll := time.Now()
-				risks.RetrieveAllRiskScores(chainID, vaultMap)
-				logs.Info(fmt.Sprintf("🧩 [SNAPSHOT] risks full chain=%d took=%s", chainID, time.Since(tRiskAll)))
+				logs.Info(fmt.Sprintf("🧩 [SNAPSHOT] risks loaded chain=%d took=%s", chainID, time.Since(tRisk)))
 
 				tStake := time.Now()
 				initStakingPools(chainID)

@@ -3,14 +3,11 @@ package risks
 import (
 	"errors"
 	"fmt"
-	"strconv"
-	"strings"
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -20,153 +17,28 @@ type TRiskScoreYsec struct {
 }
 
 var (
-	allRisksScores         = make(map[uint64]map[common.Address]TRiskScoreYsec)
-	availableRiskScores    = make(map[uint64]map[common.Address]bool)
-	riskScoresMtx          sync.RWMutex
-	availableRiskScoresMtx sync.RWMutex
+	allRisksScores = make(map[uint64]map[common.Address]TRiskScoreYsec)
+	riskScoresMtx  sync.RWMutex
 )
 
-type TGithubTreeResponse struct {
-	Tree []struct {
-		Path string `json:"path"`
-	} `json:"tree"`
-}
+func RetrieveAvailableRiskScores(chainID uint64) map[common.Address]bool {
+	result := make(map[common.Address]bool)
 
-/**************************************************************************************************
-** fetchVaultsRiskScore will fetch the risk scores for a specific vault from a GitHub repository.
-** The scores are stored in JSON files organized by chain ID and vault address.
-** This function tries multiple locations and address formats in order:
-** 1. strategy/ directory with checksummed address (legacy location)
-** 2. strategy/ directory with lowercase address (legacy location)
-** 3. vaults/ directory with checksummed address (new location)
-** 4. vaults/ directory with lowercase address (new location)
-** If the risk scores are not found in any location/format, it will return an error.
-**
-** Arguments:
-** - chainID: the chain ID of the network we are working on
-** - vaultAddress: the address of the vault to fetch the risk scores for
-**
-** Returns:
-** - a TRiskScoreYsec structure containing the risk scores for the vault
-**************************************************************************************************/
-func fetchVaultsRiskScore(chainID uint64, vaultAddress common.Address) (TRiskScoreYsec, error) {
-	baseURL := env.RISK_CDN_URL
-	chainIDStr := strconv.FormatUint(chainID, 10)
-	vaultHex := vaultAddress.Hex()
-	vaultHexLower := strings.ToLower(vaultHex)
-
-	vaultsURILowercase := baseURL + "vaults/" + chainIDStr + "/" + vaultHexLower + ".json"
-	riskScores, err := helpers.FetchJSONWithReject[TRiskScoreYsec](vaultsURILowercase)
+	manifestURL := env.RISK_CDN_URL + fmt.Sprintf("vaults/%d.json", chainID)
+	manifest, err := helpers.FetchJSONWithReject[map[string]TRiskScoreYsec](manifestURL)
 	if err == nil {
-		logs.Success("Fetch risk score (lowercase)/")
-		return riskScores, nil
-	}
-
-	vaultsURIChecksummed := baseURL + "vaults/" + chainIDStr + "/" + vaultHex + ".json"
-	riskScores, err = helpers.FetchJSONWithReject[TRiskScoreYsec](vaultsURIChecksummed)
-	if err == nil {
-		logs.Success("Fetch risk score (checksummed)/")
-		return riskScores, nil
-	}
-
-	logs.Warning("No risk scores", vaultAddress.Hex())
-	return TRiskScoreYsec{}, err
-}
-
-/**************************************************************************************************
-** RetrieveAllRiskScores will fetch the risk scores for a list of vaults from a GitHub repository.
-** The scores are stored in JSON files organized by chain ID and vault address.
-** If the risk scores are not found, it will return an empty TRiskScore structure.
-**
-** Arguments:
-** - chainID: the chain ID of the network we are working on
-** - vaults: the list of vaults to fetch the risk scores for
-**
-** Returns:
-** - a map of vaultAddress -> TRiskScoreYsec
-**************************************************************************************************/
-func RetrieveAllRiskScores(chainID uint64, vaults map[common.Address]models.TVault) map[common.Address]TRiskScoreYsec {
-	riskScores := make(map[common.Address]TRiskScoreYsec)
-
-	riskScoresMtx.Lock()
-	if _, ok := allRisksScores[chainID]; !ok {
-		allRisksScores[chainID] = make(map[common.Address]TRiskScoreYsec)
-	}
-	riskScoresMtx.Unlock()
-
-	availableRiskScoresMtx.RLock()
-	isAvailable := availableRiskScores[chainID]
-	availableRiskScoresMtx.RUnlock()
-
-	for _, vault := range vaults {
-		if !isAvailable[vault.Address] {
-			continue
-		}
-		result, err := fetchVaultsRiskScore(chainID, vault.Address)
-		if err != nil {
-			logs.Error(err)
-			continue
-		}
-		riskScores[vault.Address] = result
-
 		riskScoresMtx.Lock()
-		allRisksScores[chainID][vault.Address] = result
+		if allRisksScores[chainID] == nil {
+			allRisksScores[chainID] = make(map[common.Address]TRiskScoreYsec)
+		}
+		for addressStr, riskScore := range manifest {
+			address := common.HexToAddress(addressStr)
+			allRisksScores[chainID][address] = riskScore
+			result[address] = true
+		}
 		riskScoresMtx.Unlock()
 	}
-	return riskScores
-}
 
-func RetrieveAvailableRiskScores(chainID uint64) map[common.Address]bool {
-	availableRiskScoresMtx.Lock()
-	defer availableRiskScoresMtx.Unlock()
-
-	if availableRiskScores[chainID] == nil {
-		availableRiskScores[chainID] = make(map[common.Address]bool)
-	}
-
-	// Fetch the GitHub tree
-	treeResponse := helpers.FetchJSON[TGithubTreeResponse]("https://api.github.com/repos/yearn/risk-score/git/trees/master?recursive=1")
-
-	// Check if a manifest file exists for this chain
-	manifestPath := fmt.Sprintf("vaults/%d.json", chainID)
-	manifestExists := false
-
-	for _, item := range treeResponse.Tree {
-		if item.Path == manifestPath {
-			manifestExists = true
-			break
-		}
-	}
-
-	// If manifest exists, fetch it and extract all vault addresses
-	if manifestExists {
-		manifestURL := env.RISK_CDN_URL + manifestPath
-		manifest, err := helpers.FetchJSONWithReject[map[string]TRiskScoreYsec](manifestURL)
-		if err == nil {
-			// Initialize the allRisksScores map for this chain if needed
-			riskScoresMtx.Lock()
-			if allRisksScores[chainID] == nil {
-				allRisksScores[chainID] = make(map[common.Address]TRiskScoreYsec)
-			}
-			riskScoresMtx.Unlock()
-
-			for addressStr, riskScore := range manifest {
-				address := common.HexToAddress(addressStr)
-				availableRiskScores[chainID][address] = true
-
-				// Also populate the cache while we're at it
-				riskScoresMtx.Lock()
-				allRisksScores[chainID][address] = riskScore
-				riskScoresMtx.Unlock()
-			}
-		}
-	}
-
-	// Convert to the required return type
-	result := make(map[common.Address]bool)
-	for address := range availableRiskScores[chainID] {
-		result[address] = true
-	}
 	return result
 }
 

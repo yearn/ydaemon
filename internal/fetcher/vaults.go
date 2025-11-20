@@ -1,7 +1,6 @@
 package fetcher
 
 import (
-	"encoding/json"
 	"strconv"
 	"strings"
 
@@ -90,6 +89,9 @@ func fetchVaultsBasicInformations(
 			if vault.Metadata.IsRetired && !isException {
 				continue
 			}
+			// Preserve debts and other Kong data before processing
+			preservedDebts := vault.Debts
+			preservedKongTVL := vault.KongTVL
 			newVault := vault
 			newVault.ChainID = chainID
 			versionMajor := strings.Split(vault.Version, `.`)[0]
@@ -98,6 +100,9 @@ func fetchVaultsBasicInformations(
 			} else {
 				newVault = handleV2VaultCalls(vault, response)
 			}
+			// Restore preserved Kong data
+			newVault.Debts = preservedDebts
+			newVault.KongTVL = preservedKongTVL
 			vaultList = append(vaultList, newVault)
 		}
 	}
@@ -168,11 +173,8 @@ func RetrieveAllVaults(
 				Activation:   currentVault.BlockNumber,
 			}
 			
-			// Assign Kong debts to vault
 			if kongDebts, ok := storage.GetKongDebts(chainID, currentVault.Address); ok {
-				if kongDebtsJSON, err := json.Marshal(kongDebts); err == nil {
-					newVault.KongDebts = string(kongDebtsJSON)
-				}
+				newVault.Debts = kongDebts
 			}
 			// Assign Kong TVL to vault
 			if kongTVL, ok := storage.GetKongTVL(chainID, currentVault.Address); ok {
@@ -205,9 +207,7 @@ func RetrieveAllVaults(
 
 				// Assign Kong debts to vault
 				if kongDebts, ok := storage.GetKongDebts(chainID, currentVault.Address); ok {
-					if kongDebtsJSON, err := json.Marshal(kongDebts); err == nil {
-						newVault.KongDebts = string(kongDebtsJSON)
-					}
+					newVault.Debts = kongDebts
 				}
 				// Assign Kong TVL to vault
 				if kongTVL, ok := storage.GetKongTVL(chainID, currentVault.Address); ok {
@@ -228,6 +228,10 @@ func RetrieveAllVaults(
 	**********************************************************************************************/
 	for _, vault := range newVaultList {
 		vault.ChainID = chainID
+		// Ensure Kong debts are preserved if they exist
+		if kongDebts, ok := storage.GetKongDebts(chainID, vault.Address); ok && len(kongDebts) > 0 {
+			vault.Debts = kongDebts
+		}
 		/******************************************************************************************
 		** In some situation, a vault can be added to multiple registries: by default the public
 		** one, and sometime another one on top which should be considered as the actual one.
@@ -299,7 +303,7 @@ func RetrieveAllVaults(
 	** registry address of the vault we have in the vaults map.
 	**********************************************************************************************/
 	vaultMapFromStorage, _ := storage.ListVaults(chainID)
-	for _, vault := range vaultMap {
+	for _, vault := range vaultMapFromStorage {
 		/******************************************************************************************
 		** In some situation, a vault can be added to multiple registries: by default the public
 		** one, and sometime another one on top which should be considered as the actual one.
@@ -354,6 +358,10 @@ func RetrieveAllVaults(
 			if category != `Volatile` {
 				vault.Metadata.Category = models.TVaultCategoryType(category)
 			}
+		}
+		// Ensure Kong debts are preserved if they exist
+		if kongDebts, ok := storage.GetKongDebts(chainID, vault.Address); ok && len(kongDebts) > 0 {
+			vault.Debts = kongDebts
 		}
 		vaultMapFromStorage[vault.Address] = vault
 	}

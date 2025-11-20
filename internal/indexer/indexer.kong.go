@@ -74,8 +74,14 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 			Debts: debts,
 			TVL: data.Vault.GetTVL(),
 			TotalAssets: data.TotalAssets,
+			StrategyAddresses: data.Vault.GetStrategies(),
 		}
 		storage.StoreKongVaultData(chainID, vaultAddr, kongSchema)
+		
+		// Log if debts were found for debugging
+		if len(debts) > 0 {
+			logs.Info(chainID, `-`, `Stored %d debts for vault %s`, len(debts), vaultAddr.Hex())
+		}
 	}
 	
 	logs.Success(chainID, `-`, `Indexed %d vaults from Kong (complete replacement)`, len(vaultsFromKong))

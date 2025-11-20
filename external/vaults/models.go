@@ -261,6 +261,7 @@ type TExternalVault struct {
 	Info              TExternalVaultInfo      `json:"info,omitempty"`
 	FeaturingScore    float64                 `json:"featuringScore"` // Computing only
 	PricePerShare     *bigNumber.Int          `json:"pricePerShare"`
+	Debts             []models.TKongDebt      `json:"debts"`
 }
 
 /**************************************************************************************************
@@ -367,6 +368,15 @@ func ApplyKongData(externalVault *TExternalVault, vault models.TVault) {
 	// Convert from basis points to percentage and apply to APR fees
 	externalVault.APR.Fees.Management = bigNumber.NewFloat(float64(managementFee) / 10000.0)
 	externalVault.APR.Fees.Performance = bigNumber.NewFloat(float64(performanceFee) / 10000.0)
+
+	for _, strategyAddress := range kongData.StrategyAddresses {
+		strategy, ok := storage.GuessStrategy(vault.ChainID, strategyAddress)
+		if !ok {
+			continue
+		}
+
+		externalVault.Strategies = append(externalVault.Strategies, CreateExternalStrategy(strategy))
+	}
 
 	// Future: Apply other kong data
 	// applyKongPrices(externalVault, kongData)
@@ -485,6 +495,7 @@ func CreateExternalVault(vault models.TVault) (TExternalVault, error) {
 		Description:       vault.Metadata.Description,
 		Category:          fetcher.BuildVaultCategory(vault, strategies),
 		PricePerShare:     vault.LastPricePerShare,
+		Debts:             vault.Debts,
 		Details: TExternalVaultDetails{
 			IsRetired:       vault.Metadata.IsRetired,
 			IsHidden:        vault.Metadata.IsHidden,

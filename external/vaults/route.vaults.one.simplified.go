@@ -8,6 +8,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
+	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -100,13 +101,7 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	if newVault.APR.NetAPR != nil {
 		// APR.NetAPR.Float64() returns (float64, big.Accuracy), not an error
 		// big.Accuracy is an int8 type that indicates precision, not an error
-		var acc interface{}
-		APRAsFloat, acc = newVault.APR.NetAPR.Float64()
-		if acc != nil {
-			// Log a warning but continue with the calculated value
-			c.Error(fmt.Errorf("reduced precision when converting APR to float for vault %s: %v",
-				address.String(), acc))
-		}
+		APRAsFloat, _ = newVault.APR.NetAPR.Float64()
 	}
 
 	// Check for potential arithmetic overflow due to very large values
@@ -137,40 +132,29 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 		newVault.FeaturingScore = newVault.FeaturingScore * 1e18
 	}
 
-	vaultStrategiesMap, vaultStrategies := storage.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(newVault.Address))
-	if len(vaultStrategies) == 0 && len(vaultStrategiesMap) == 0 {
-		// Log a warning but continue - no strategies is a valid scenario
-		c.Error(fmt.Errorf("no strategies found for vault %s on chain %d",
-			address.String(), chainID))
-	}
-
-	// Initialize the strategies array with appropriate capacity to avoid reallocations
-	newVault.Strategies = make([]TExternalStrategy, 0, len(vaultStrategies))
-
-	// Process strategies with context awareness
+	// Fetch and process strategies with context awareness
+	vaultStrategies, _ := storage.ListStrategiesForVault(chainID, address)
+	newVault.Strategies = []TExternalStrategy{}
 	for _, strategy := range vaultStrategies {
-		// Try to convert the strategy, capturing any errors
-		var strategyWithDetails TExternalStrategy
-		func() {
-			// Use a deferred recover to handle any panics during conversion
-			defer func() {
-				if r := recover(); r != nil {
-					c.Error(fmt.Errorf("panic while processing strategy %s: %v", strategy.Address.String(), r))
-				}
-			}()
-
-			strategyWithDetails = CreateExternalStrategy(strategy)
-		}()
-
-		// Skip invalid strategies
-		if strategyWithDetails.Address == "" {
-			c.Error(fmt.Errorf("failed to convert strategy %s to external format",
-				strategy.Address.String()))
-			continue
-		}
+		strategyWithDetails := CreateExternalStrategy(strategy)
 
 		if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 			continue
+		}
+
+		strategyAddress := common.HexToAddress(strategyWithDetails.Address)
+		
+		for _, debt := range newVault.Debts {
+			if debt.Strategy == strategyAddress.Hex() {
+				if debt.CurrentDebt != nil {
+					strategyWithDetails.Details.TotalDebt = bigNumber.NewInt().SetString(*debt.CurrentDebt)
+				} else if debt.TotalDebt != nil {
+					strategyWithDetails.Details.TotalDebt = bigNumber.NewInt().SetString(*debt.TotalDebt)
+				} else {
+					strategyWithDetails.Details.TotalDebt = bigNumber.NewInt().SetString("0")
+				}
+				break
+			}
 		}
 
 		newVault.Strategies = append(newVault.Strategies, strategyWithDetails)

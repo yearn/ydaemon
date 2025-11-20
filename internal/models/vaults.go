@@ -159,7 +159,7 @@ type TVault struct {
 
 	// Kong-sourced data (single source of truth for TVL and debts)
 	KongTVL   string `json:"kongTvl,omitempty"`   // TVL from Kong API (tvl.close field)
-	KongDebts string `json:"kongDebts,omitempty"` // JSON-encoded debts array from Kong API
+	Debts []TKongDebt `json:"debts,omitempty"`
 
 	// Manual elements. They are manually set by the team
 	Metadata TVaultMetadata `json:"metadata"` // The metadata of the vault
@@ -333,4 +333,5 @@ type TKongVaultSchema struct {
 	APY            KongAPY `json:"apy"`
 	ManagementFee  uint64  `json:"managementFee"`  // Basis points from Kong (direct field takes priority)
 	PerformanceFee uint64  `json:"performanceFee"` // Basis points from Kong (direct field takes priority)
+	StrategyAddresses []common.Address `json:"strategyAddresses"` // Strategy addresses from Kong
 }

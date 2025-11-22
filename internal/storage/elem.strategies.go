@@ -427,6 +427,17 @@ func ListStrategiesForVault(chainID uint64, vaultAddress common.Address) (
 }
 
 /**************************************************************************************************
+** DeleteStrategy removes a single strategy from the cache by its key.
+**
+** @param chainID The blockchain network ID
+** @param strategyKey The strategy key (strategyAddress_vaultAddress)
+**************************************************************************************************/
+func DeleteStrategy(chainID uint64, strategyKey string) {
+	syncMap := safeSyncMap(_strategiesSyncMap, chainID)
+	syncMap.Delete(strategyKey)
+}
+
+/**************************************************************************************************
 ** GetManualStrategiesForVault returns a list of manual strategies for a specific vault.
 ** Manual strategies are human-curated strategies that should be added to a vault's active strategies
 ** list in addition to those discovered automatically from the vault's default queue.

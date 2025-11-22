@@ -338,7 +338,17 @@ func RetrieveAllStrategies(
 	logs.Info(`Fetching details for ` + strconv.Itoa(strategyCount) + ` strategies on chain ` + strconv.FormatUint(chainID, 10))
 	fetchStrategiesBasicInformations(chainID, strategies)
 
+	// Clean up stale strategies: remove ones not in the provided map (from Kong)
 	strategyMap, _ := storage.ListStrategies(chainID)
+	for key, cachedStrat := range strategyMap {
+		if _, existsInKong := strategies[key]; !existsInKong {
+			storage.DeleteStrategy(chainID, key)
+			logs.Info(`Removed stale strategy ` + cachedStrat.Address.Hex() + ` from vault ` + cachedStrat.VaultAddress.Hex())
+		}
+	}
+
+	// Get fresh list after cleanup and write to JSON
+	strategyMap, _ = storage.ListStrategies(chainID)
 	storage.StoreStrategiesToJson(chainID, strategyMap)
 	return strategyMap
 }

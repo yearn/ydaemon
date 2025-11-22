@@ -272,11 +272,8 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 			// logs.Info("Apply cms vault metadata", chainID, vault.Address)
 		}
 		
-		// Refresh Kong debts and TVL data if available
 		if kongDebts, ok := GetKongDebts(chainID, vault.Address); ok {
-			if kongDebtsJSON, err := json.Marshal(kongDebts); err == nil {
-				vault.KongDebts = string(kongDebtsJSON)
-			}
+			vault.Debts = kongDebts
 		}
 		if kongTVL, ok := GetKongTVL(chainID, vault.Address); ok {
 			vault.LastTotalAssets = bigNumber.NewFloat(kongTVL).Int()
@@ -361,14 +358,8 @@ func RefreshVaultMetadata(chainID uint64) {
 			ApplyCmsVaultMeta(vaultMeta, &vault)
 		}
 		
-		// Refresh Kong debts and TVL data
-		if kongDebts, ok := GetKongDebts(chainID, address); ok {
-			if kongDebtsJSON, err := json.Marshal(kongDebts); err == nil {
-				vault.KongDebts = string(kongDebtsJSON)
-			}
-		}
 		if kongTVL, ok := GetKongTVL(chainID, address); ok {
-			vault.LastTotalAssets = bigNumber.NewInt(int64(kongTVL))
+			vault.LastTotalAssets = bigNumber.NewFloat(kongTVL).Int()
 		}
 		
 		StoreVault(chainID, vault)

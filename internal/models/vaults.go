@@ -316,6 +316,15 @@ type KongAPY struct {
 	Decimals             uint64   `json:"decimals"`             // Token decimals for PPS normalization
 }
 
+type TKongOracle struct {
+	Apr *float64 `json:"apr"` // Float or null
+	Apy *float64 `json:"apy"` // Float or null
+}
+
+type TKongPerformance struct {
+	Oracle TKongOracle `json:"oracle"`
+}
+
 type TKongVaultSchema struct {
 	Hook struct {
 		Fees struct {
@@ -327,11 +336,12 @@ type TKongVaultSchema struct {
 		ManagementFee  CoercibleUint64 `json:"managementFee"`
 		PerformanceFee CoercibleUint64 `json:"performanceFee"`
 	} `json:"snapshot"`
-	TVL          float64      `json:"tvl"`   // TVL from Kong (tvl.close field)
-	Debts []TKongDebt  `json:"debts"` // Debts array from Kong
-	TotalAssets *bigNumber.Int `json:"totalAssets"` // Total assets from Kong
-	APY            KongAPY `json:"apy"`
-	ManagementFee  uint64  `json:"managementFee"`  // Basis points from Kong (direct field takes priority)
-	PerformanceFee uint64  `json:"performanceFee"` // Basis points from Kong (direct field takes priority)
+	TVL               float64          `json:"tvl"`               // TVL from Kong (tvl.close field)
+	Debts             []TKongDebt      `json:"debts"`             // Debts array from Kong
+	TotalAssets       *bigNumber.Int   `json:"totalAssets"`       // Total assets from Kong
+	Performance       TKongPerformance `json:"performance"`       // Oracle APR/APY data from Kong
+	APY               KongAPY          `json:"apy"`
+	ManagementFee     uint64           `json:"managementFee"`     // Basis points from Kong (direct field takes priority)
+	PerformanceFee    uint64           `json:"performanceFee"`    // Basis points from Kong (direct field takes priority)
 	StrategyAddresses []common.Address `json:"strategyAddresses"` // Strategy addresses from Kong
 }

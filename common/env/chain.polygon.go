@@ -23,10 +23,6 @@ var POLYGON = TChain{
 		Address: common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
 		Block:   25770160,
 	},
-	APROracleContract: TContractData{
-		Address: common.HexToAddress(`0x1981AD9F44F2EA9aDd2dC4AD7D075c102C70aF92`),
-		Block:   52516525,
-	},
 	Coin: models.TERC20Token{
 		Address:                   DEFAULT_COIN_ADDRESS,
 		UnderlyingTokensAddresses: []common.Address{},

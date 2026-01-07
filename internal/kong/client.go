@@ -72,6 +72,15 @@ type KongFees struct {
 	PerformanceFee float64 `json:"performanceFee"`
 }
 
+type KongOracle struct {
+	Apr *float64 `json:"apr"` // Float or null
+	Apy *float64 `json:"apy"` // Float or null
+}
+
+type KongPerformance struct {
+	Oracle KongOracle `json:"oracle"`
+}
+
 type KongVault struct {
 	Address           string           `json:"address"`
 	ChainID           int              `json:"chainId"`
@@ -84,6 +93,7 @@ type KongVault struct {
 	Strategies        []string         `json:"strategies"`
 	Debts             []KongDebt       `json:"debts"`
 	TVL               *KongTVL         `json:"tvl"`
+	Performance       *KongPerformance `json:"performance"` // Oracle APR/APY data
 	APY               models.KongAPY   `json:"apy"`
 	TotalAssets       *bigNumber.Int   `json:"totalAssets"`
 	ManagementFee     *string    `json:"managementFee"`  // BigInt as string (basis points)
@@ -200,6 +210,12 @@ func (c *Client) FetchVaultsForChain(ctx context.Context, chainID uint64) ([]Kon
 					managementFee
 					performanceFee
 				}
+				performance {
+					oracle {
+						apr
+						apy
+					}
+				}
 				apy {
 					pricePerShare
 					weeklyNet
@@ -280,6 +296,12 @@ func (c *Client) FetchAllVaults(ctx context.Context) (map[uint64][]KongVault, er
 				fees {
 					managementFee
 					performanceFee
+				}
+				performance {
+					oracle {
+						apr
+						apy
+					}
 				}
 				apy {
 					pricePerShare

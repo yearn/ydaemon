@@ -461,3 +461,15 @@ func GetKongTotalAssets(chainID uint64, vaultAddress common.Address) (*bigNumber
 	}
 	return data.TotalAssets, true
 }
+
+/**************************************************************************************************
+** GetKongOracleAPY retrieves oracle APR/APY from Kong data for a vault
+** Returns (apr, apy, exists) where apr and apy are *float64 (may be nil)
+**************************************************************************************************/
+func GetKongOracleAPY(chainID uint64, vaultAddress common.Address) (*float64, *float64, bool) {
+	data, ok := GetKongVaultData(chainID, vaultAddress)
+	if !ok {
+		return nil, nil, false
+	}
+	return data.Performance.Oracle.Apr, data.Performance.Oracle.Apy, true
+}

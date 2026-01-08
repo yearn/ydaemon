@@ -37,7 +37,7 @@ func calculateCurveForwardAPY(args TCalculateCurveAPYDataStruct) TStrategyAPY {
 	** The CRV APR is simply the baseAPR (aka how much CRV we get from the gauge) scaled by the
 	** yBoost. We then add the extraRewards which are incentives/bribes on top of the base rewards.
 	**********************************************************************************************/
-	crvAPY := bigNumber.NewFloat(0).Mul(args.baseAPY, yBoost)  // baseAPR * yBoost
+	crvAPY := bigNumber.NewFloat(0).Mul(args.baseAPY, yBoost) // baseAPR * yBoost
 	crvAPY = bigNumber.NewFloat(0).Add(crvAPY, args.rewardAPY) // (baseAPR * yBoost) + rewardAPY
 
 	/**********************************************************************************************
@@ -48,10 +48,9 @@ func calculateCurveForwardAPY(args TCalculateCurveAPYDataStruct) TStrategyAPY {
 	** 3. Adding the pool APY
 	**********************************************************************************************/
 	keepCRVRatio := bigNumber.NewFloat(0).Sub(storage.ONE, keepCrv) // 1 - keepCRV
-	grossAPY := bigNumber.NewFloat(0).Mul(args.baseAPY, yBoost)     // 1 - baseAPR * yBoost
-	grossAPY = bigNumber.NewFloat(0).Mul(grossAPY, keepCRVRatio)    // 1 - baseAPR * yBoost * keepCRV
-	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, args.rewardAPY)  // 2 - (baseAPR * yBoost * keepCRV) + rewardAPY
-	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, args.poolAPY)    // 3 - (baseAPR * yBoost * keepCRV) + rewardAPY + poolAPY
+	grossAPY := bigNumber.NewFloat(0).Mul(args.baseAPY, yBoost) // 1 - baseAPR * yBoost
+	grossAPY = bigNumber.NewFloat(0).Mul(grossAPY, keepCRVRatio) // 1 - baseAPR * yBoost * keepCRV
+	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, args.rewardAPY) // 2 - (baseAPR * yBoost * keepCRV) + rewardAPY
 
 	/**********************************************************************************************
 	** Calculate the CRV Net APR:
@@ -60,8 +59,11 @@ func calculateCurveForwardAPY(args TCalculateCurveAPYDataStruct) TStrategyAPY {
 	netAPY := bigNumber.NewFloat(0).Mul(grossAPY, oneMinusPerfFee) // grossAPY * (1 - perfFee)
 	if netAPY.Gt(vaultManagementFee) {
 		netAPY = bigNumber.NewFloat(0).Sub(netAPY, vaultManagementFee) // (grossAPY * (1 - perfFee)) - managementFee
+		netAPRFloat64, _ := netAPY.Float64()
+		netAPY = bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(netAPRFloat64, 52))
+		netAPY = bigNumber.NewFloat(0).Add(netAPY, args.poolAPY)
 	} else {
-		netAPY = bigNumber.NewFloat(0)
+		netAPY = bigNumber.NewFloat(0).Add(bigNumber.NewFloat(0), args.poolAPY)
 	}
 
 	apyStruct := TStrategyAPY{

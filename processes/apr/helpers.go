@@ -8,18 +8,10 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 )
 
-
 func convertFloatAPRToAPY(apr float64, periodsPerYear float64) float64 {
-
-	// Convert APR to decimal form
-	aprDecimal := apr / 100.0
-
-	// APY = (1 + r/n)^n - 1
-	// where r is the APR in decimal form and n is the number of compounding periods
-	apy := math.Pow(1+(aprDecimal/periodsPerYear), periodsPerYear) - 1
-
-	// Convert back to percentage
-	return apy * 100
+	// APR is expected as a decimal (e.g. 0.56 for 56%).
+	// APY = (1 + r/n)^n - 1, where r is the APR in decimal form.
+	return math.Pow(1+(apr/periodsPerYear), periodsPerYear) - 1
 }
 
 /**************************************************************************************************

@@ -59,11 +59,10 @@ func calculateConvexForwardAPY(args TCalculateConvexAPYDataStruct) TStrategyAPY 
 	** 3. Adding the pool APY
 	** 4. Adding the CVX APR
 	**********************************************************************************************/
-	keepCRVRatio := bigNumber.NewFloat(0).Sub(storage.ONE, keepCrv)    // 1 - keepCRV
-	grossAPY := bigNumber.NewFloat(0).Mul(crvAPY, keepCRVRatio)        // 1 - baseAPY * keepCRV
-	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, rewardsAPY)         // 2 - (baseAPY * keepCRV) + rewardAPR
-	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, args.poolWeeklyAPY) // 3 - (baseAPY * keepCRV) + rewardAPR + poolAPY
-	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, cvxAPY)             // 4 - (baseAPY * keepCRV) + rewardAPR + poolAPY + cvxAPR
+	keepCRVRatio := bigNumber.NewFloat(0).Sub(storage.ONE, keepCrv) // 1 - keepCRV
+	grossAPY := bigNumber.NewFloat(0).Mul(crvAPY, keepCRVRatio)     // 1 - baseAPY * keepCRV
+	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, rewardsAPY)      // 2 - (baseAPY * keepCRV) + rewardAPR
+	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, cvxAPY)          // 4 - (baseAPY * keepCRV) + rewardAPR + poolAPY + cvxAPR
 
 	/**********************************************************************************************
 	** Calculate the CRV Net APR:
@@ -72,8 +71,11 @@ func calculateConvexForwardAPY(args TCalculateConvexAPYDataStruct) TStrategyAPY 
 	netAPY := bigNumber.NewFloat(0).Mul(grossAPY, oneMinusPerfFee) // grossAPR * (1 - perfFee)
 	if netAPY.Gt(vaultManagementFee) {
 		netAPY = bigNumber.NewFloat(0).Sub(netAPY, vaultManagementFee) // (grossAPR * (1 - perfFee)) - managementFee
+		netAPRFloat64, _ := netAPY.Float64()
+		netAPY = bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(netAPRFloat64, 52))
+		netAPY = bigNumber.NewFloat(0).Add(netAPY, args.poolWeeklyAPY)
 	} else {
-		netAPY = bigNumber.NewFloat(0)
+		netAPY = bigNumber.NewFloat(0).Add(bigNumber.NewFloat(0), args.poolWeeklyAPY)
 	}
 
 	apyStruct := TStrategyAPY{

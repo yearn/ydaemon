@@ -44,7 +44,7 @@ func calculateConvexForwardAPY(args TCalculateConvexAPYDataStruct) TStrategyAPY 
 	** of CVX printed, based on the CRV rate for the given gauge. Tldr X crv = Y cvx and we do
 	** something to gt an APR.
 	**********************************************************************************************/
-	crvAPR, cvxAPR, crvAPY, cvxAPY := getCVXPoolAPY(chainID, args.strategy.Address, args.baseAssetPrice)
+	crvAPR, cvxAPR, crvAPY, cvxAPY := getCVXPoolAPY(chainID, args.vault.Address, args.strategy.Address, args.baseAssetPrice)
 
 	/**********************************************************************************************
 	** Just like curve, Convex can have extra rewards which are incentives/bribes on top of the

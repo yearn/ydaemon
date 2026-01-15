@@ -130,9 +130,11 @@ func getCVXForCRV(chainID uint64, crvEarned *bigNumber.Float) *bigNumber.Float {
 **************************************************************************************************/
 func getCVXPoolAPY(
 	chainID uint64,
+	vaultAddress common.Address,
 	strategyAddress common.Address,
 	virtualPoolPrice *bigNumber.Float,
 ) (*bigNumber.Float, *bigNumber.Float, *bigNumber.Float, *bigNumber.Float) {
+
 	crvAPR := bigNumber.NewFloat(0)
 	cvxAPR := bigNumber.NewFloat(0)
 	crvAPY := bigNumber.NewFloat(0)
@@ -157,11 +159,55 @@ func getCVXPoolAPY(
 	if err != nil {
 		rewardPID, err = convexStrategyContract.ID(nil)
 		if err != nil {
-			rewardPID, err = convexStrategyContract.FraxPid(nil)
+			warnMissingPID := func(pidErr error) {
+				logs.Warning("Convex PID not found for vault "+vaultAddress.Hex()+" strategy "+strategyAddress.Hex(), pidErr)
+			}
+			fraxBaseStrategy, err := contracts.NewFraxBaseStrategy(strategyAddress, client)
 			if err != nil {
 				if os.Getenv("ENVIRONMENT") == "dev" {
-					logs.Error(`Unable to get reward PID for convex strategy ` + strategyAddress.Hex())
+					logs.Error(`Unable to init fraxBaseStrategy for convex strategy `+strategyAddress.Hex(), err)
 				}
+				warnMissingPID(err)
+				return crvAPR, cvxAPR, crvAPY, cvxAPY
+			}
+			userVaultAddress, err := fraxBaseStrategy.UserVault(nil)
+			if err != nil {
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Error(`Unable to get userVault for fraxBaseStrategy `+strategyAddress.Hex(), err)
+				}
+				warnMissingPID(err)
+				return crvAPR, cvxAPR, crvAPY, cvxAPY
+			}
+			userVaultContract, err := contracts.NewConvexUserVault(userVaultAddress, client)
+			if err != nil {
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Error(`Unable to init userVault contract `+userVaultAddress.Hex(), err)
+				}
+				warnMissingPID(err)
+				return crvAPR, cvxAPR, crvAPY, cvxAPY
+			}
+			stakingTokenAddress, err := userVaultContract.StakingToken(nil)
+			if err != nil {
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Error(`Unable to get stakingToken for userVault `+userVaultAddress.Hex(), err)
+				}
+				warnMissingPID(err)
+				return crvAPR, cvxAPR, crvAPY, cvxAPY
+			}
+			stakingTokenContract, err := contracts.NewConvexStakingToken(stakingTokenAddress, client)
+			if err != nil {
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Error(`Unable to init stakingToken contract `+stakingTokenAddress.Hex(), err)
+				}
+				warnMissingPID(err)
+				return crvAPR, cvxAPR, crvAPY, cvxAPY
+			}
+			rewardPID, err = stakingTokenContract.ConvexPoolId(nil)
+			if err != nil {
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Error(`Unable to get cvxPoolId for stakingToken `+stakingTokenAddress.Hex(), err)
+				}
+				warnMissingPID(err)
 				return crvAPR, cvxAPR, crvAPY, cvxAPY
 			}
 		}

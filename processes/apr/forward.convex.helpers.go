@@ -34,11 +34,55 @@ func getConvexRewardAPY(
 	if err != nil {
 		rewardPID, err = convexStrategyContract.ID(nil)
 		if err != nil {
-			rewardPID, err = convexStrategyContract.FraxPid(nil)
+			warnMissingPID := func(pidErr error) {
+				logs.Warning("Convex PID not found for strategy "+strategy.Address.Hex(), pidErr)
+			}
+			fraxBaseStrategy, err := contracts.NewFraxBaseStrategy(strategy.Address, client)
 			if err != nil {
 				if os.Getenv("ENVIRONMENT") == "dev" {
-					logs.Error(`Unable to get reward PID for convex strategy ` + strategy.Address.Hex())
+					logs.Error(`Unable to init fraxBaseStrategy for convex strategy `+strategy.Address.Hex(), err)
 				}
+				warnMissingPID(err)
+				return storage.ZERO, storage.ZERO
+			}
+			userVaultAddress, err := fraxBaseStrategy.UserVault(nil)
+			if err != nil {
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Error(`Unable to get userVault for fraxBaseStrategy `+strategy.Address.Hex(), err)
+				}
+				warnMissingPID(err)
+				return storage.ZERO, storage.ZERO
+			}
+			userVaultContract, err := contracts.NewConvexUserVault(userVaultAddress, client)
+			if err != nil {
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Error(`Unable to init userVault contract `+userVaultAddress.Hex(), err)
+				}
+				warnMissingPID(err)
+				return storage.ZERO, storage.ZERO
+			}
+			stakingTokenAddress, err := userVaultContract.StakingToken(nil)
+			if err != nil {
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Error(`Unable to get stakingToken for userVault `+userVaultAddress.Hex(), err)
+				}
+				warnMissingPID(err)
+				return storage.ZERO, storage.ZERO
+			}
+			stakingTokenContract, err := contracts.NewConvexStakingToken(stakingTokenAddress, client)
+			if err != nil {
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Error(`Unable to init stakingToken contract `+stakingTokenAddress.Hex(), err)
+				}
+				warnMissingPID(err)
+				return storage.ZERO, storage.ZERO
+			}
+			rewardPID, err = stakingTokenContract.ConvexPoolId(nil)
+			if err != nil {
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Error(`Unable to get cvxPoolId for stakingToken `+stakingTokenAddress.Hex(), err)
+				}
+				warnMissingPID(err)
 				return storage.ZERO, storage.ZERO
 			}
 		}
@@ -134,6 +178,7 @@ func getCVXPoolAPY(
 	strategyAddress common.Address,
 	virtualPoolPrice *bigNumber.Float,
 ) (*bigNumber.Float, *bigNumber.Float, *bigNumber.Float, *bigNumber.Float) {
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "input.virtualPoolPrice", virtualPoolPrice)
 
 	crvAPR := bigNumber.NewFloat(0)
 	cvxAPR := bigNumber.NewFloat(0)
@@ -178,6 +223,7 @@ func getCVXPoolAPY(
 				warnMissingPID(err)
 				return crvAPR, cvxAPR, crvAPY, cvxAPY
 			}
+			apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "fraxBaseStrategy.userVault", userVaultAddress.Hex())
 			userVaultContract, err := contracts.NewConvexUserVault(userVaultAddress, client)
 			if err != nil {
 				if os.Getenv("ENVIRONMENT") == "dev" {
@@ -194,6 +240,7 @@ func getCVXPoolAPY(
 				warnMissingPID(err)
 				return crvAPR, cvxAPR, crvAPY, cvxAPY
 			}
+			apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "userVault.stakingToken", stakingTokenAddress.Hex())
 			stakingTokenContract, err := contracts.NewConvexStakingToken(stakingTokenAddress, client)
 			if err != nil {
 				if os.Getenv("ENVIRONMENT") == "dev" {
@@ -210,8 +257,10 @@ func getCVXPoolAPY(
 				warnMissingPID(err)
 				return crvAPR, cvxAPR, crvAPY, cvxAPY
 			}
+			apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "stakingToken.cvxPoolId", rewardPID)
 		}
 	}
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "rewardPID", rewardPID)
 
 	/**********************************************************************************************
 	** Once we got the PID, we can query the convexBooster contract to get the `poolInfo` for this
@@ -225,6 +274,7 @@ func getCVXPoolAPY(
 	if err != nil {
 		return crvAPR, cvxAPR, crvAPY, cvxAPY
 	}
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "poolInfo.crvRewards", poolInfo.CrvRewards.Hex())
 
 	/**********************************************************************************************
 	** Once we got the poolInfo, we can init a new contract connector, which would be a
@@ -239,34 +289,57 @@ func getCVXPoolAPY(
 	if err1 != nil || err2 != nil {
 		return crvAPR, cvxAPR, crvAPY, cvxAPY
 	}
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "rewardRateRaw", rateResult)
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "totalSupplyRaw", supplyResult)
 
 	/**********************************************************************************************
 	** Then we should be able to calculate the cvxAPR just like it's done on the CVX subgraph
 	***********************************************************************************************/
 	rate := helpers.ToNormalizedAmount(bigNumber.NewInt(0).Set(rateResult), 18)
 	supply := helpers.ToNormalizedAmount(bigNumber.NewInt(0).Set(supplyResult), 18)
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "rewardRate", rate)
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "totalSupply", supply)
 	crvPerUnderlying := bigNumber.NewFloat(0)
 	virtualSupply := bigNumber.NewFloat(0).Mul(supply, virtualPoolPrice)
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "virtualSupply", virtualSupply)
 
 	if virtualSupply.Gt(storage.ZERO) {
 		crvPerUnderlying = bigNumber.NewFloat(0).Div(rate, virtualSupply)
 	}
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "crvPerUnderlying", crvPerUnderlying)
 	crvPerUnderlyingPerYear := bigNumber.NewFloat(0).Mul(crvPerUnderlying, bigNumber.NewFloat(31536000))
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "crvPerUnderlyingPerYear", crvPerUnderlyingPerYear)
 	cvxPerYear := getCVXForCRV(chainID, crvPerUnderlyingPerYear)
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "cvxPerYear", cvxPerYear)
 
 	crvPrice := bigNumber.NewFloat(0)
 	if tokenPrice, ok := storage.GetPrice(chainID, storage.CRV_TOKEN_ADDRESS[chainID]); ok {
 		crvPrice = tokenPrice.HumanizedPrice
 	}
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "crvPrice", crvPrice)
 	cvxPrice := bigNumber.NewFloat(0)
 	if tokenPrice, ok := storage.GetPrice(chainID, storage.CVX_TOKEN_ADDRESS[chainID]); ok {
 		cvxPrice = tokenPrice.HumanizedPrice
 	}
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "cvxPrice", cvxPrice)
 	crvAPR = bigNumber.NewFloat(0).Mul(crvPerUnderlyingPerYear, crvPrice)
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "crvAPR", crvAPR)
 	cvxAPR = bigNumber.NewFloat(0).Mul(cvxPerYear, cvxPrice)
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "cvxAPR", cvxAPR)
 
+	crvAPRFloat64, _ := crvAPR.Float64()
+	cvxAPRFloat64, _ := cvxAPR.Float64()
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "crvAPRFloat64", crvAPRFloat64)
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "cvxAPRFloat64", cvxAPRFloat64)
 	crvAPY = bigNumber.NewFloat(0).Add(bigNumber.NewFloat(0), crvAPR)
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "crvAPY", crvAPY)
 	cvxAPY = bigNumber.NewFloat(0).Add(bigNumber.NewFloat(0), cvxAPR)
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "cvxAPY", cvxAPY)
+
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "result.crvAPR", crvAPR)
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "result.cvxAPR", cvxAPR)
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "result.crvAPY", crvAPY)
+	apyTrace("forward.convex.cvxPool", chainID, vaultAddress, strategyAddress, "result.cvxAPY", cvxAPY)
 
 	return crvAPR, cvxAPR, crvAPY, cvxAPY
 }

@@ -100,14 +100,11 @@ func getStrategyAPR(chainID uint64, versionMajor string, strategy models.TStrate
 	** For earlier versions: Only try to get current APR
 	******************************************************************************************/
 	if versionMajor == `3` {
-		if forwardAPR, err := apr.ComputeForwardStrategyAPR(strategy); err == nil {
-			netAPR = forwardAPR
-			aprType = models.APRTypeForward
-		} else if currentAPR, err := apr.GetCurrentStrategyAPR(chainID, strategy.Address.Hex()); err == nil {
+		if currentAPR, err := apr.GetCurrentStrategyAPR(chainID, strategy.Address.Hex()); err == nil {
 			netAPR = currentAPR
 			aprType = models.APRTypeCurrent
 		} else {
-			return netAPR, aprType, errors.New(`Error while computing forward APR for ` + strategy.Address.Hex() + ` | ` + strategy.VaultAddress.Hex() + `: ` + err.Error())
+			return netAPR, aprType, errors.New(`Error while computing current APR for ` + strategy.Address.Hex() + ` | ` + strategy.VaultAddress.Hex() + `: ` + err.Error())
 		}
 	} else {
 		if currentAPR, err := apr.GetCurrentStrategyAPR(chainID, strategy.Address.Hex()); err == nil {

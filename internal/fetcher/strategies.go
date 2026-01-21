@@ -106,13 +106,6 @@ func getStrategyAPR(chainID uint64, versionMajor string, strategy models.TStrate
 		} else {
 			return netAPR, aprType, errors.New(`Error while computing current APR for ` + strategy.Address.Hex() + ` | ` + strategy.VaultAddress.Hex() + `: ` + err.Error())
 		}
-	} else {
-		if currentAPR, err := apr.GetCurrentStrategyAPR(chainID, strategy.Address.Hex()); err == nil {
-			netAPR = currentAPR
-			aprType = models.APRTypeCurrent
-		} else {
-			return netAPR, aprType, errors.New(`Error while computing current APR for ` + strategy.Address.Hex() + ` | ` + strategy.VaultAddress.Hex() + `: ` + err.Error())
-		}
 	}
 	return netAPR, aprType, nil
 }

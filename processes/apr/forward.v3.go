@@ -65,7 +65,7 @@ func computeVaultV3ForwardAPY(
 		Type:   `v3:onchainOracle`,
 		NetAPY: primaryAPY,
 		Composite: TCompositeData{
-			V3OracleCurrentAPR:    primaryAPR,
+			V3OracleCurrentAPR:    primaryAPY,
 			V3OracleStratRatioAPR: bigNumber.NewFloat(0), // Not used with Kong oracle
 		},
 	}

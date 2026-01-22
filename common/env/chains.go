@@ -74,7 +74,6 @@ type TChain struct {
 	MulticallContract     TContractData
 	YBribeV3Contract      TContractData
 	PartnerContract       TContractData
-	APROracleContract     TContractData
 	Coin                  models.TERC20Token
 	StakingRewardRegistry []TContractData
 	Registries            []TContractData

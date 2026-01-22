@@ -30,10 +30,6 @@ var ARBITRUM = TChain{
 		Address: common.HexToAddress(`0x0e5b46E4b2a05fd53F5a4cD974eb98a9a613bcb7`),
 		Block:   30385403,
 	},
-	APROracleContract: TContractData{
-		Address: common.HexToAddress(`0x1981AD9F44F2EA9aDd2dC4AD7D075c102C70aF92`),
-		Block:   265347717,
-	},
 	StakingRewardRegistry: []TContractData{
 		{
 			Address: common.HexToAddress(`0x26d8EA1d8759d0F9abBcf8181b1fD5D3635daD69`),

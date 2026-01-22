@@ -34,10 +34,6 @@ var ETHEREUM = TChain{
 		Address: common.HexToAddress(`0x8ee392a4787397126C163Cb9844d7c447da419D8`),
 		Block:   14166636,
 	},
-	APROracleContract: TContractData{
-		Address: common.HexToAddress(`0x1981AD9F44F2EA9aDd2dC4AD7D075c102C70aF92`),
-		Block:   19070394,
-	},
 	ExtraStakingContracts: []TExtraStakingContracts{
 		{
 			VaultAddress:   common.HexToAddress(`0xe24BA27551aBE96Ca401D39761cA2319Ea14e3CB`),

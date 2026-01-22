@@ -1,17 +1,12 @@
 package apr
 
 import (
-	"math/big"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/contracts"
-	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 func isV3Vault(vault models.TVault) bool {
@@ -23,47 +18,51 @@ func computeVaultV3ForwardAPY(
 	vault models.TVault,
 	allStrategiesForVault map[string]models.TStrategy,
 ) TForwardAPY {
-	oracleAPR := bigNumber.NewFloat(0)
-	chain, ok := env.GetChain(vault.ChainID)
+	chainID := vault.ChainID
+
+	/**********************************************************************************************
+	** Fetch Kong oracle APR/APY data (single source of truth)
+	** Kong provides pre-calculated oracle APR and APY from daily timeseries hook
+	**********************************************************************************************/
+	_, oracleAPY, ok := storage.GetKongOracleAPY(chainID, vault.Address)
+
 	if !ok {
-		return TForwardAPY{}
+		logs.Error("Kong oracle data missing for vault %s on chain %d - Kong source unavailable", vault.Address.Hex(), chainID)
+		return TForwardAPY{
+			Type:   `v3:onchainOracle`,
+			NetAPY: bigNumber.NewFloat(0),
+			Composite: TCompositeData{
+				V3OracleCurrentAPR:    bigNumber.NewFloat(0),
+				V3OracleStratRatioAPR: bigNumber.NewFloat(0),
+			},
+		}
 	}
-	oracleContract := chain.APROracleContract.Address
-	if oracleContract == common.HexToAddress(``) {
-		return TForwardAPY{}
-	}
-	oracle, err := contracts.NewYVaultsV3APROracleCaller(oracleContract, ethereum.GetRPC(vault.ChainID))
-	if err != nil {
-		logs.Error(err)
-		return TForwardAPY{}
+
+	// Handle nil values (Kong returns null for vaults without oracle data)
+	if oracleAPY == nil {
+		logs.Warning("Kong oracle APY is null for vault %s on chain %d - vault may not have oracle configured", vault.Address.Hex(), chainID)
+		return TForwardAPY{
+			Type:   `v3:onchainOracle`,
+			NetAPY: bigNumber.NewFloat(0),
+			Composite: TCompositeData{
+				V3OracleCurrentAPR:    bigNumber.NewFloat(0),
+				V3OracleStratRatioAPR: bigNumber.NewFloat(0),
+			},
+		}
 	}
 
 	/**********************************************************************************************
-	** Use the oracle to get the APR of the vault. The oracle automatically handles:
-	** - Single strategy vaults: Returns strategy APR
-	** - Multi-strategy vaults: Returns weighted average with performance fees applied
+	** Use Kong's pre-calculated oracle APY
+	** Kong already converts APR to APY using weekly compounding (52 periods/year)
 	**********************************************************************************************/
-	expected, err := oracle.GetStrategyApr(nil, vault.Address, big.NewInt(0))
-	if err != nil {
-		logs.Error(`GetStrategyApr failed for vault ` + vault.Address.Hex() + `: ` + err.Error())
-		return TForwardAPY{}
-	}
-	oracleAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
-
-	/**********************************************************************************************
-	** Use the oracle APR as the primary APR (no manual calculation needed)
-	**********************************************************************************************/
-	primaryAPR := oracleAPR
-
-	primaryAPRFloat64, _ := primaryAPR.Float64()
-	primaryAPY := bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(primaryAPRFloat64, 52))
+	primaryAPY := bigNumber.NewFloat(*oracleAPY)
 
 	return TForwardAPY{
 		Type:   `v3:onchainOracle`,
 		NetAPY: primaryAPY,
 		Composite: TCompositeData{
 			V3OracleCurrentAPR:    primaryAPY,
-			V3OracleStratRatioAPR: bigNumber.NewFloat(0),
+			V3OracleStratRatioAPR: bigNumber.NewFloat(0), // Not used with Kong oracle
 		},
 	}
 }

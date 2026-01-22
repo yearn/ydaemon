@@ -24,7 +24,6 @@ var GNOSIS = TChain{
 		Block:   821923,
 	},
 	PartnerContract:   TContractData{},
-	APROracleContract: TContractData{},
 	Coin: models.TERC20Token{
 		Address:                   DEFAULT_COIN_ADDRESS,
 		UnderlyingTokensAddresses: []common.Address{},

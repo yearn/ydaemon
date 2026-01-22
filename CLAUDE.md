@@ -97,3 +97,4 @@ RISK_CDN_URL=       # Risk score CDN URL (defaults to https://risk.yearn.fi/cdn/
 - Price data fetched from multiple sources with fallbacks
 - Risk scores calculated using 11-factor assessment system
 - APY calculations support multiple strategies: Curve, Convex, Velodrome, Aerodrome, etc.
+- V3 Vault APRs are sourced from Kong (single source of truth) bypassing direct on-chain Oracle calls.

@@ -67,13 +67,23 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 			})
 		}
 		
+		// Extract performance data from Kong response (oracle APR/APY)
+		performance := models.TKongPerformance{}
+		if data.Vault.Performance != nil {
+			performance.Oracle = models.TKongOracle{
+				Apr: data.Vault.Performance.Oracle.Apr,
+				Apy: data.Vault.Performance.Oracle.Apy,
+			}
+		}
+
 		kongSchema := models.TKongVaultSchema{
-			ManagementFee:  data.Vault.GetManagementFee(),
-			PerformanceFee: data.Vault.GetPerformanceFee(),
-			APY: data.APY,
-			Debts: debts,
-			TVL: data.Vault.GetTVL(),
-			TotalAssets: data.TotalAssets,
+			ManagementFee:     data.Vault.GetManagementFee(),
+			PerformanceFee:    data.Vault.GetPerformanceFee(),
+			APY:               data.APY,
+			Performance:       performance,
+			Debts:             debts,
+			TVL:               data.Vault.GetTVL(),
+			TotalAssets:       data.TotalAssets,
 			StrategyAddresses: data.Vault.GetStrategies(),
 		}
 		storage.StoreKongVaultData(chainID, vaultAddr, kongSchema)

@@ -24,7 +24,7 @@ func computeVaultV3ForwardAPY(
 	** Fetch Kong oracle APR/APY data (single source of truth)
 	** Kong provides pre-calculated oracle APR and APY from daily timeseries hook
 	**********************************************************************************************/
-	oracleAPR, oracleAPY, ok := storage.GetKongOracleAPY(chainID, vault.Address)
+	_, oracleAPY, ok := storage.GetKongOracleAPY(chainID, vault.Address)
 
 	if !ok {
 		logs.Error("Kong oracle data missing for vault %s on chain %d - Kong source unavailable", vault.Address.Hex(), chainID)
@@ -56,10 +56,6 @@ func computeVaultV3ForwardAPY(
 	** Kong already converts APR to APY using weekly compounding (52 periods/year)
 	**********************************************************************************************/
 	primaryAPY := bigNumber.NewFloat(*oracleAPY)
-	primaryAPR := bigNumber.NewFloat(0)
-	if oracleAPR != nil {
-		primaryAPR = bigNumber.NewFloat(*oracleAPR)
-	}
 
 	return TForwardAPY{
 		Type:   `v3:onchainOracle`,

@@ -77,8 +77,28 @@ type KongOracle struct {
 	Apy *float64 `json:"apy"` // Float or null
 }
 
+type KongEstimatedAprComponents struct {
+	Boost      *float64 `json:"boost"`
+	PoolAPY    *float64 `json:"poolAPY"`
+	BoostedAPR *float64 `json:"boostedAPR"`
+	BaseAPR    *float64 `json:"baseAPR"`
+	RewardsAPR *float64 `json:"rewardsAPR"`
+	RewardsAPY *float64 `json:"rewardsAPY"`
+	CvxAPR     *float64 `json:"cvxAPR"`
+	KeepCRV    *float64 `json:"keepCRV"`
+	KeepVelo   *float64 `json:"keepVelo"`
+}
+
+type KongEstimatedApr struct {
+	Apr        *float64                    `json:"apr"`
+	Apy        *float64                    `json:"apy"`
+	Type       string                      `json:"type"`
+	Components *KongEstimatedAprComponents `json:"components"`
+}
+
 type KongPerformance struct {
-	Oracle KongOracle `json:"oracle"`
+	Oracle    KongOracle        `json:"oracle"`
+	Estimated *KongEstimatedApr `json:"estimated"` // Estimated APR from Kong
 }
 
 type KongVault struct {
@@ -215,6 +235,22 @@ func (c *Client) FetchVaultsForChain(ctx context.Context, chainID uint64) ([]Kon
 						apr
 						apy
 					}
+					estimated {
+						apr
+						apy
+						type
+						components {
+							boost
+							poolAPY
+							boostedAPR
+							baseAPR
+							rewardsAPR
+							rewardsAPY
+							cvxAPR
+							keepCRV
+							keepVelo
+						}
+					}
 				}
 				apy {
 					pricePerShare
@@ -301,6 +337,22 @@ func (c *Client) FetchAllVaults(ctx context.Context) (map[uint64][]KongVault, er
 					oracle {
 						apr
 						apy
+					}
+					estimated {
+						apr
+						apy
+						type
+						components {
+							boost
+							poolAPY
+							boostedAPR
+							baseAPR
+							rewardsAPR
+							rewardsAPY
+							cvxAPR
+							keepCRV
+							keepVelo
+						}
 					}
 				}
 				apy {

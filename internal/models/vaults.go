@@ -321,8 +321,28 @@ type TKongOracle struct {
 	Apy *float64 `json:"apy"` // Float or null
 }
 
+type TKongEstimatedAprComponents struct {
+	Boost      *float64 `json:"boost"`
+	PoolAPY    *float64 `json:"poolAPY"`
+	BoostedAPR *float64 `json:"boostedAPR"`
+	BaseAPR    *float64 `json:"baseAPR"`
+	RewardsAPR *float64 `json:"rewardsAPR"`
+	RewardsAPY *float64 `json:"rewardsAPY"`
+	CvxAPR     *float64 `json:"cvxAPR"`
+	KeepCRV    *float64 `json:"keepCRV"`
+	KeepVelo   *float64 `json:"keepVelo"`
+}
+
+type TKongEstimatedApr struct {
+	Apr        *float64                     `json:"apr"`
+	Apy        *float64                     `json:"apy"`
+	Type       string                       `json:"type"`
+	Components *TKongEstimatedAprComponents `json:"components"`
+}
+
 type TKongPerformance struct {
-	Oracle TKongOracle `json:"oracle"`
+	Oracle    TKongOracle        `json:"oracle"`
+	Estimated *TKongEstimatedApr `json:"estimated"` // Estimated APR from Kong
 }
 
 type TKongVaultSchema struct {

@@ -375,3 +375,59 @@ func computeCurveLikeForwardAPY(
 		},
 	}
 }
+
+/**************************************************************************************************
+** convertKongEstimatedAprToForwardAPY converts Kong estimated APR data to TForwardAPY format
+** Returns (forwardAPY, hasData) where hasData indicates if valid Kong data was found
+**************************************************************************************************/
+func convertKongEstimatedAprToForwardAPY(chainID uint64, vaultAddress common.Address) (TForwardAPY, bool) {
+	estimatedApr, ok := storage.GetKongEstimatedAPY(chainID, vaultAddress)
+	if !ok || estimatedApr == nil || estimatedApr.Apy == nil {
+		return TForwardAPY{}, false
+	}
+
+	// Convert to float64 values, defaulting to 0 if nil
+	var boost, poolAPY, boostedAPR, baseAPR, rewardsAPY, cvxAPR, keepCRV, keepVelo float64
+
+	if estimatedApr.Components != nil {
+		if estimatedApr.Components.Boost != nil {
+			boost = *estimatedApr.Components.Boost
+		}
+		if estimatedApr.Components.PoolAPY != nil {
+			poolAPY = *estimatedApr.Components.PoolAPY
+		}
+		if estimatedApr.Components.BoostedAPR != nil {
+			boostedAPR = *estimatedApr.Components.BoostedAPR
+		}
+		if estimatedApr.Components.BaseAPR != nil {
+			baseAPR = *estimatedApr.Components.BaseAPR
+		}
+		if estimatedApr.Components.RewardsAPY != nil {
+			rewardsAPY = *estimatedApr.Components.RewardsAPY
+		}
+		if estimatedApr.Components.CvxAPR != nil {
+			cvxAPR = *estimatedApr.Components.CvxAPR
+		}
+		if estimatedApr.Components.KeepCRV != nil {
+			keepCRV = *estimatedApr.Components.KeepCRV
+		}
+		if estimatedApr.Components.KeepVelo != nil {
+			keepVelo = *estimatedApr.Components.KeepVelo
+		}
+	}
+
+	return TForwardAPY{
+		Type:   estimatedApr.Type,
+		NetAPY: bigNumber.NewFloat(*estimatedApr.Apy),
+		Composite: TCompositeData{
+			Boost:      bigNumber.NewFloat(boost),
+			PoolAPY:    bigNumber.NewFloat(poolAPY),
+			BoostedAPR: bigNumber.NewFloat(boostedAPR),
+			BaseAPR:    bigNumber.NewFloat(baseAPR),
+			CvxAPR:     bigNumber.NewFloat(cvxAPR),
+			RewardsAPY: bigNumber.NewFloat(rewardsAPY),
+			KeepCRV:    bigNumber.NewFloat(keepCRV),
+			KeepVelo:   bigNumber.NewFloat(keepVelo),
+		},
+	}, true
+}

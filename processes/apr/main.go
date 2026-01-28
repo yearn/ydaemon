@@ -128,12 +128,19 @@ func ComputeChainAPY(chainID uint64) {
 		** APY, aka the expected APY we will get for the upcoming period.
 		** Priority: Use Kong estimated APR if available, otherwise compute locally.
 		**********************************************************************************************/
-		if isCurveVault(allStrategiesForVault) {
-			// Try to get estimated APR from Kong first
-			if kongForwardAPY, hasKongData := convertKongEstimatedAprToForwardAPY(chainID, vault.Address); hasKongData {
-				vaultAPY.ForwardAPY = kongForwardAPY
-			} else {
-				// Fall back to local computation if Kong data not available
+	/**********************************************************************************************
+		** If it's a Curve Vault (has a Curve, Convex or Frax strategy), we can estimate the forward
+		** APY, aka the expected APY we will get for the upcoming period.
+		** Priority: Use Kong estimated APR if available, otherwise compute locally.
+		**********************************************************************************************/
+		usedKongData := false
+		if kongForwardAPY, hasKongData := convertKongEstimatedAprToForwardAPY(chainID, vault.Address); hasKongData {
+			vaultAPY.ForwardAPY = kongForwardAPY
+			usedKongData = true
+		}
+
+		if !usedKongData {
+			if isCurveVault(allStrategiesForVault) {
 				forwardAPY := computeCurveLikeForwardAPY(
 					vault,
 					allStrategiesForVault,
@@ -145,33 +152,13 @@ func ComputeChainAPY(chainID uint64) {
 				if forwardAPY.NetAPY != nil {
 					vaultAPY.ForwardAPY = forwardAPY
 				}
-			}
-		}
-
-		/**********************************************************************************************
-		** If it's a Velo Vault (has a Velo or Aero strategy), we can estimate the forward APY, aka
-		** the expected APY we will get for the upcoming period.
-		** Priority: Use Kong estimated APR if available, otherwise compute locally.
-		**********************************************************************************************/
-		if veloPool, ok := isVeloVault(chainID, vault); ok {
-			// Try to get estimated APR from Kong first
-			if kongForwardAPY, hasKongData := convertKongEstimatedAprToForwardAPY(chainID, vault.Address); hasKongData {
-				vaultAPY.ForwardAPY = kongForwardAPY
-			} else {
-				// Fall back to local computation if Kong data not available
+			} else if veloPool, ok := isVeloVault(chainID, vault); ok {
 				vaultAPY.ForwardAPY = computeVeloLikeForwardAPY(
 					vault,
 					allStrategiesForVault,
 					veloPool,
 				)
-			}
-		}
-		if aeroPool, ok := isAeroVault(chainID, vault); ok {
-			// Try to get estimated APR from Kong first
-			if kongForwardAPY, hasKongData := convertKongEstimatedAprToForwardAPY(chainID, vault.Address); hasKongData {
-				vaultAPY.ForwardAPY = kongForwardAPY
-			} else {
-				// Fall back to local computation if Kong data not available
+			} else if aeroPool, ok := isAeroVault(chainID, vault); ok {
 				vaultAPY.ForwardAPY = computeVeloLikeForwardAPY(
 					vault,
 					allStrategiesForVault,

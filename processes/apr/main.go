@@ -54,10 +54,6 @@ func ComputeChainAPY(chainID uint64) {
 	start := time.Now()
 	logs.Warning("📈 [APY START]", "chain", chainID)
 	allVaults, _ := storage.ListVaults(chainID)
-	gauges := storage.FetchCurveGauges(chainID)
-	pools := retrieveCurveGetPools(chainID)
-	subgraphData := retrieveCurveSubgraphData(chainID)
-	fraxPools := retrieveFraxPools()
 	storage.RefreshGammaCalls(chainID)
 
 	isOnGnosis := (chainID == 100)
@@ -128,45 +124,9 @@ func ComputeChainAPY(chainID uint64) {
 		** APY, aka the expected APY we will get for the upcoming period.
 		** Priority: Use Kong estimated APR if available, otherwise compute locally.
 		**********************************************************************************************/
-	/**********************************************************************************************
-		** If it's a Curve Vault (has a Curve, Convex or Frax strategy), we can estimate the forward
-		** APY, aka the expected APY we will get for the upcoming period.
-		** Priority: Use Kong estimated APR if available, otherwise compute locally.
-		**********************************************************************************************/
-		usedKongData := false
-		if kongForwardAPY, hasKongData := convertKongEstimatedAprToForwardAPY(chainID, vault.Address); hasKongData {
-			vaultAPY.ForwardAPY = kongForwardAPY
-			usedKongData = true
-		}
-
-		if !usedKongData {
-			if isCurveVault(allStrategiesForVault) {
-				forwardAPY := computeCurveLikeForwardAPY(
-					vault,
-					allStrategiesForVault,
-					gauges,
-					pools,
-					subgraphData,
-					fraxPools,
-				)
-				if forwardAPY.NetAPY != nil {
-					vaultAPY.ForwardAPY = forwardAPY
-				}
-			} else if veloPool, ok := isVeloVault(chainID, vault); ok {
-				vaultAPY.ForwardAPY = computeVeloLikeForwardAPY(
-					vault,
-					allStrategiesForVault,
-					veloPool,
-				)
-			} else if aeroPool, ok := isAeroVault(chainID, vault); ok {
-				vaultAPY.ForwardAPY = computeVeloLikeForwardAPY(
-					vault,
-					allStrategiesForVault,
-					aeroPool,
-				)
-			}
-		}
-
+		kongForwardAPY, _ := convertKongEstimatedAprToForwardAPY(chainID, vault.Address);
+		vaultAPY.ForwardAPY = kongForwardAPY
+		
 		/**********************************************************************************************
 		** If it's a Gamma Vault, we can get the feeAPR as an estimate for the upcoming period, and we
 		** can retrieve the extraReward APRs.

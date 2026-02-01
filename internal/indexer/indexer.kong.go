@@ -44,6 +44,11 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 		// Convert KongDebt to TKongDebt
 		var debts []models.TKongDebt
 		for _, debt := range data.Debts {
+			totalDebt := debt.TotalDebt
+			if totalDebt == nil {
+				zero := "0"
+				totalDebt = &zero
+			}
 			debts = append(debts, models.TKongDebt{
 				Strategy:           debt.Strategy,
 				PerformanceFee:     debt.PerformanceFee,
@@ -52,7 +57,7 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 				MinDebtPerHarvest:  debt.MinDebtPerHarvest,
 				MaxDebtPerHarvest:  debt.MaxDebtPerHarvest,
 				LastReport:         debt.LastReport,
-				TotalDebt:          debt.TotalDebt,
+				TotalDebt:          totalDebt,
 				TotalDebtUsd:       debt.TotalDebtUsd,
 				TotalGain:          debt.TotalGain,
 				TotalGainUsd:        debt.TotalGainUsd,

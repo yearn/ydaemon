@@ -11,6 +11,44 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
+func isForwardAPYAllZeros(f TForwardAPY) bool {
+	if f.NetAPY != nil && !f.NetAPY.IsZero() {
+		return false
+	}
+	c := f.Composite
+	if c.Boost != nil && !c.Boost.IsZero() {
+		return false
+	}
+	if c.PoolAPY != nil && !c.PoolAPY.IsZero() {
+		return false
+	}
+	if c.BoostedAPR != nil && !c.BoostedAPR.IsZero() {
+		return false
+	}
+	if c.BaseAPR != nil && !c.BaseAPR.IsZero() {
+		return false
+	}
+	if c.CvxAPR != nil && !c.CvxAPR.IsZero() {
+		return false
+	}
+	if c.RewardsAPY != nil && !c.RewardsAPY.IsZero() {
+		return false
+	}
+	if c.V3OracleCurrentAPR != nil && !c.V3OracleCurrentAPR.IsZero() {
+		return false
+	}
+	if c.V3OracleStratRatioAPR != nil && !c.V3OracleStratRatioAPR.IsZero() {
+		return false
+	}
+	if c.KeepCRV != nil && !c.KeepCRV.IsZero() {
+		return false
+	}
+	if c.KeepVelo != nil && !c.KeepVelo.IsZero() {
+		return false
+	}
+	return true
+}
+
 var COMPUTED_APY = make(map[uint64]*sync.Map)
 
 func init() {
@@ -119,35 +157,12 @@ func ComputeChainAPY(chainID uint64) {
 			vaultAPY.Extra.StakingRewardsAPY = v3StakingAPY
 		}
 
-		/**********************************************************************************************
-		** If it's a Curve Vault (has a Curve, Convex or Frax strategy), we can estimate the forward
-		** APY, aka the expected APY we will get for the upcoming period.
-		** Priority: Use Kong estimated APR if available, otherwise compute locally.
-		**********************************************************************************************/
-		kongForwardAPY, _ := convertKongEstimatedAprToForwardAPY(chainID, vault.Address);
+		kongForwardAPY, _ := convertKongEstimatedAprToForwardAPY(chainID, vault.Address)
+		if isForwardAPYAllZeros(kongForwardAPY) {
+			kongForwardAPY.Type = ""
+		}
 		vaultAPY.ForwardAPY = kongForwardAPY
 		
-		/**********************************************************************************************
-		** If it's a Gamma Vault, we can get the feeAPR as an estimate for the upcoming period, and we
-		** can retrieve the extraReward APRs.
-		**********************************************************************************************/
-		if isGammaVault(chainID, vault) {
-			if _, extaRewardAPY, ok := calculateGammaExtraRewards(chainID, vault.AssetAddress); ok {
-				vaultAPY.Extra.GammaRewardAPY = extaRewardAPY
-			}
-			vaultAPY.ForwardAPY = computeGammaForwardAPY(
-				vault,
-				allStrategiesForVault,
-			)
-			vaultAPY.ForwardAPY.Composite.RewardsAPY = vaultAPY.Extra.GammaRewardAPY
-		}
-
-		if isPendleVault(chainID, vault) {
-			vaultAPY.ForwardAPY = computePendleForwardAPY(
-				vault,
-				allStrategiesForVault,
-			)
-		}
 
 		safeSyncMap(COMPUTED_APY, chainID).Store(vault.Address, vaultAPY)
 		computedAPYData[vault.Address] = vaultAPY

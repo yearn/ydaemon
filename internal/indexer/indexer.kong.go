@@ -44,6 +44,11 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 		// Convert KongDebt to TKongDebt
 		var debts []models.TKongDebt
 		for _, debt := range data.Debts {
+			totalDebt := debt.TotalDebt
+			if totalDebt == nil {
+				zero := "0"
+				totalDebt = &zero
+			}
 			debts = append(debts, models.TKongDebt{
 				Strategy:           debt.Strategy,
 				PerformanceFee:     debt.PerformanceFee,
@@ -52,7 +57,7 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 				MinDebtPerHarvest:  debt.MinDebtPerHarvest,
 				MaxDebtPerHarvest:  debt.MaxDebtPerHarvest,
 				LastReport:         debt.LastReport,
-				TotalDebt:          debt.TotalDebt,
+				TotalDebt:          totalDebt,
 				TotalDebtUsd:       debt.TotalDebtUsd,
 				TotalGain:          debt.TotalGain,
 				TotalGainUsd:        debt.TotalGainUsd,
@@ -67,12 +72,37 @@ func IndexNewVaults(chainID uint64) map[common.Address]models.TVaultsFromRegistr
 			})
 		}
 		
-		// Extract performance data from Kong response (oracle APR/APY)
+		// Extract performance data from Kong response (oracle APR/APY and estimated APR)
 		performance := models.TKongPerformance{}
 		if data.Vault.Performance != nil {
 			performance.Oracle = models.TKongOracle{
 				Apr: data.Vault.Performance.Oracle.Apr,
 				Apy: data.Vault.Performance.Oracle.Apy,
+			}
+
+			// Extract estimated APR if available
+			if data.Vault.Performance.Estimated != nil {
+				components := &models.TKongEstimatedAprComponents{}
+				if data.Vault.Performance.Estimated.Components != nil {
+					components = &models.TKongEstimatedAprComponents{
+						Boost:      data.Vault.Performance.Estimated.Components.Boost,
+						PoolAPY:    data.Vault.Performance.Estimated.Components.PoolAPY,
+						BoostedAPR: data.Vault.Performance.Estimated.Components.BoostedAPR,
+						BaseAPR:    data.Vault.Performance.Estimated.Components.BaseAPR,
+						RewardsAPR: data.Vault.Performance.Estimated.Components.RewardsAPR,
+						RewardsAPY: data.Vault.Performance.Estimated.Components.RewardsAPY,
+						CvxAPR:     data.Vault.Performance.Estimated.Components.CvxAPR,
+						KeepCRV:    data.Vault.Performance.Estimated.Components.KeepCRV,
+						KeepVelo:   data.Vault.Performance.Estimated.Components.KeepVelo,
+					}
+				}
+
+				performance.Estimated = &models.TKongEstimatedApr{
+					Apr:        data.Vault.Performance.Estimated.Apr,
+					Apy:        data.Vault.Performance.Estimated.Apy,
+					Type:       data.Vault.Performance.Estimated.Type,
+					Components: components,
+				}
 			}
 		}
 

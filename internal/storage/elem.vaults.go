@@ -473,3 +473,18 @@ func GetKongOracleAPY(chainID uint64, vaultAddress common.Address) (*float64, *f
 	}
 	return data.Performance.Oracle.Apr, data.Performance.Oracle.Apy, true
 }
+
+/**************************************************************************************************
+** GetKongEstimatedAPY retrieves estimated APR data from Kong for a vault
+** Returns the estimated APR struct and a boolean indicating if data was found
+**************************************************************************************************/
+func GetKongEstimatedAPY(chainID uint64, vaultAddress common.Address) (*models.TKongEstimatedApr, bool) {
+	data, ok := GetKongVaultData(chainID, vaultAddress)
+	if !ok {
+		return nil, false
+	}
+	if data.Performance.Estimated == nil {
+		return nil, false
+	}
+	return data.Performance.Estimated, true
+}

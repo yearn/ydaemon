@@ -2,7 +2,9 @@
 
 ![](./.github/banner.png)
 
-yDaemon is the next-gen API for Yearn. Based on the API from [yearn-exporter](https://github.com/yearn/yearn-exporter), it brings a lot of new features and benefits without breaking the existing system.
+yDaemon is a legacy rest API for Yearn data. Please refer to [Kong](https://github.com/yearn/kong) for the latest Yearn data.
+
+~~yDaemon is the next-gen API for Yearn. Based on the API from [yearn-exporter](https://github.com/yearn/yearn-exporter), it brings a lot of new features and benefits without breaking the existing system.~~
 
 See documentation here: https://ydaemon.yearn.farm/
 ## Use with Docker

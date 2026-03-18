@@ -65,8 +65,10 @@ var KATANA = TChain{
 	},
 	ExtraVaults:       []models.TVaultsFromRegistry{},
 	BlacklistedVaults: []common.Address{},
-	ExtraTokens:       []common.Address{},
-	IgnoredTokens:     []common.Address{},
-	Curve:             TChainCurve{},
-	ExtraURI:          TChainExtraURI{},
+	ExtraTokens: []common.Address{
+		common.HexToAddress(`0x7f1f4b4b29f5058fa32cc7a97141b8d7e5abdc2d`), // KAT
+	},
+	IgnoredTokens: []common.Address{},
+	Curve:         TChainCurve{},
+	ExtraURI:      TChainExtraURI{},
 }

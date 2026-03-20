@@ -87,7 +87,7 @@ var CMS_ROOT_URL = ``
 ** The risk scores are stored as JSON files organized by chain ID and vault address.
 ** Default value points to the production CDN, but can be overridden via RISK_CDN_URL env variable.
 **************************************************************************************************/
-var RISK_CDN_URL = `https://risk.yearn.fi/cdn/`
+var RISK_CDN_URL = `https://curation.yearn.fi/cdn/`
 
 /**************************************************************************************************
 ** KONG_API_URL contains the GraphQL endpoint for Kong, the single source of truth for vault

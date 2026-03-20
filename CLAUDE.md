@@ -40,7 +40,7 @@ GRAPH_API_URI=
 SENTRY_DSN=
 SENTRY_SAMPLE_RATE=
 LOG_LEVEL=          # DEBUG, INFO, WARNING, SUCCESS, ERROR
-RISK_CDN_URL=       # Risk score CDN URL (defaults to https://risk.yearn.fi/cdn/)
+RISK_CDN_URL=       # Risk score CDN URL (defaults to https://curation.yearn.fi/cdn/)
 ```
 
 ## Architecture Overview

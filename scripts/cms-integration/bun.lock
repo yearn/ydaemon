@@ -1,17 +1,18 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "cms-integration",
       "dependencies": {
-        "viem": "^2.33.1",
-        "zod": "^4.0.10",
+        "viem": "2.33.1",
+        "zod": "4.0.10",
       },
       "devDependencies": {
-        "@types/bun": "latest",
+        "@types/bun": "1.2.19",
       },
       "peerDependencies": {
-        "typescript": "^5",
+        "typescript": "5.8.3",
       },
     },
   },

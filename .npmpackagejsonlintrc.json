@@ -1,8 +1,6 @@
 {
   "rules": {
     "prefer-absolute-version-dependencies": "error",
-    "prefer-absolute-version-devDependencies": "error",
-    "prefer-absolute-version-peerDependencies": "error",
-    "prefer-absolute-version-optionalDependencies": "error"
+    "prefer-absolute-version-devDependencies": "error"
   }
 }

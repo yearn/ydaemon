@@ -1,14 +1,62 @@
 version: 2
 updates:
-  - package-ecosystem: bun
+  - package-ecosystem: "bun"
     directory: "/"
     schedule:
-      interval: weekly
-  - package-ecosystem: bun
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    rebase-strategy: "auto"
+    versioning-strategy: "increase-if-necessary"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    cooldown:
+      default-days: 7
+      semver-major-days: 7
+      semver-minor-days: 7
+      semver-patch-days: 7
+    groups:
+      security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
+      patch-updates:
+        applies-to: version-updates
+        update-types:
+          - "patch"
+      minor-updates:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+  - package-ecosystem: "bun"
     directory: "/scripts/cms-integration"
     schedule:
-      interval: weekly
-  - package-ecosystem: github-actions
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    rebase-strategy: "auto"
+    versioning-strategy: "increase-if-necessary"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    cooldown:
+      default-days: 7
+      semver-major-days: 7
+      semver-minor-days: 7
+      semver-patch-days: 7
+    groups:
+      security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
+      patch-updates:
+        applies-to: version-updates
+        update-types:
+          - "patch"
+      minor-updates:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+  - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: weekly
+      interval: "weekly"

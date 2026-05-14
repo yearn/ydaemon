@@ -10,15 +10,15 @@ jobs:
 
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v3
+              uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
 
             - name: Setup Bun
-              uses: oven-sh/setup-bun@v1
+              uses: oven-sh/setup-bun@f4d14e03ff726c06358e5557344e1da148b56cf7 # v1
               with:
                   bun-version: latest
 
             - name: Install dependencies
-              run: bun install
+              run: bun install --frozen-lockfile
 
             - name: Verify Tokens
               run: bun run scripts/verify-tokens.js

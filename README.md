@@ -28,7 +28,7 @@ make down
 ```
 
 ## Manual Install
-First, ensure [Go](https://go.dev/) is installed on your system. then, clone the repo and create the `.env` file:
+First, ensure [Go](https://go.dev/) is installed on your system. Then, clone the repo and create the `.env` file:
 ```
 RPC_URI_FOR_1=
 RPC_URI_FOR_10=

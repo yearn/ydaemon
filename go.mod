@@ -1,8 +1,6 @@
 module github.com/yearn/ydaemon
 
-go 1.21.0
-
-toolchain go1.24.1
+go 1.26.8
 
 require (
 	github.com/davecgh/go-spew v1.1.1

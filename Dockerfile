@@ -1,9 +1,7 @@
-FROM golang:1.19-bullseye
+FROM golang:1.26.8-bookworm
 
 RUN mkdir -p /app
 COPY . /app
 WORKDIR /app
-RUN go mod tidy
-RUN go mod vendor
-RUN go build -o yDaemon ./cmd
+RUN go build -mod=readonly -o yDaemon ./cmd
 ENTRYPOINT /app/yDaemon

@@ -7,12 +7,9 @@
   "dependencies": {
     "@ethersproject/address": "5.8.0",
     "abort-controller": "3.0.0",
-    "ajv": "7.2.4",
-    "ajv-formats": "1.6.1",
+    "ajv": "8.18.0",
+    "ajv-formats": "3.0.1",
     "cids": "1.1.9",
-    "cloudflare": "2.9.1",
-    "codeowners": "4.2.1",
-    "ethers": "5.8.0",
     "fs-extra": "9.1.0",
     "node-fetch": "2.7.0"
   },
@@ -23,5 +20,8 @@
   },
   "devDependencies": {
     "prettier": "3.6.2"
+  },
+  "overrides": {
+    "bn.js": "5.2.3"
   }
 }

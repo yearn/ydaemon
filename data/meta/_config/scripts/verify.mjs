@@ -2,7 +2,7 @@ import fs from "fs-extra";
 import path from "path";
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
-import ethers from "ethers";
+import { getAddress } from "@ethersproject/address";
 const SchemasDirectory = "./data/meta/_config/schema/";
 const DataDirectory = "./data/meta/";
 const IndexName = "index.json";
@@ -13,10 +13,10 @@ function loadValidators(schemaDir) {
 	const ajv = new Ajv.default();
 	addFormats(ajv);
 	ajv.addFormat("address", (value) => {
-		if (ethers.utils.getAddress(value) === value) {
+		if (getAddress(value) === value) {
 			return true;
 		}
-		console.error(`Error: "${value}" is not a valid address. Should be ${ethers.utils.getAddress(value)}.`);
+		console.error(`Error: "${value}" is not a valid address. Should be ${getAddress(value)}.`);
 		return false
 	});
 	const validators = {};
@@ -70,7 +70,7 @@ function validate(directory, validators) {
 				if (name.startsWith("0x") && name.endsWith(".json") && name.length === (42 + 5)) {
 					const	rawAddress = name.replace(`.json`, ``)
 					try {
-						if (ethers.utils.getAddress(rawAddress) !== rawAddress) {
+						if (getAddress(rawAddress) !== rawAddress) {
 							console.error(`Error: "${name}" is not checksummed. ("${file}")`);
 							allValid = false;
 						}
@@ -100,7 +100,7 @@ function validate(directory, validators) {
 		} else if (stat.isDirectory()) {
 			if (name.startsWith("0x")) {
 				try {
-					if (ethers.utils.getAddress(name) !== name) {
+					if (getAddress(name) !== name) {
 						console.error(`Error: "${name}" is not checksummed. ("${file}")`);
 						allValid = false;
 					}

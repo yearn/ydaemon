@@ -48,3 +48,23 @@ func TestAPIAfterDependencyUpgrade(t *testing.T) {
 		})
 	}
 }
+
+// The chain configuration holds RPC, subgraph and explorer URLs that embed provider API keys,
+// so no route may serve it.
+func TestChainConfigIsNotExposed(t *testing.T) {
+	router := NewRouter()
+	for _, path := range []string{"/info/chains", "/info/chains/", "/info/chains/1"} {
+		t.Run(path, func(t *testing.T) {
+			response := httptest.NewRecorder()
+			router.ServeHTTP(response, httptest.NewRequest(http.MethodGet, path, nil))
+			if response.Code != http.StatusNotFound {
+				t.Fatalf("status = %d, want %d", response.Code, http.StatusNotFound)
+			}
+			for _, leaked := range []string{"RpcURI", "SubgraphURI", "EtherscanURI"} {
+				if strings.Contains(response.Body.String(), leaked) {
+					t.Errorf("response exposes %s", leaked)
+				}
+			}
+		})
+	}
+}

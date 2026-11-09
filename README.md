@@ -78,11 +78,6 @@ curl http://localhost:8080/1/vaults/all
 >`?strategiesDetails=withDetails|noDetails` indicates if we should also query and serve the details about the strategies. If noDetails is set, the Details field will be ignored. Default is noDetails.  
 -------
 
-`GET` `[BASE_URL]/info/chains`  
-> This endpoint returns the supported chains for this API.  
-
--------
-
 `GET` `[BASE_URL]/info/vaults/blacklisted`  
 > This endpoint returns the blacklisted vaults for all chains. A blacklisted vault is a vault that will be ignored by the API.  
 

@@ -12,7 +12,6 @@ import (
 	"github.com/yearn/ydaemon/external/prices"
 	"github.com/yearn/ydaemon/external/strategies"
 	"github.com/yearn/ydaemon/external/tokens"
-	"github.com/yearn/ydaemon/external/utils"
 	"github.com/yearn/ydaemon/external/vaults"
 )
 
@@ -131,7 +130,6 @@ func NewRouter() *gin.Engine {
 		// Get some information about the API
 		vController := vaults.Controller{}
 		router.GET(`info/vaults/blacklisted`, vController.GetBlacklistedVaults)
-		router.GET(`info/chains`, utils.GetSupportedChains)
 		router.GET(`:chainID/status`, func(ctx *gin.Context) {
 			chainID, ok := helpers.AssertChainID(ctx.Param("chainID"))
 			if !ok {
